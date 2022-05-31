@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.input_details'|trans({'%id%': input.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.input_details'|trans({'%id%': input.id|default('')}) }}</h1>
+    {% if input is defined and input|length %}
+        <dl class="dl-horizontal">
+            <dt>{{ 'label.id'|trans }}</dt>
+            <dd>{{ input.id }}</dd>
+            <dt>{{ 'label.user'|trans }}</dt>
+            <dd>{{ input.user }}</dd>
+            <dt>{{ 'label.artist'|trans }}</dt>
+            <dd>{{ input.artist }}</dd>
+            <dt>{{ 'label.category'|trans }}</dt>
+            <dd>{{ input.category }}</dd>
+            <dt>{{ 'label.field'|trans }}</dt>
+            <dd>{{ input.field }}</dd>
+            <dt>{{ 'label.movement'|trans }}</dt>
+            <dd>{{ input.movement }}</dd>
+            <dt>{{ 'label.title'|trans }}</dt>
+            <dd>{{  input.title }}</dd>
+            <dt>{{ 'label.description'|trans }}</dt>
+            <dd>{{ input.description }}</dd>
+        </dl>
+        <p>
+            <a href="{{ url('input_index') }}" title="{{ 'action.back_to_list'|trans }}">
+                {{ 'action.back_to_list'|trans }}
+            </a>
+        </p>
+    {% else %}
+        <p>
+            {{ 'message.record_not_found'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.input_list'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.input_list'|trans }}</h1>
+    {%  if pagination is defined and pagination.items|length %}
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'input.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.user'|trans, 'input.user') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.artist'|trans, 'input.artist') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.category'|trans, 'input.category') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.field'|trans, 'input.field') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.movement'|trans, 'input.movement') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'input.title') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.description'|trans, 'input.description') }}</th>
+                <th>{{ 'label.actions'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for input in pagination.items %}
+            <tr>
+                <td>{{ input.id }}</td>
+                <td>{{ input.user }}</td>
+                <td>{{ input.artist }}</td>
+                <td>{{ input.category }}</td>
+                <td>{{ input.field }}</td>
+                <td>{{ input.movement }}</td>
+                <td>{{ input.title }}</td>
+                <td>{{ input.description }}</td>
+                <td>
+                    <a href="{{ url('input_show', {id: input.id}) }}" title="{{ 'action.view'|trans }}">
+                        {{ 'action.view'|trans }}
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+{% else %}
+<p>
+    {{ 'message.empty_list'|trans }}
+</p>
+{% endif %}
+{% endblock %}
