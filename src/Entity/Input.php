@@ -44,6 +44,15 @@ class Input
     private ?string $description = null;
 
     /**
+     * Category.
+     *
+     * @var Category|null
+     */
+    #[ORM\ManyToOne(targetEntity: Category::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
+
+    /**
      * Getter for Id.
      *
      * @return int|null Id
@@ -91,5 +100,25 @@ class Input
     public function setDescription(?string $description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * Getter for Category.
+     *
+     * @return Category Category
+     */
+    public function getCategory(): Category
+    {
+        return $this->category;
+    }
+
+    /**
+     * Setter for Category.
+     *
+     * @param Category $category Category
+     */
+    public function setCategory(Category $category): void
+    {
+        $this->category = $category;
     }
 }

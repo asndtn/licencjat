@@ -6,27 +6,44 @@
 namespace App\DataFixtures;
 
 use App\Entity\Input;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
 /**
  * Class InputFixtures.
  */
-class InputFixtures extends AbstractBaseFixtures
+class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     /**
      * Load data.
      *
-     * @param ObjectManager $manager Persistence object manager
+     * @psalm-suppress PossiblyNullPropertyFetch
+     * @psalm-suppress PossiblyNullReference
+     * @psalm-suppress UnusedClosureParam
      */
-    public function loadData(ObjectManager $manager): void
+    public function loadData(): void
     {
-        for ($i = 0; $i < 10; ++$i) {
+
+        if (null === $this->manager || null === $this->faker) {
+            return;
+        }
+
+        $this->createMany(100, 'inputs', function (int $i) {
             $input = new Input();
             $input->setTitle($this->faker->sentence);
             $input->setDescription($this->faker->paragraph);
-            $manager->persist($input);
-        }
 
-        $manager->flush();
+            $category = $this->getRandomReference('categories');
+            $input->setCategory($category);
+
+            return $input;
+        });
+
+        $this->manager->flush();
+    }
+
+    public function getDependencies(): array
+    {
+        return [CategoryFixtures::class];
     }
 }
