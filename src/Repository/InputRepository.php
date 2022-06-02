@@ -51,7 +51,7 @@ class InputRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->orderBy('input.artist', 'ASC');
+            ->orderBy('input.id', 'ASC');
     }
 
     /**

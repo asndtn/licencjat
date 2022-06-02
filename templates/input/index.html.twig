@@ -15,11 +15,6 @@
             <thead>
             <tr>
                 <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'input.id') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.user'|trans, 'input.user') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.artist'|trans, 'input.artist') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.category'|trans, 'input.category') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.field'|trans, 'input.field') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.movement'|trans, 'input.movement') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'input.title') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.description'|trans, 'input.description') }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
@@ -29,11 +24,6 @@
             {% for input in pagination.items %}
             <tr>
                 <td>{{ input.id }}</td>
-                <td>{{ input.user }}</td>
-                <td>{{ input.artist }}</td>
-                <td>{{ input.category }}</td>
-                <td>{{ input.field }}</td>
-                <td>{{ input.movement }}</td>
                 <td>{{ input.title }}</td>
                 <td>{{ input.description }}</td>
                 <td>
