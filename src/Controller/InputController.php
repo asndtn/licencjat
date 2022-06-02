@@ -22,7 +22,9 @@ class InputController extends AbstractController
     /**
      * Index action.
      *
+     * @param Request $request User request
      * @param InputRepository $inputRepository Input repository
+     * @param PaginatorInterface $paginator
      *
      * @return Response HTTP Response
      */

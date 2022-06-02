@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.input_details'|trans({'%id%': input.id|default('')}) }}
+    {{ 'title.record_details'|trans({'%id%': input.id|default('')}) }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.input_details'|trans({'%id%': input.id|default('')}) }}</h1>
+    <h1>{{ 'title.record_details'|trans({'%id%': input.id|default('')}) }}</h1>
     {% if input is defined and input|length %}
         <dl class="dl-horizontal">
             <dt>{{ 'label.id'|trans }}</dt>

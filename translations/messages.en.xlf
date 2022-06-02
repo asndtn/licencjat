@@ -51,11 +51,11 @@
                 <target>Record not found.</target>
             </trans-unit>
             <trans-unit id="title.record_list">
-                <source>title.input_list</source>
+                <source>title.record_list</source>
                 <target>Inputs list</target>
             </trans-unit>
             <trans-unit id="title.record_details">
-                <source>title.input_details</source>
+                <source>title.record_details</source>
                 <target>Input details #%id%</target>
             </trans-unit>
             <trans-unit id="action.view">

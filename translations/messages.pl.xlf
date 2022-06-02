@@ -50,13 +50,13 @@
                 <source>message.record_not_found</source>
                 <target>Wpis nie istnieje.</target>
             </trans-unit>
-            <trans-unit id="title.input_list">
-                <source>title.input_list</source>
-                <target>Lista wpisów</target>
+            <trans-unit id="title.record_list">
+                <source>title.record_list</source>
+                <target>Lista ??</target>
             </trans-unit>
-            <trans-unit id="title.input_details">
-                <source>title.input_details</source>
-                <target>Szcegóły wpisu #%id%</target>
+            <trans-unit id="title.record_details">
+                <source>title.record_details</source>
+                <target>Szcegóły ?? #%id%</target>
             </trans-unit>
             <trans-unit id="action.view">
                 <source>action.view</source>
