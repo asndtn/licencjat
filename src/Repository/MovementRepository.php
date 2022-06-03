@@ -1,30 +1,28 @@
 <?php
 /**
- * Input Repository.
+ * Movement Repository.
  */
 
 namespace App\Repository;
 
-use App\Entity\Input;
+use App\Entity\Movement;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * Class InputRepository.
+ * Class MovementRepository.
  *
- * @extends ServiceEntityRepository<Input>
+ * @extends ServiceEntityRepository<Movement>
  *
- * @method Input|null find($id, $lockMode = null, $lockVersion = null)
- * @method Input|null findOneBy(array $criteria, array $orderBy = null)
- * @method Input[]    findAll()
- * @method Input[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- *
- * @extends ServiceEntityRepository<Input>
+ * @method Movement|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Movement|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Movement[]    findAll()
+ * @method Movement[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
  * @psalm-suppress LessSpecificImplementedReturnType
  */
-class InputRepository extends ServiceEntityRepository
+class MovementRepository extends ServiceEntityRepository
 {
 
     /**
@@ -45,7 +43,7 @@ class InputRepository extends ServiceEntityRepository
      */
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Input::class);
+        parent::__construct($registry, Movement::class);
     }
 
     /**
@@ -56,7 +54,7 @@ class InputRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->orderBy('input.id', 'ASC');
+            ->orderBy('movement.name', 'ASC');
     }
 
     /**
@@ -68,6 +66,6 @@ class InputRepository extends ServiceEntityRepository
      */
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        return $queryBuilder ?? $this->createQueryBuilder('input');
+        return $queryBuilder ?? $this->createQueryBuilder('movement');
     }
 }

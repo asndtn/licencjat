@@ -5,7 +5,10 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Category;
+use App\Entity\Field;
 use App\Entity\Input;
+use App\Entity\Movement;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
@@ -33,13 +36,17 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
             $input->setTitle($this->faker->sentence);
             $input->setDescription($this->faker->sentence);
 
-            /** @var $category */
+            /** @var Category $category */
             $category = $this->getRandomReference('categories');
             $input->setCategory($category);
 
-            /** @var $field */
+            /** @var Field $field */
             $field = $this->getRandomReference('fields');
             $input->setField($field);
+
+            /** @var Movement $movement */
+            $movement = $this->getRandomReference('movements');
+            $input->setMovement($movement);
 
             return $input;
         });
@@ -49,6 +56,6 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
 
     public function getDependencies(): array
     {
-        return [CategoryFixtures::class];
+        return [CategoryFixtures::class, FieldFixtures::class, MovementFixtures::class];
     }
 }

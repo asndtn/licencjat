@@ -1,4 +1,7 @@
 <?php
+/**
+ * Category Repository.
+ */
 
 namespace App\Repository;
 
@@ -8,6 +11,8 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
+ * Class CategoryRepository.
+ *
  * @extends ServiceEntityRepository<Category>
  *
  * @method Category|null find($id, $lockMode = null, $lockVersion = null)

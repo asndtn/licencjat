@@ -1,4 +1,7 @@
 <?php
+/**
+ * Field Repository.
+ */
 
 namespace App\Repository;
 
@@ -8,6 +11,8 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
+ * Class FieldRepository.
+ *
  * @extends ServiceEntityRepository<Field>
  *
  * @method Field|null find($id, $lockMode = null, $lockVersion = null)

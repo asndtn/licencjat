@@ -62,6 +62,15 @@ class Input
     private ?Field $field = null;
 
     /**
+     * Movement.
+     *
+     * @var Movement|null
+     */
+    #[ORM\ManyToOne(targetEntity: Movement::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Movement $movement = null;
+
+    /**
      * Getter for Id.
      *
      * @return int|null Id
@@ -149,5 +158,25 @@ class Input
     public function setField(?Field $field): void
     {
         $this->field = $field;
+    }
+
+    /**
+     * Getter for Movement.
+     *
+     * @return Movement|null Movement
+     */
+    public function getMovement(): ?Movement
+    {
+        return $this->movement;
+    }
+
+    /**
+     * Setter for Movement.
+     *
+     * @param Movement|null $movement Movement
+     */
+    public function setMovement(?Movement $movement): void
+    {
+        $this->movement = $movement;
     }
 }
