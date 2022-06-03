@@ -53,6 +53,15 @@ class Input
     private ?Category $category = null;
 
     /**
+     * Field.
+     *
+     * @var Field|null
+     */
+    #[ORM\ManyToOne(targetEntity: Field::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Field $field = null;
+
+    /**
      * Getter for Id.
      *
      * @return int|null Id
@@ -105,9 +114,9 @@ class Input
     /**
      * Getter for Category.
      *
-     * @return Category Category
+     * @return Category|null Category
      */
-    public function getCategory(): Category
+    public function getCategory(): ?Category
     {
         return $this->category;
     }
@@ -115,10 +124,30 @@ class Input
     /**
      * Setter for Category.
      *
-     * @param Category $category Category
+     * @param Category|null $category Category
      */
-    public function setCategory(Category $category): void
+    public function setCategory(?Category $category): void
     {
         $this->category = $category;
+    }
+
+    /**
+     * Getter for Field.
+     *
+     * @return Field|null Field
+     */
+    public function getField(): ?Field
+    {
+        return $this->field;
+    }
+
+    /**
+     * Setter for Field.
+     *
+     * @param Field|null $field Field
+     */
+    public function setField(?Field $field): void
+    {
+        $this->field = $field;
     }
 }

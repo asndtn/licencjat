@@ -14,24 +14,18 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'input.id') }}</th>
-                <th>{{ 'label.category'|trans }}</th>
-                <th>{{ 'label.field'|trans }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'input.title') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.description'|trans, 'input.description') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'field.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.field'|trans, 'field.name') }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
             <tbody>
-            {% for input in pagination.items %}
+            {% for field in pagination.items %}
             <tr>
-                <td>{{ input.id }}</td>
-                <td>{{ input.category.name }}</td>
-                <td>{{ input.field.name }}</td>
-                <td>{{ input.title }}</td>
-                <td>{{ input.description }}</td>
+                <td>{{ field.id }}</td>
+                <td>{{ field.name }}</td>
                 <td>
-                    <a href="{{ url('input_show', {id: input.id}) }}" title="{{ 'action.view'|trans }}">
+                    <a href="{{ url('field_show', {id: field.id}) }}" title="{{ 'action.view'|trans }}">
                         {{ 'action.view'|trans }}
                     </a>
                 </td>

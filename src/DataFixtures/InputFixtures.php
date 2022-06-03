@@ -31,10 +31,15 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
         $this->createMany(100, 'inputs', function (int $i) {
             $input = new Input();
             $input->setTitle($this->faker->sentence);
-            $input->setDescription($this->faker->paragraph);
+            $input->setDescription($this->faker->sentence);
 
+            /** @var $category */
             $category = $this->getRandomReference('categories');
             $input->setCategory($category);
+
+            /** @var $field */
+            $field = $this->getRandomReference('fields');
+            $input->setField($field);
 
             return $input;
         });

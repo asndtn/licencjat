@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\Category;
+use App\Entity\Field;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Category>
+ * @extends ServiceEntityRepository<Field>
  *
- * @method Category|null find($id, $lockMode = null, $lockVersion = null)
- * @method Category|null findOneBy(array $criteria, array $orderBy = null)
- * @method Category[]    findAll()
- * @method Category[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Field|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Field|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Field[]    findAll()
+ * @method Field[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
  * @psalm-suppress LessSpecificImplementedReturnType
  */
-class CategoryRepository extends ServiceEntityRepository
+class FieldRepository extends ServiceEntityRepository
 {
 
     /**
@@ -38,7 +38,7 @@ class CategoryRepository extends ServiceEntityRepository
      */
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Category::class);
+        parent::__construct($registry, Field::class);
     }
 
     /**
@@ -49,7 +49,7 @@ class CategoryRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->orderBy('category.name', 'ASC');
+            ->orderBy('field.name', 'ASC');
     }
 
     /**
@@ -61,6 +61,6 @@ class CategoryRepository extends ServiceEntityRepository
      */
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        return $queryBuilder ?? $this->createQueryBuilder('category');
+        return $queryBuilder ?? $this->createQueryBuilder('field');
     }
 }
