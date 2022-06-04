@@ -6,23 +6,31 @@
 namespace App\DataFixtures;
 
 use App\Entity\Artist;
+use App\Entity\Nationality;
 use DateTimeImmutable;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
  * Class ArtistFixtures.
  *
  * @psalm-suppress MissingConstructor
  */
-class ArtistFixtures extends AbstractBaseFixtures
+class ArtistFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     /**
      * Load data.
      *
+     * @psalm-suppress PossiblyNullPropertyFetch
      * @psalm-suppress PossiblyNullReference
      * @psalm-suppress UnusedClosureParam
      */
     public function loadData(): void
     {
+
+        if (null === $this->manager || null === $this->faker) {
+            return;
+        }
+
         $this->createMany(20, 'artists', function (int $i) {
             $artist = new Artist();
             $artist->setName($this->faker->unique()->name());
@@ -38,9 +46,18 @@ class ArtistFixtures extends AbstractBaseFixtures
                 )
             );
 
+            /** @var Nationality $nationality */
+            $nationality = $this->getRandomReference('nationalities');
+            $artist->setNationality($nationality);
+
             return $artist;
         });
 
         $this->manager->flush();
+    }
+
+    public function getDependencies(): array
+    {
+        return [NationalityFixtures::class];
     }
 }

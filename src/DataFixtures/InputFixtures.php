@@ -14,6 +14,8 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
  * Class InputFixtures.
+ *
+ * @psalm-suppress MissingConstructor
  */
 class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {

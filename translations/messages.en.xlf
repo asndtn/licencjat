@@ -78,6 +78,10 @@
                 <source>label.dateOfDeath</source>
                 <target>Date of Death</target>
             </trans-unit>
+            <trans-unit id="label.nationality">
+                <source>label.nationality</source>
+                <target>Nationality</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -57,6 +57,15 @@ class Artist
     private ?DateTimeImmutable $dateOfDeath = null;
 
     /**
+     * Nationality.
+     *
+     * @var Nationality
+     */
+    #[ORM\ManyToOne(targetEntity: Nationality::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Nationality $nationality = null;
+
+    /**
      * Getter for Id.
      *
      * @return int|null Id
@@ -124,5 +133,25 @@ class Artist
     public function setDateOfDeath(?DateTimeImmutable $dateOfDeath): void
     {
         $this->dateOfDeath = $dateOfDeath;
+    }
+
+    /**
+     * Getter for Nationality.
+     *
+     * @return Nationality|null Nationality
+     */
+    public function getNationality(): ?Nationality
+    {
+        return $this->nationality;
+    }
+
+    /**
+     * Setter for Nationality.
+     *
+     * @param Nationality|null $nationality Nationality
+     */
+    public function setNationality(?Nationality $nationality): void
+    {
+        $this->nationality = $nationality;
     }
 }
