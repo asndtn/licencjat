@@ -24,7 +24,6 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ArtistRepository extends ServiceEntityRepository
 {
-
     /**
      * Items per page.
      *

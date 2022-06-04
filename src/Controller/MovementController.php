@@ -20,9 +20,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class MovementController extends AbstractController
 {
     /**
-     * @param Request $request User request
+     * @param Request            $request            User request
      * @param MovementRepository $movementRepository Movement Repository
-     * @param PaginatorInterface $paginator Paginator
+     * @param PaginatorInterface $paginator          Paginator
      *
      * @return Response HTTP Response
      */

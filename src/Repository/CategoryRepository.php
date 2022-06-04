@@ -24,7 +24,6 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class CategoryRepository extends ServiceEntityRepository
 {
-
     /**
      * Items per page.
      *

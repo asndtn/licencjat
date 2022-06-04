@@ -26,7 +26,6 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class InputRepository extends ServiceEntityRepository
 {
-
     /**
      * Items per page.
      *

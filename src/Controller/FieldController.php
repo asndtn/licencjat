@@ -22,9 +22,9 @@ class FieldController extends AbstractController
     /**
      * Index action.
      *
-     * @param Request $request User request
-     * @param FieldRepository $fieldRepository Field Repository
-     * @param PaginatorInterface $paginator Paginator
+     * @param Request            $request         User request
+     * @param FieldRepository    $fieldRepository Field Repository
+     * @param PaginatorInterface $paginator       Paginator
      *
      * @return Response HTTP Response
      */

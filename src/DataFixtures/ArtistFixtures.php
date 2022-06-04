@@ -26,7 +26,6 @@ class ArtistFixtures extends AbstractBaseFixtures implements DependentFixtureInt
      */
     public function loadData(): void
     {
-
         if (null === $this->manager || null === $this->faker) {
             return;
         }

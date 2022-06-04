@@ -16,6 +16,7 @@ use LogicException;
  * Class AbstractBaseFixtures.
  *
  * @psalm-suppress MissingConstructor
+ * @psalm-suppress PossiblyNullReference
  */
 abstract class AbstractBaseFixtures extends Fixture
 {

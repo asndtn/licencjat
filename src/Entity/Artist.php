@@ -7,7 +7,6 @@ namespace App\Entity;
 
 use App\Repository\ArtistRepository;
 use DateTimeImmutable;
-use Doctrine\DBAL\Types\DateType;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 

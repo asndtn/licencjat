@@ -24,7 +24,6 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class FieldRepository extends ServiceEntityRepository
 {
-
     /**
      * Items per page.
      *

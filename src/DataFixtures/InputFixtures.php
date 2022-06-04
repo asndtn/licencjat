@@ -5,11 +5,11 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Artist;
 use App\Entity\Category;
 use App\Entity\Field;
 use App\Entity\Input;
 use App\Entity\Movement;
-use App\Entity\Artist;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
@@ -28,7 +28,6 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
      */
     public function loadData(): void
     {
-
         if (null === $this->manager || null === $this->faker) {
             return;
         }

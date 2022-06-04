@@ -24,7 +24,6 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class NationalityRepository extends ServiceEntityRepository
 {
-
     /**
      * Items per page.
      *

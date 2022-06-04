@@ -22,8 +22,8 @@ class ArtistController extends AbstractController
     /**
      * Index action.
      *
-     * @param Request $request User request
-     * @param ArtistRepository $artistRepository Artist repository
+     * @param Request            $request          User request
+     * @param ArtistRepository   $artistRepository Artist repository
      * @param PaginatorInterface $paginator
      *
      * @return Response HTTP Response
