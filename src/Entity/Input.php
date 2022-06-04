@@ -46,7 +46,7 @@ class Input
     /**
      * Category.
      *
-     * @var Category|null
+     * @var Category
      */
     #[ORM\ManyToOne(targetEntity: Category::class)]
     #[ORM\JoinColumn(nullable: false)]
@@ -55,7 +55,7 @@ class Input
     /**
      * Field.
      *
-     * @var Field|null
+     * @var Field
      */
     #[ORM\ManyToOne(targetEntity: Field::class)]
     #[ORM\JoinColumn(nullable: false)]
@@ -64,11 +64,20 @@ class Input
     /**
      * Movement.
      *
-     * @var Movement|null
+     * @var Movement
      */
     #[ORM\ManyToOne(targetEntity: Movement::class)]
     #[ORM\JoinColumn(nullable: false)]
     private ?Movement $movement = null;
+
+    /**
+     * Artist.
+     *
+     * @var Artist
+     */
+    #[ORM\ManyToOne(targetEntity: Artist::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Artist $artist = null;
 
     /**
      * Getter for Id.
@@ -178,5 +187,25 @@ class Input
     public function setMovement(?Movement $movement): void
     {
         $this->movement = $movement;
+    }
+
+    /**
+     * Getter for Artist.
+     *
+     * @return Artist|null Artist
+     */
+    public function getArtist(): ?Artist
+    {
+        return $this->artist;
+    }
+
+    /**
+     * Setter for Artist.
+     *
+     * @param Artist|null $artist Artist
+     */
+    public function setArtist(?Artist $artist): void
+    {
+        $this->artist = $artist;
     }
 }

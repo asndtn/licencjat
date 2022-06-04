@@ -15,6 +15,8 @@
             <thead>
             <tr>
                 <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'input.id') }}</th>
+                <th>{{ 'label.artist'|trans }}</th>
+                <th>{{ 'label.dateOfBirth'|trans }}</th>
                 <th>{{ 'label.category'|trans }}</th>
                 <th>{{ 'label.field'|trans }}</th>
                 <th>{{ 'label.movement'|trans }}</th>
@@ -27,6 +29,8 @@
             {% for input in pagination.items %}
             <tr>
                 <td>{{ input.id }}</td>
+                <td>{{ input.artist.name }}</td>
+                <td>{{ input.artist.dateOfBirth|format_date('long') }}</td>
                 <td>{{ input.category.name }}</td>
                 <td>{{ input.field.name }}</td>
                 <td>{{ input.movement.name }}</td>

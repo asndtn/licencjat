@@ -9,8 +9,8 @@ use App\Entity\Category;
 use App\Entity\Field;
 use App\Entity\Input;
 use App\Entity\Movement;
+use App\Entity\Artist;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Persistence\ObjectManager;
 
 /**
  * Class InputFixtures.
@@ -48,6 +48,10 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
             $movement = $this->getRandomReference('movements');
             $input->setMovement($movement);
 
+            /** @var Artist $artist */
+            $artist = $this->getRandomReference('artists');
+            $input->setArtist($artist);
+
             return $input;
         });
 
@@ -56,6 +60,6 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
 
     public function getDependencies(): array
     {
-        return [CategoryFixtures::class, FieldFixtures::class, MovementFixtures::class];
+        return [CategoryFixtures::class, FieldFixtures::class, MovementFixtures::class, ArtistFixtures::class];
     }
 }

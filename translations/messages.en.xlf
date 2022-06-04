@@ -66,6 +66,18 @@
                 <source>action.back_to_list</source>
                 <target>Back to list</target>
             </trans-unit>
+            <trans-unit id="label.name">
+                <source>label.name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="label.dateOfBirth">
+                <source>label.dateOfBirth</source>
+                <target>Date of birth</target>
+            </trans-unit>
+            <trans-unit id="label.dateOfDeath">
+                <source>label.dateOfDeath</source>
+                <target>Date of Death</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
