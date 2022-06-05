@@ -48,7 +48,7 @@ class Input
      *
      * @var Category
      */
-    #[ORM\ManyToOne(targetEntity: Category::class)]
+    #[ORM\ManyToOne(targetEntity: Category::class, fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
@@ -57,7 +57,7 @@ class Input
      *
      * @var Field
      */
-    #[ORM\ManyToOne(targetEntity: Field::class)]
+    #[ORM\ManyToOne(targetEntity: Field::class, fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Field $field = null;
 
@@ -66,7 +66,7 @@ class Input
      *
      * @var Movement
      */
-    #[ORM\ManyToOne(targetEntity: Movement::class)]
+    #[ORM\ManyToOne(targetEntity: Movement::class, fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Movement $movement = null;
 
@@ -75,7 +75,7 @@ class Input
      *
      * @var Artist
      */
-    #[ORM\ManyToOne(targetEntity: Artist::class)]
+    #[ORM\ManyToOne(targetEntity: Artist::class, fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Artist $artist = null;
 

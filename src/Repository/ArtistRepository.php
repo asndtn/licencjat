@@ -53,6 +53,11 @@ class ArtistRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
+            ->select(
+                'partial artist.{id, name}',
+                'partial nationality.{id, name}'
+            )
+            ->join('artist.nationality', 'nationality')
             ->orderBy('artist.id', 'ASC');
     }
 

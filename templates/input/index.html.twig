@@ -15,12 +15,8 @@
             <thead>
             <tr>
                 <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'input.id') }}</th>
-                <th>{{ 'label.artist'|trans }}</th>
-                <th>{{ 'label.category'|trans }}</th>
-                <th>{{ 'label.field'|trans }}</th>
-                <th>{{ 'label.movement'|trans }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.artist'|trans, 'artist.name') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'input.title') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.description'|trans, 'input.description') }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
@@ -29,11 +25,7 @@
             <tr>
                 <td>{{ input.id }}</td>
                 <td>{{ input.artist.name }}</td>
-                <td>{{ input.category.name }}</td>
-                <td>{{ input.field.name }}</td>
-                <td>{{ input.movement.name }}</td>
                 <td>{{ input.title }}</td>
-                <td>{{ input.description }}</td>
                 <td>
                     <a href="{{ url('input_show', {id: input.id}) }}" title="{{ 'action.view'|trans }}">
                         {{ 'action.view'|trans }}

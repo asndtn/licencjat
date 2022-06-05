@@ -60,7 +60,7 @@ class Artist
      *
      * @var Nationality
      */
-    #[ORM\ManyToOne(targetEntity: Nationality::class)]
+    #[ORM\ManyToOne(targetEntity: Nationality::class, fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Nationality $nationality = null;
 

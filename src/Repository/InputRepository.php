@@ -23,6 +23,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @extends ServiceEntityRepository<Input>
  *
  * @psalm-suppress LessSpecificImplementedReturnType
+ * @psalm-suppress PossiblyNullReference
  */
 class InputRepository extends ServiceEntityRepository
 {
@@ -55,6 +56,11 @@ class InputRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
+            ->select(
+                'partial input.{id, title}',
+                'partial artist.{id, name}'
+            )
+            ->join('input.artist', 'artist')
             ->orderBy('input.id', 'ASC');
     }
 

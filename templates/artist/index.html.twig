@@ -16,9 +16,6 @@
             <tr>
                 <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'artist.id') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.name'|trans, 'artist.name') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.dateOfBirth'|trans, 'artist.dateOfBirth') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.dateOfDeath'|trans, 'artist.dateOfDeath') }}</th>
-                <th>{{ 'label.nationality'|trans }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
@@ -27,9 +24,6 @@
             <tr>
                 <td>{{ artist.id }}</td>
                 <td>{{ artist.name }}</td>
-                <td>{{ artist.dateOfBirth|format_date('long') }}</td>
-                <td>{{ artist.dateOfDeath|format_date('long') }}</td>
-                <td>{{ artist.nationality.name }}</td>
                 <td>
                     <a href="{{ url('artist_show', {id: artist.id}) }}" title="{{ 'action.view'|trans }}">
                         {{ 'action.view'|trans }}
