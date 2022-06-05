@@ -6,8 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\Field;
-use App\Repository\FieldRepository;
-use Knp\Component\Pager\PaginatorInterface;
+use App\Service\FieldServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,21 +19,30 @@ use Symfony\Component\Routing\Annotation\Route;
 class FieldController extends AbstractController
 {
     /**
+     * Field service.
+     */
+    private FieldServiceInterface $fieldService;
+
+    /**
+     * Constructor.
+     */
+    public function __construct(FieldServiceInterface $fieldService)
+    {
+        $this->fieldService = $fieldService;
+    }
+
+    /**
      * Index action.
      *
-     * @param Request            $request         User request
-     * @param FieldRepository    $fieldRepository Field Repository
-     * @param PaginatorInterface $paginator       Paginator
+     * @param Request $request User request
      *
      * @return Response HTTP Response
      */
     #[Route(name: 'field_index', methods: 'GET')]
-    public function index(Request $request, FieldRepository $fieldRepository, PaginatorInterface $paginator): Response
+    public function index(Request $request): Response
     {
-        $pagination = $paginator->paginate(
-            $fieldRepository->queryAll(),
-            $request->query->getInt('page', 1),
-            FieldRepository::PAGINATOR_ITEMS_PER_PAGE
+        $pagination = $this->fieldService->getPaginatedList(
+            $request->query->getInt('page', 1)
         );
 
         return $this->render('field/index.html.twig', ['pagination' => $pagination]);

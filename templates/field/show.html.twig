@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.record_details'|trans({'%id%': field.id|default('')}) }}
+    {{ 'title.record_details_field'|trans({'%id%': field.id|default('')}) }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.record_details'|trans({'%id%': field.id|default('')}) }}</h1>
+    <h1>{{ 'title.record_details_field'|trans({'%id%': field.id|default('')}) }}</h1>
     {% if field is defined and field|length %}
         <dl class="dl-horizontal">
             <dt>{{ 'label.id'|trans }}</dt>

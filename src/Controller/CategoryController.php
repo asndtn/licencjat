@@ -6,8 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
-use App\Repository\CategoryRepository;
-use Knp\Component\Pager\PaginatorInterface;
+use App\Service\CategoryServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,25 +19,38 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
     /**
-     * @param Request            $request            User request
-     * @param CategoryRepository $categoryRepository Category Repository
-     * @param PaginatorInterface $paginator          Paginator
+     * Category service.
+     */
+    private CategoryServiceInterface $categoryService;
+
+    /**
+     * Constructor.
+     */
+    public function __construct(CategoryServiceInterface $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
+
+    /**
+     * Index action.
+     *
+     * @param Request $request User request
      *
      * @return Response HTTP Response
      */
     #[Route(name: 'category_index', methods: 'GET')]
-    public function index(Request $request, CategoryRepository $categoryRepository, PaginatorInterface $paginator): Response
+    public function index(Request $request): Response
     {
-        $pagination = $paginator->paginate(
-            $categoryRepository->queryAll(),
-            $request->query->getInt('page', 1),
-            CategoryRepository::PAGINATOR_ITEMS_PER_PAGE
+        $pagination = $this->categoryService->getPaginatedList(
+            $request->query->getInt('page', 1)
         );
 
         return $this->render('category/index.html.twig', ['pagination' => $pagination]);
     }
 
     /**
+     * Show action.
+     *
      * @param Category $category Category entity
      *
      * @return Response HTTP Response

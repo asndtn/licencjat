@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.record_list'|trans }}
+    {{ 'title.record_list_nationality'|trans }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.record_list'|trans }}</h1>
+    <h1>{{ 'title.record_list_nationality'|trans }}</h1>
     {%  if pagination is defined and pagination.items|length %}
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}

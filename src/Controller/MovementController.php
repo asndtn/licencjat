@@ -6,8 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\Movement;
-use App\Repository\MovementRepository;
-use Knp\Component\Pager\PaginatorInterface;
+use App\Service\MovementServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,25 +19,38 @@ use Symfony\Component\Routing\Annotation\Route;
 class MovementController extends AbstractController
 {
     /**
-     * @param Request            $request            User request
-     * @param MovementRepository $movementRepository Movement Repository
-     * @param PaginatorInterface $paginator          Paginator
+     * Movement service.
+     */
+    private MovementServiceInterface $movementService;
+
+    /**
+     * Constructor.
+     */
+    public function __construct(MovementServiceInterface $movementService)
+    {
+        $this->movementService = $movementService;
+    }
+
+    /**
+     * Index action.
+     *
+     * @param Request $request User request
      *
      * @return Response HTTP Response
      */
     #[Route(name: 'movement_index', methods: 'GET')]
-    public function index(Request $request, MovementRepository $movementRepository, PaginatorInterface $paginator): Response
+    public function index(Request $request): Response
     {
-        $pagination = $paginator->paginate(
-            $movementRepository->queryAll(),
-            $request->query->getInt('page', 1),
-            MovementRepository::PAGINATOR_ITEMS_PER_PAGE
+        $pagination = $this->movementService->getPaginatedList(
+            $request->query->getInt('page', 1)
         );
 
         return $this->render('movement/index.html.twig', ['pagination' => $pagination]);
     }
 
     /**
+     * Show action.
+     *
      * @param Movement $movement Movement entity
      *
      * @return Response HTTP Response

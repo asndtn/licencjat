@@ -82,6 +82,54 @@
                 <source>label.nationality</source>
                 <target>Narodowość</target>
             </trans-unit>
+            <trans-unit id="title.record_list_input">
+                <source>title.record_list_input</source>
+                <target>Lista wpisów</target>
+            </trans-unit>
+            <trans-unit id="title.record_list_nationality">
+                <source>title.record_list_nationality</source>
+                <target>Lista narodowości</target>
+            </trans-unit>
+            <trans-unit id="title.record_list_artist">
+                <source>title.record_list_artist</source>
+                <target>Lista artystów</target>
+            </trans-unit>
+            <trans-unit id="title.record_list_category">
+                <source>title.record_list_category</source>
+                <target>Lista kategorii</target>
+            </trans-unit>
+            <trans-unit id="title.record_list_movement">
+                <source>title.record_list_movement</source>
+                <target>Lista epok</target>
+            </trans-unit>
+            <trans-unit id="title.record_list_field">
+                <source>title.record_list_field</source>
+                <target>Lista dziedzin sztuki</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_input">
+                <source>title.record_details_input</source>
+                <target>Szczegóły wpisu</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_nationality">
+                <source>title.record_details_nationality</source>
+                <target>Szcegóły narodowości</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_artist">
+                <source>title.record_details_artist</source>
+                <target>Szczegóły artysty</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_category">
+                <source>title.record_details_category</source>
+                <target>Szczegóły kategorii</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_movement">
+                <source>title.record_details_movement</source>
+                <target>Szczegóły epoki</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_field">
+                <source>title.record_details_field</source>
+                <target>Szczegóły dziedziny sztuki</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

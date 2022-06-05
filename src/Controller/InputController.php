@@ -6,8 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\Input;
-use App\Repository\InputRepository;
-use Knp\Component\Pager\PaginatorInterface;
+use App\Service\InputServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,21 +19,30 @@ use Symfony\Component\Routing\Annotation\Route;
 class InputController extends AbstractController
 {
     /**
+     * Input service.
+     */
+    private InputServiceInterface $inputService;
+
+    /**
+     * Constructor.
+     */
+    public function __construct(InputServiceInterface $inputService)
+    {
+        $this->inputService = $inputService;
+    }
+
+    /**
      * Index action.
      *
-     * @param Request            $request         User request
-     * @param InputRepository    $inputRepository Input repository
-     * @param PaginatorInterface $paginator
+     * @param Request $request User request
      *
      * @return Response HTTP Response
      */
     #[Route(name: 'input_index', methods: 'GET')]
-    public function index(Request $request, InputRepository $inputRepository, PaginatorInterface $paginator): Response
+    public function index(Request $request): Response
     {
-        $pagination = $paginator->paginate(
-            $inputRepository->queryAll(),
-            $request->query->getInt('page', 1),
-            InputRepository::PAGINATOR_ITEMS_PER_PAGE
+        $pagination = $this->inputService->getPaginatedList(
+            $request->query->getInt('page', 1)
         );
 
         return $this->render('input/index.html.twig', ['pagination' => $pagination]);

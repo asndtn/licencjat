@@ -52,11 +52,11 @@
             </trans-unit>
             <trans-unit id="title.record_list">
                 <source>title.record_list</source>
-                <target>Inputs list</target>
+                <target>List</target>
             </trans-unit>
             <trans-unit id="title.record_details">
                 <source>title.record_details</source>
-                <target>Input details #%id%</target>
+                <target>Details #%id%</target>
             </trans-unit>
             <trans-unit id="action.view">
                 <source>action.view</source>
@@ -81,6 +81,54 @@
             <trans-unit id="label.nationality">
                 <source>label.nationality</source>
                 <target>Nationality</target>
+            </trans-unit>
+            <trans-unit id="title.record_list_input">
+                <source>title.record_list_input</source>
+                <target>Input list</target>
+            </trans-unit>
+            <trans-unit id="title.record_list_nationality">
+                <source>title.record_list_nationality</source>
+                <target>Nationality list</target>
+            </trans-unit>
+            <trans-unit id="title.record_list_artist">
+                <source>title.record_list_artist</source>
+                <target>Artist list</target>
+            </trans-unit>
+            <trans-unit id="title.record_list_category">
+                <source>title.record_list_category</source>
+                <target>Category list</target>
+            </trans-unit>
+            <trans-unit id="title.record_list_movement">
+                <source>title.record_list_movement</source>
+                <target>Movement list</target>
+            </trans-unit>
+            <trans-unit id="title.record_list_field">
+                <source>title.record_list_field</source>
+                <target>Field list</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_input">
+                <source>title.record_details_input</source>
+                <target>Input details</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_nationality">
+                <source>title.record_details_nationality</source>
+                <target>Nationality details</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_artist">
+                <source>title.record_details_artist</source>
+                <target>Artist details</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_category">
+                <source>title.record_details_category</source>
+                <target>Category details</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_movement">
+                <source>title.record_details_movement</source>
+                <target>Movement details</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_field">
+                <source>title.record_details_field</source>
+                <target>Field details</target>
             </trans-unit>
         </body>
     </file>

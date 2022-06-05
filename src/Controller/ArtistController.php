@@ -6,8 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\Artist;
-use App\Repository\ArtistRepository;
-use Knp\Component\Pager\PaginatorInterface;
+use App\Service\ArtistServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,21 +19,30 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArtistController extends AbstractController
 {
     /**
+     * Artist service.
+     */
+    private ArtistServiceInterface $artistService;
+
+    /**
+     * Constructor.
+     */
+    public function __construct(ArtistServiceInterface $artistService)
+    {
+        $this->artistService = $artistService;
+    }
+
+    /**
      * Index action.
      *
-     * @param Request            $request          User request
-     * @param ArtistRepository   $artistRepository Artist repository
-     * @param PaginatorInterface $paginator
+     * @param Request $request User request
      *
      * @return Response HTTP Response
      */
     #[Route(name: 'artist_index', methods: 'GET')]
-    public function index(Request $request, ArtistRepository $artistRepository, PaginatorInterface $paginator): Response
+    public function index(Request $request): Response
     {
-        $pagination = $paginator->paginate(
-            $artistRepository->queryAll(),
-            $request->query->getInt('page', 1),
-            ArtistRepository::PAGINATOR_ITEMS_PER_PAGE
+        $pagination = $this->artistService->getPaginatedList(
+            $request->query->getInt('page', 1)
         );
 
         return $this->render('artist/index.html.twig', ['pagination' => $pagination]);

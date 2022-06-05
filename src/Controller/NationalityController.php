@@ -6,8 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\Nationality;
-use App\Repository\NationalityRepository;
-use Knp\Component\Pager\PaginatorInterface;
+use App\Service\NationalityServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,25 +19,38 @@ use Symfony\Component\Routing\Annotation\Route;
 class NationalityController extends AbstractController
 {
     /**
-     * @param Request               $request               User request
-     * @param NationalityRepository $nationalityRepository Nationality Repository
-     * @param PaginatorInterface    $paginator             Paginator
+     * Nationality service.
+     */
+    private NationalityServiceInterface $nationalityService;
+
+    /**
+     * Constructor.
+     */
+    public function __construct(NationalityServiceInterface $nationalityService)
+    {
+        $this->nationalityService = $nationalityService;
+    }
+
+    /**
+     * Index action.
+     *
+     * @param Request $request User request
      *
      * @return Response HTTP Response
      */
     #[Route(name: 'nationality_index', methods: 'GET')]
-    public function index(Request $request, NationalityRepository $nationalityRepository, PaginatorInterface $paginator): Response
+    public function index(Request $request): Response
     {
-        $pagination = $paginator->paginate(
-            $nationalityRepository->queryAll(),
-            $request->query->getInt('page', 1),
-            NationalityRepository::PAGINATOR_ITEMS_PER_PAGE
+        $pagination = $this->nationalityService->getPaginatedList(
+            $request->query->getInt('page', 1)
         );
 
         return $this->render('nationality/index.html.twig', ['pagination' => $pagination]);
     }
 
     /**
+     * Show action.
+     *
      * @param Nationality $nationality Nationality entity
      *
      * @return Response HTTP Response
