@@ -13,14 +13,12 @@ use Doctrine\Persistence\ManagerRegistry;
 /**
  * Class NationalityRepository.
  *
- * @extends ServiceEntityRepository<Nationality>
- *
  * @method Nationality|null find($id, $lockMode = null, $lockVersion = null)
  * @method Nationality|null findOneBy(array $criteria, array $orderBy = null)
  * @method Nationality[]    findAll()
  * @method Nationality[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
- * @psalm-suppress LessSpecificImplementedReturnType
+ * @extends ServiceEntityRepository<Nationality>
  */
 class NationalityRepository extends ServiceEntityRepository
 {
@@ -67,5 +65,27 @@ class NationalityRepository extends ServiceEntityRepository
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('nationality');
+    }
+
+    /**
+     * Save entity.
+     *
+     * @param Nationality $nationality Nationality entity
+     */
+    public function save(Nationality $nationality): void
+    {
+        $this->_em->persist($nationality);
+        $this->_em->flush();
+    }
+
+    /**
+     * Delete entity.
+     *
+     * @param Nationality $nationality Nationality entity
+     */
+    public function delete(Nationality $nationality): void
+    {
+        $this->_em->remove($nationality);
+        $this->_em->flush();
     }
 }
