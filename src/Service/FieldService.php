@@ -5,6 +5,7 @@
 
 namespace App\Service;
 
+use App\Entity\Field;
 use App\Repository\FieldRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -50,5 +51,25 @@ class FieldService implements FieldServiceInterface
             $page,
             FieldRepository::PAGINATOR_ITEMS_PER_PAGE
         );
+    }
+
+    /**
+     * Save entity.
+     *
+     * @param Field $field Field entity
+     */
+    public function save(Field $field): void
+    {
+        $this->fieldRepository->save($field);
+    }
+
+    /**
+     * Delete entity.
+     *
+     * @param Field $field Field entity
+     */
+    public function delete(Field $field): void
+    {
+        $this->fieldRepository->delete($field);
     }
 }

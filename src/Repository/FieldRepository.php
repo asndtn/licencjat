@@ -13,14 +13,12 @@ use Doctrine\Persistence\ManagerRegistry;
 /**
  * Class FieldRepository.
  *
- * @extends ServiceEntityRepository<Field>
- *
  * @method Field|null find($id, $lockMode = null, $lockVersion = null)
  * @method Field|null findOneBy(array $criteria, array $orderBy = null)
  * @method Field[]    findAll()
  * @method Field[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
- * @psalm-suppress LessSpecificImplementedReturnType
+ * @extends ServiceEntityRepository<Field>
  */
 class FieldRepository extends ServiceEntityRepository
 {
@@ -67,5 +65,27 @@ class FieldRepository extends ServiceEntityRepository
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('field');
+    }
+
+    /**
+     * Save entity.
+     *
+     * @param Field $field Field entity
+     */
+    public function save(Field $field): void
+    {
+        $this->_em->persist($field);
+        $this->_em->flush();
+    }
+
+    /**
+     * Delete entity.
+     *
+     * @param Field $field Field entity
+     */
+    public function delete(Field $field): void
+    {
+        $this->_em->remove($field);
+        $this->_em->flush();
     }
 }
