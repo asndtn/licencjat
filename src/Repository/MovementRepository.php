@@ -13,14 +13,12 @@ use Doctrine\Persistence\ManagerRegistry;
 /**
  * Class MovementRepository.
  *
- * @extends ServiceEntityRepository<Movement>
- *
  * @method Movement|null find($id, $lockMode = null, $lockVersion = null)
  * @method Movement|null findOneBy(array $criteria, array $orderBy = null)
  * @method Movement[]    findAll()
  * @method Movement[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
- * @psalm-suppress LessSpecificImplementedReturnType
+ * @extends ServiceEntityRepository<Movement>
  */
 class MovementRepository extends ServiceEntityRepository
 {
@@ -67,5 +65,27 @@ class MovementRepository extends ServiceEntityRepository
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('movement');
+    }
+
+    /**
+     * Save entity.
+     *
+     * @param Movement $movement Movement entity
+     */
+    public function save(Movement $movement): void
+    {
+        $this->_em->persist($movement);
+        $this->_em->flush();
+    }
+
+    /**
+     * Delete entity.
+     *
+     * @param Movement $movement Movement entity
+     */
+    public function delete(Movement $movement): void
+    {
+        $this->_em->remove($movement);
+        $this->_em->flush();
     }
 }
