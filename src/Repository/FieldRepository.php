@@ -53,6 +53,7 @@ class FieldRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
+            ->select('partial field.{id, name}')
             ->orderBy('field.name', 'ASC');
     }
 

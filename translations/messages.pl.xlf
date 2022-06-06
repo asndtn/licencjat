@@ -42,6 +42,8 @@
                 <source>label.tags</source>
                 <target>Tagi</target>
             </trans-unit>
+
+            <!-- Messages -->
             <trans-unit id="message.empty_list">
                 <source>message.empty_list</source>
                 <target>Lista jest pusta.</target>
@@ -58,14 +60,42 @@
                 <source>title.record_details</source>
                 <target>Szcegóły ?? #%id%</target>
             </trans-unit>
+            <trans-unit id="message.created_successfully">
+                <source>message.created_successfully</source>
+                <target>Utworzono pomyślnie!</target>
+            </trans-unit>
+            <trans-unit id="message.edited_successfully">
+                <source>message.edited_successfully</source>
+                <target>Pomyślnie zedytowano</target>
+            </trans-unit>
+            <trans-unit id="message.deleted_successfully">
+                <source>message.deleted_successfully</source>
+                <target>Pomyślnie usunięto</target>
+            </trans-unit>
+
+            <!-- Actions -->
             <trans-unit id="action.view">
                 <source>action.view</source>
                 <target>Zobacz</target>
+            </trans-unit>
+            <trans-unit id="action.edit">
+                <source>action.edit</source>
+                <target>Edytuj</target>
+            </trans-unit>
+            <trans-unit id="action.delete">
+                <source>action.delete</source>
+                <target>Usuń</target>
+            </trans-unit>
+            <trans-unit id="action.save">
+                <source>action.save</source>
+                <target>Zapisz</target>
             </trans-unit>
             <trans-unit id="action.back_to_list">
                 <source>action.back_to_list</source>
                 <target>Powrót do listy</target>
             </trans-unit>
+
+            <!-- Labels -->
             <trans-unit id="label.name">
                 <source>label.name</source>
                 <target>Imię i nazwisko</target>
@@ -82,6 +112,12 @@
                 <source>label.nationality</source>
                 <target>Narodowość</target>
             </trans-unit>
+            <trans-unit id="label.sure">
+                <source>label.sure</source>
+                <target>Czy na pewno chcesz usunąć kategorię #%id%?</target>
+            </trans-unit>
+
+            <!-- Titles -->
             <trans-unit id="title.record_list_input">
                 <source>title.record_list_input</source>
                 <target>Lista wpisów</target>
@@ -129,6 +165,18 @@
             <trans-unit id="title.record_details_field">
                 <source>title.record_details_field</source>
                 <target>Szczegóły dziedziny sztuki</target>
+            </trans-unit>
+            <trans-unit id="title.category_create">
+                <source>title.category_create</source>
+                <target>Utwórz kategorię</target>
+            </trans-unit>
+            <trans-unit id="title.category_delete">
+                <source>title.category_delete</source>
+                <target>Usuń kategorię</target>
+            </trans-unit>
+            <trans-unit id="title.category_edit">
+                <source>title.category_edit</source>
+                <target>Edytuj kategorię</target>
             </trans-unit>
         </body>
     </file>

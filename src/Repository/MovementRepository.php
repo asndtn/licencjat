@@ -53,6 +53,7 @@ class MovementRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
+            ->select('partial movement.{id, name}')
             ->orderBy('movement.name', 'ASC');
     }
 

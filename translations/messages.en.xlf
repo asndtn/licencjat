@@ -42,6 +42,7 @@
                 <source>label.tags</source>
                 <target>Tags</target>
             </trans-unit>
+
             <trans-unit id="message.empty_list">
                 <source>message.empty_list</source>
                 <target>List is empty.</target>
@@ -50,6 +51,19 @@
                 <source>message.record_not_found</source>
                 <target>Record not found.</target>
             </trans-unit>
+            <trans-unit id="message.created_successfully">
+                <source>message.created_successfully</source>
+                <target>Created successfully!</target>
+            </trans-unit>
+            <trans-unit id="message.edited_successfully">
+                <source>message.edited_successfully</source>
+                <target>Edited successfully!</target>
+            </trans-unit>
+            <trans-unit id="message.deleted_successfully">
+                <source>message.deleted_successfully</source>
+                <target>Deleted successfully!</target>
+            </trans-unit>
+
             <trans-unit id="title.record_list">
                 <source>title.record_list</source>
                 <target>List</target>
@@ -61,6 +75,18 @@
             <trans-unit id="action.view">
                 <source>action.view</source>
                 <target>View</target>
+            </trans-unit>
+            <trans-unit id="action.edit">
+                <source>action.edit</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="action.delete">
+                <source>action.delete</source>
+                <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="action.save">
+                <source>action.save</source>
+                <target>Save</target>
             </trans-unit>
             <trans-unit id="action.back_to_list">
                 <source>action.back_to_list</source>
@@ -82,6 +108,7 @@
                 <source>label.nationality</source>
                 <target>Nationality</target>
             </trans-unit>
+
             <trans-unit id="title.record_list_input">
                 <source>title.record_list_input</source>
                 <target>Input list</target>
@@ -129,6 +156,24 @@
             <trans-unit id="title.record_details_field">
                 <source>title.record_details_field</source>
                 <target>Field details</target>
+            </trans-unit>
+
+            <trans-unit id="title.category_create">
+                <source>title.category_create</source>
+                <target>Create a category</target>
+            </trans-unit>
+            <trans-unit id="title.category_edit">
+                <source>title.category_edit</source>
+                <target>Edit a category</target>
+            </trans-unit>
+            <trans-unit id="title.category_delete">
+                <source>title.category_delete</source>
+                <target>Delete the category</target>
+            </trans-unit>
+
+            <trans-unit id="label.sure">
+                <source>label.sure</source>
+                <target>Are you sure you want to delete record: #%id%</target>
             </trans-unit>
         </body>
     </file>

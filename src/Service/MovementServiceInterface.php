@@ -5,7 +5,6 @@
 
 namespace App\Service;
 
-use App\Entity\Movement;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**

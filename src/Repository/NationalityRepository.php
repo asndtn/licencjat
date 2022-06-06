@@ -53,6 +53,7 @@ class NationalityRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
+            ->select('partial nationality.{id, name}')
             ->orderBy('nationality.name', 'ASC');
     }
 

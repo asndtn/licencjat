@@ -16,15 +16,11 @@ class NationalityService implements NationalityServiceInterface
 {
     /**
      * Nationality repository.
-     *
-     * @var NationalityRepository
      */
     private NationalityRepository $nationalityRepository;
 
     /**
      * Paginator.
-     *
-     * @var PaginatorInterface
      */
     private PaginatorInterface $paginator;
 

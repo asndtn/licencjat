@@ -16,15 +16,11 @@ class InputService implements InputServiceInterface
 {
     /**
      * Input repository.
-     *
-     * @var InputRepository
      */
     private InputRepository $inputRepository;
 
     /**
      * Paginator.
-     *
-     * @var PaginatorInterface
      */
     private PaginatorInterface $paginator;
 

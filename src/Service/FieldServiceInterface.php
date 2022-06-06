@@ -5,7 +5,6 @@
 
 namespace App\Service;
 
-use App\Entity\Field;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**

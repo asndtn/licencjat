@@ -25,9 +25,23 @@
                 <td>{{ category.id }}</td>
                 <td>{{ category.name }}</td>
                 <td>
-                    <a href="{{ url('category_show', {id: category.id}) }}" title="{{ 'action.view'|trans }}">
-                        {{ 'action.view'|trans }}
-                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{ url('category_show', {id: category.id}) }}" title="{{ 'action.view'|trans }}">
+                                {{ 'action.view'|trans }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('category_edit', {id: category.id}) }}" title="{{ 'action.edit'|trans }}">
+                                {{ 'action.edit'|trans }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('category_delete', {id: category.id}) }}" title="{{ 'action.delete'|trans }}">
+                                {{ 'action.delete'|trans }}
+                            </a>
+                        </li>
+                    </ul>
                 </td>
             </tr>
             {% endfor %}

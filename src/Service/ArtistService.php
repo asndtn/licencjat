@@ -16,24 +16,33 @@ class ArtistService implements ArtistServiceInterface
 {
     /**
      * Artist repository.
-     *
-     * @var ArtistRepository
      */
     private ArtistRepository $artistRepository;
 
     /**
      * Paginator.
-     *
-     * @var PaginatorInterface
      */
     private PaginatorInterface $paginator;
 
+    /**
+     * Constructor.
+     *
+     * @param ArtistRepository   $artistRepository Artist repository
+     * @param PaginatorInterface $paginator        Paginator
+     */
     public function __construct(ArtistRepository $artistRepository, PaginatorInterface $paginator)
     {
         $this->artistRepository = $artistRepository;
         $this->paginator = $paginator;
     }
 
+    /**
+     * Get paginated list.
+     *
+     * @param int $page Page number
+     *
+     * @return PaginationInterface<string, mixed> Paginated list
+     */
     public function getPaginatedList(int $page): PaginationInterface
     {
         return $this->paginator->paginate(

@@ -16,15 +16,11 @@ class MovementService implements MovementServiceInterface
 {
     /**
      * Movement repository.
-     *
-     * @var MovementRepository
      */
     private MovementRepository $movementRepository;
 
     /**
      * Paginator.
-     *
-     * @var PaginatorInterface
      */
     private PaginatorInterface $paginator;
 
