@@ -64,6 +64,10 @@
                 <source>label.sure</source>
                 <target>Are you sure you want to delete record: #%id%</target>
             </trans-unit>
+            <trans-unit id="label.none">
+                <source>label.none</source>
+                <target>None</target>
+            </trans-unit>
 
             <!-- Messages -->
             <trans-unit id="message.empty_list">
@@ -85,6 +89,10 @@
             <trans-unit id="message.deleted_successfully">
                 <source>message.deleted_successfully</source>
                 <target>Deleted successfully!</target>
+            </trans-unit>
+            <trans-unit id="message.form_error">
+                <source>message.form_error</source>
+                <target>Form has errors.</target>
             </trans-unit>
 
             <!-- Actions -->
@@ -130,6 +138,18 @@
                 <source>title.record_details_input</source>
                 <target>Input details</target>
             </trans-unit>
+            <trans-unit id="title.input_create">
+                <source>title.input_create</source>
+                <target>Create an input</target>
+            </trans-unit>
+            <trans-unit id="title.input_edit">
+                <source>title.input_edit</source>
+                <target>Edit an input</target>
+            </trans-unit>
+            <trans-unit id="title.input_delete">
+                <source>title.input_delete</source>
+                <target>Delete an input</target>
+            </trans-unit>
             <trans-unit id="title.record_list_nationality">
                 <source>title.record_list_nationality</source>
                 <target>Nationality list</target>
@@ -157,6 +177,18 @@
             <trans-unit id="title.record_details_artist">
                 <source>title.record_details_artist</source>
                 <target>Artist details</target>
+            </trans-unit>
+            <trans-unit id="title.artist_create">
+                <source>title.artist_create</source>
+                <target>Create an artist</target>
+            </trans-unit>
+            <trans-unit id="title.artist_edit">
+                <source>title.artist_edit</source>
+                <target>Edit an artist</target>
+            </trans-unit>
+            <trans-unit id="title.artist_delete">
+                <source>title.artist_delete</source>
+                <target>Delete an artist</target>
             </trans-unit>
             <trans-unit id="title.record_list_category">
                 <source>title.record_list_category</source>
@@ -217,6 +249,20 @@
             <trans-unit id="title.field_delete">
                 <source>title.field_delete</source>
                 <target>Delete a field</target>
+            </trans-unit>
+
+            <!-- Miscellaneous -->
+            <trans-unit id="Year">
+                <source>Year</source>
+                <target>Year</target>
+            </trans-unit>
+            <trans-unit id="Month">
+                <source>Month</source>
+                <target>Month</target>
+            </trans-unit>
+            <trans-unit id="Day">
+                <source>Day</source>
+                <target>Day</target>
             </trans-unit>
         </body>
     </file>

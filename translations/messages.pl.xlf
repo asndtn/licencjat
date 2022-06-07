@@ -44,6 +44,10 @@
                 <source>label.tags</source>
                 <target>Tagi</target>
             </trans-unit>
+            <trans-unit id="label.none">
+                <source>label.none</source>
+                <target>None</target>
+            </trans-unit>
 
             <!-- Messages -->
             <trans-unit id="message.empty_list">
@@ -73,6 +77,10 @@
             <trans-unit id="message.deleted_successfully">
                 <source>message.deleted_successfully</source>
                 <target>Pomyślnie usunięto</target>
+            </trans-unit>
+            <trans-unit id="message.form_error">
+                <source>message.form_error</source>
+                <target>Formularz zawiera błędy.</target>
             </trans-unit>
 
             <!-- Actions -->
@@ -219,6 +227,44 @@
             <trans-unit id="title.field_delete">
                 <source>title.field_delete</source>
                 <target>Usuń dziedzinę sztuki</target>
+            </trans-unit>
+            <trans-unit id="title.input_create">
+                <source>title.input_create</source>
+                <target>Utwórz wpis</target>
+            </trans-unit>
+            <trans-unit id="title.input_edit">
+                <source>title.input_edit</source>
+                <target>Edytuj wpis</target>
+            </trans-unit>
+            <trans-unit id="title.input_delete">
+                <source>title.input_delete</source>
+                <target>Usuń wpis</target>
+            </trans-unit>
+            <trans-unit id="title.artist_create">
+                <source>title.artist_create</source>
+                <target>Dodaj artystę</target>
+            </trans-unit>
+            <trans-unit id="title.artist_edit">
+                <source>title.artist_edit</source>
+                <target>Edytuj artystę</target>
+            </trans-unit>
+            <trans-unit id="title.artist_delete">
+                <source>title.artist_delete</source>
+                <target>Usuń artystę</target>
+            </trans-unit>
+
+        <!-- Miscellaneous -->
+            <trans-unit id="Year">
+                <source>Year</source>
+                <target>Rok</target>
+            </trans-unit>
+            <trans-unit id="Month">
+                <source>Month</source>
+                <target>Miesiąc</target>
+            </trans-unit>
+            <trans-unit id="Day">
+                <source>Day</source>
+                <target>Dzień</target>
             </trans-unit>
         </body>
     </file>
