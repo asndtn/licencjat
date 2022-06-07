@@ -2,6 +2,8 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
+            
+            <!-- Labels -->
             <trans-unit id="label.actions">
                 <source>label.actions</source>
                 <target>Akcje</target>
@@ -94,6 +96,10 @@
                 <source>action.back_to_list</source>
                 <target>Powrót do listy</target>
             </trans-unit>
+            <trans-unit id="action.create">
+                <source>action.create</source>
+                <target>Utwórz</target>
+            </trans-unit>
 
             <!-- Labels -->
             <trans-unit id="label.name">
@@ -177,6 +183,42 @@
             <trans-unit id="title.category_edit">
                 <source>title.category_edit</source>
                 <target>Edytuj kategorię</target>
+            </trans-unit>
+            <trans-unit id="title.nationality_create">
+                <source>title.nationality_create</source>
+                <target>Utwórz narodowość</target>
+            </trans-unit>
+            <trans-unit id="title.nationality_edit">
+                <source>title.nationality_edit</source>
+                <target>Edytuj narodowość</target>
+            </trans-unit>
+            <trans-unit id="title.nationality_delete">
+                <source>title.nationality_delete</source>
+                <target>Usuń narodowość</target>
+            </trans-unit>
+            <trans-unit id="title.movement_create">
+                <source>title.movement_create</source>
+                <target>Utwórz epokę</target>
+            </trans-unit>
+            <trans-unit id="title.movement_edit">
+                <source>title.movement_edit</source>
+                <target>Edytuj epokę</target>
+            </trans-unit>
+            <trans-unit id="title.movement_delete">
+                <source>title.movement_delete</source>
+                <target>Usuń epokę</target>
+            </trans-unit>
+            <trans-unit id="title.field_create">
+                <source>title.field_create</source>
+                <target>Utwórz dziedzinę sztuki</target>
+            </trans-unit>
+            <trans-unit id="title.field_edit">
+                <source>title.field_edit</source>
+                <target>Edytuj dziedzinę sztuki</target>
+            </trans-unit>
+            <trans-unit id="title.field_delete">
+                <source>title.field_delete</source>
+                <target>Usuń dziedzinę sztuki</target>
             </trans-unit>
         </body>
     </file>

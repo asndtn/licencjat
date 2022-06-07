@@ -2,6 +2,8 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
+            
+            <!-- Labels -->
             <trans-unit id="label.actions">
                 <source>label.actions</source>
                 <target>Actions</target>
@@ -42,7 +44,28 @@
                 <source>label.tags</source>
                 <target>Tags</target>
             </trans-unit>
+            <trans-unit id="label.name">
+                <source>label.name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="label.dateOfBirth">
+                <source>label.dateOfBirth</source>
+                <target>Date of birth</target>
+            </trans-unit>
+            <trans-unit id="label.dateOfDeath">
+                <source>label.dateOfDeath</source>
+                <target>Date of Death</target>
+            </trans-unit>
+            <trans-unit id="label.nationality">
+                <source>label.nationality</source>
+                <target>Nationality</target>
+            </trans-unit>
+            <trans-unit id="label.sure">
+                <source>label.sure</source>
+                <target>Are you sure you want to delete record: #%id%</target>
+            </trans-unit>
 
+            <!-- Messages -->
             <trans-unit id="message.empty_list">
                 <source>message.empty_list</source>
                 <target>List is empty.</target>
@@ -64,14 +87,7 @@
                 <target>Deleted successfully!</target>
             </trans-unit>
 
-            <trans-unit id="title.record_list">
-                <source>title.record_list</source>
-                <target>List</target>
-            </trans-unit>
-            <trans-unit id="title.record_details">
-                <source>title.record_details</source>
-                <target>Details #%id%</target>
-            </trans-unit>
+            <!-- Actions -->
             <trans-unit id="action.view">
                 <source>action.view</source>
                 <target>View</target>
@@ -92,72 +108,64 @@
                 <source>action.back_to_list</source>
                 <target>Back to list</target>
             </trans-unit>
-            <trans-unit id="label.name">
-                <source>label.name</source>
-                <target>Name</target>
-            </trans-unit>
-            <trans-unit id="label.dateOfBirth">
-                <source>label.dateOfBirth</source>
-                <target>Date of birth</target>
-            </trans-unit>
-            <trans-unit id="label.dateOfDeath">
-                <source>label.dateOfDeath</source>
-                <target>Date of Death</target>
-            </trans-unit>
-            <trans-unit id="label.nationality">
-                <source>label.nationality</source>
-                <target>Nationality</target>
+            <trans-unit id="action.create">
+                <source>action.create</source>
+                <target>Create</target>
             </trans-unit>
 
+            <!-- Titles -->
+            <trans-unit id="title.record_list">
+                <source>title.record_list</source>
+                <target>List</target>
+            </trans-unit>
+            <trans-unit id="title.record_details">
+                <source>title.record_details</source>
+                <target>Details #%id%</target>
+            </trans-unit>
             <trans-unit id="title.record_list_input">
                 <source>title.record_list_input</source>
                 <target>Input list</target>
-            </trans-unit>
-            <trans-unit id="title.record_list_nationality">
-                <source>title.record_list_nationality</source>
-                <target>Nationality list</target>
-            </trans-unit>
-            <trans-unit id="title.record_list_artist">
-                <source>title.record_list_artist</source>
-                <target>Artist list</target>
-            </trans-unit>
-            <trans-unit id="title.record_list_category">
-                <source>title.record_list_category</source>
-                <target>Category list</target>
-            </trans-unit>
-            <trans-unit id="title.record_list_movement">
-                <source>title.record_list_movement</source>
-                <target>Movement list</target>
-            </trans-unit>
-            <trans-unit id="title.record_list_field">
-                <source>title.record_list_field</source>
-                <target>Field list</target>
             </trans-unit>
             <trans-unit id="title.record_details_input">
                 <source>title.record_details_input</source>
                 <target>Input details</target>
             </trans-unit>
+            <trans-unit id="title.record_list_nationality">
+                <source>title.record_list_nationality</source>
+                <target>Nationality list</target>
+            </trans-unit>
             <trans-unit id="title.record_details_nationality">
                 <source>title.record_details_nationality</source>
                 <target>Nationality details</target>
+            </trans-unit>
+            <trans-unit id="title.nationality_create">
+                <source>title.nationality_create</source>
+                <target>Create a nationality</target>
+            </trans-unit>
+            <trans-unit id="title.nationality_edit">
+                <source>title.nationality_edit</source>
+                <target>Edit a nationality</target>
+            </trans-unit>
+            <trans-unit id="title.nationality_delete">
+                <source>title.nationality_delete</source>
+                <target>Delete a nationality</target>
+            </trans-unit>
+            <trans-unit id="title.record_list_artist">
+                <source>title.record_list_artist</source>
+                <target>Artist list</target>
             </trans-unit>
             <trans-unit id="title.record_details_artist">
                 <source>title.record_details_artist</source>
                 <target>Artist details</target>
             </trans-unit>
+            <trans-unit id="title.record_list_category">
+                <source>title.record_list_category</source>
+                <target>Category list</target>
+            </trans-unit>
             <trans-unit id="title.record_details_category">
                 <source>title.record_details_category</source>
                 <target>Category details</target>
             </trans-unit>
-            <trans-unit id="title.record_details_movement">
-                <source>title.record_details_movement</source>
-                <target>Movement details</target>
-            </trans-unit>
-            <trans-unit id="title.record_details_field">
-                <source>title.record_details_field</source>
-                <target>Field details</target>
-            </trans-unit>
-
             <trans-unit id="title.category_create">
                 <source>title.category_create</source>
                 <target>Create a category</target>
@@ -170,10 +178,45 @@
                 <source>title.category_delete</source>
                 <target>Delete the category</target>
             </trans-unit>
-
-            <trans-unit id="label.sure">
-                <source>label.sure</source>
-                <target>Are you sure you want to delete record: #%id%</target>
+            <trans-unit id="title.record_list_movement">
+                <source>title.record_list_movement</source>
+                <target>Movement list</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_movement">
+                <source>title.record_details_movement</source>
+                <target>Movement details</target>
+            </trans-unit>
+            <trans-unit id="title.movement_create">
+                <source>title.movement_create</source>
+                <target>Create a movement</target>
+            </trans-unit>
+            <trans-unit id="title.movement_edit">
+                <source>title.movement_edit</source>
+                <target>Edit a movement</target>
+            </trans-unit>
+            <trans-unit id="title.movement_delete">
+                <source>title.movement_delete</source>
+                <target>Delete a movement</target>
+            </trans-unit>
+            <trans-unit id="title.record_list_field">
+                <source>title.record_list_field</source>
+                <target>Field list</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_field">
+                <source>title.record_details_field</source>
+                <target>Field details</target>
+            </trans-unit>
+            <trans-unit id="title.field_create">
+                <source>title.field_create</source>
+                <target>Create a field</target>
+            </trans-unit>
+            <trans-unit id="title.field_edit">
+                <source>title.field_edit</source>
+                <target>Edit a field</target>
+            </trans-unit>
+            <trans-unit id="title.field_delete">
+                <source>title.field_delete</source>
+                <target>Delete a field</target>
             </trans-unit>
         </body>
     </file>

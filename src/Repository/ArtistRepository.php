@@ -11,16 +11,12 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Artist>
- *
  * @method Artist|null find($id, $lockMode = null, $lockVersion = null)
  * @method Artist|null findOneBy(array $criteria, array $orderBy = null)
  * @method Artist[]    findAll()
  * @method Artist[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
  * @extends ServiceEntityRepository<Artist>
- *
- * @psalm-suppress LessSpecificImplementedReturnType
  */
 class ArtistRepository extends ServiceEntityRepository
 {
@@ -71,5 +67,27 @@ class ArtistRepository extends ServiceEntityRepository
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('artist');
+    }
+
+    /**
+     * Save entity.
+     *
+     * @param Artist $artist Artist entity
+     */
+    public function save(Artist $artist): void
+    {
+        $this->_em->persist($artist);
+        $this->_em->flush();
+    }
+
+    /**
+     * Delete entity.
+     *
+     * @param Artist $artist Artist entity
+     */
+    public function delete(Artist $artist): void
+    {
+        $this->_em->remove($artist);
+        $this->_em->flush();
     }
 }

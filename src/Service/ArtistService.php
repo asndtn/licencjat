@@ -5,6 +5,7 @@
 
 namespace App\Service;
 
+use App\Entity\Artist;
 use App\Repository\ArtistRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -50,5 +51,25 @@ class ArtistService implements ArtistServiceInterface
             $page,
             ArtistRepository::PAGINATOR_ITEMS_PER_PAGE
         );
+    }
+
+    /**
+     * Save entity.
+     *
+     * @param Artist $artist Artist entity
+     */
+    public function save(Artist $artist): void
+    {
+        $this->artistRepository->save($artist);
+    }
+
+    /**
+     * Delete entity.
+     *
+     * @param Artist $artist Artist entity
+     */
+    public function delete(Artist $artist): void
+    {
+        $this->artistRepository->delete($artist);
     }
 }

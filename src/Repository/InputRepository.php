@@ -11,19 +11,12 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * Class InputRepository.
- *
- * @extends ServiceEntityRepository<Input>
- *
  * @method Input|null find($id, $lockMode = null, $lockVersion = null)
  * @method Input|null findOneBy(array $criteria, array $orderBy = null)
  * @method Input[]    findAll()
  * @method Input[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
  * @extends ServiceEntityRepository<Input>
- *
- * @psalm-suppress LessSpecificImplementedReturnType
- * @psalm-suppress PossiblyNullReference
  */
 class InputRepository extends ServiceEntityRepository
 {
@@ -74,5 +67,27 @@ class InputRepository extends ServiceEntityRepository
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('input');
+    }
+
+    /**
+     * Save entity.
+     *
+     * @param Input $input Input entity
+     */
+    public function save(Input $input): void
+    {
+        $this->_em->persist($input);
+        $this->_em->flush();
+    }
+
+    /**
+     * Delete entity.
+     *
+     * @param Input $input Input entity
+     */
+    public function delete(Input $input): void
+    {
+        $this->_em->remove($input);
+        $this->_em->flush();
     }
 }
