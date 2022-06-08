@@ -7,6 +7,7 @@ namespace App\Entity;
 
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation\Slug;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -38,6 +39,16 @@ class Category
     #[ORM\Column(type: 'string', length: 64)]
     private ?string $name;
 
+
+    /**
+     * Slug.
+     *
+     * @var string|null
+     */
+    #[ORM\Column(type: 'string', length: 64)]
+    #[Slug(fields: ['name'])]
+    private ?string $slug;
+
     /**
      * Getter for Id.
      *
@@ -66,5 +77,25 @@ class Category
     public function setName(?string $name): void
     {
         $this->name = $name;
+    }
+
+    /**
+     * Getter for Slug.
+     *
+     * @return string|null Slug
+     */
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Setter for Slug.
+     *
+     * @param string $slug Slug
+     */
+    public function setSlug(string $slug): void
+    {
+        $this->slug = $slug;
     }
 }
