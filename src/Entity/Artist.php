@@ -9,6 +9,7 @@ use App\Repository\ArtistRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Artist.
@@ -37,6 +38,9 @@ class Artist
      * @var string|null Name
      */
     #[ORM\Column(type: 'string', length: 64)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 64)]
     private ?string $name;
 
     /**
@@ -45,6 +49,7 @@ class Artist
      * @var DateTimeImmutable|null DateOfBirth
      */
     #[ORM\Column(type: 'datetime_immutable')]
+    #[Assert\Type(DateTimeImmutable::class)]
     private ?DateTimeImmutable $dateOfBirth;
 
     /**
@@ -53,6 +58,7 @@ class Artist
      * @var DateTimeImmutable|null DateOfDeath
      */
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    #[Assert\Type(DateTimeImmutable::class)]
     private ?DateTimeImmutable $dateOfDeath = null;
 
     /**

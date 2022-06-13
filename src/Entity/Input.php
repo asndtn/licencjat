@@ -7,6 +7,7 @@ namespace App\Entity;
 
 use App\Repository\InputRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Input.
@@ -33,6 +34,9 @@ class Input
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 180)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 64)]
     private ?string $title = null;
 
     /**
@@ -41,6 +45,9 @@ class Input
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 255)]
     private ?string $description = null;
 
     /**
