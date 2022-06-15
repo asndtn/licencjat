@@ -7,6 +7,9 @@ namespace App\Service;
 
 use App\Entity\Field;
 use App\Repository\FieldRepository;
+use App\Repository\InputRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
@@ -21,6 +24,11 @@ class FieldService implements FieldServiceInterface
     private FieldRepository $fieldRepository;
 
     /**
+     * InputRepository.
+     */
+    private InputRepository $inputRepository;
+
+    /**
      * Paginator.
      */
     private PaginatorInterface $paginator;
@@ -31,10 +39,12 @@ class FieldService implements FieldServiceInterface
      * @param FieldRepository    $fieldRepository Field repository
      * @param PaginatorInterface $paginator       Paginator
      */
-    public function __construct(FieldRepository $fieldRepository, PaginatorInterface $paginator)
+    public function __construct(FieldRepository $fieldRepository, InputRepository $inputRepository, PaginatorInterface $paginator)
     {
         $this->fieldRepository = $fieldRepository;
         $this->paginator = $paginator;
+
+        $this->inputRepository = $inputRepository;
     }
 
     /**
@@ -71,5 +81,23 @@ class FieldService implements FieldServiceInterface
     public function delete(Field $field): void
     {
         $this->fieldRepository->delete($field);
+    }
+
+    /**
+     * Can Field be deleted?
+     *
+     * @param Field $field Field entity
+     *
+     * @return bool Result
+     */
+    public function canBeDeleted(Field $field): bool
+    {
+        try {
+            $result = $this->inputRepository->countByField($field);
+
+            return !($result > 0);
+        } catch (NoResultException|NonUniqueResultException) {
+            return false;
+        }
     }
 }

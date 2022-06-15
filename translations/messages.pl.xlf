@@ -82,6 +82,10 @@
                 <source>message.form_error</source>
                 <target>Formularz zawiera błędy.</target>
             </trans-unit>
+            <trans-unit id="message.category_contains_inputs">
+                <source>message.category_contains_inputs</source>
+                <target>Nie można usunąć. Kategoria jest w użyciu.</target>
+            </trans-unit>
 
             <!-- Actions -->
             <trans-unit id="action.view">

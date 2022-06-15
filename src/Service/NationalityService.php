@@ -6,7 +6,10 @@
 namespace App\Service;
 
 use App\Entity\Nationality;
+use App\Repository\ArtistRepository;
 use App\Repository\NationalityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
@@ -21,6 +24,11 @@ class NationalityService implements NationalityServiceInterface
     private NationalityRepository $nationalityRepository;
 
     /**
+     * ArtistRepository.
+     */
+    private ArtistRepository $artistRepository;
+
+    /**
      * Paginator.
      */
     private PaginatorInterface $paginator;
@@ -31,10 +39,12 @@ class NationalityService implements NationalityServiceInterface
      * @param NationalityRepository $nationalityRepository Nationality repository
      * @param PaginatorInterface    $paginator             Paginator
      */
-    public function __construct(NationalityRepository $nationalityRepository, PaginatorInterface $paginator)
+    public function __construct(NationalityRepository $nationalityRepository, ArtistRepository $artistRepository, PaginatorInterface $paginator)
     {
         $this->nationalityRepository = $nationalityRepository;
         $this->paginator = $paginator;
+
+        $this->artistRepository = $artistRepository;
     }
 
     /**
@@ -51,6 +61,24 @@ class NationalityService implements NationalityServiceInterface
             $page,
             NationalityRepository::PAGINATOR_ITEMS_PER_PAGE
         );
+    }
+
+    /**
+     * Can Nationality be deleted?
+     *
+     * @param Nationality $nationality Nationality entity
+     *
+     * @return bool Result
+     */
+    public function canBeDeleted(Nationality $nationality): bool
+    {
+        try {
+            $result = $this->artistRepository->countByNationality($nationality);
+
+            return !($result > 0);
+        } catch (NoResultException|NonUniqueResultException) {
+            return false;
+        }
     }
 
     /**

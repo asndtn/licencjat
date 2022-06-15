@@ -1,4 +1,7 @@
 <?php
+/**
+ * Field type.
+ */
 
 namespace App\Form;
 
@@ -9,6 +12,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormTypeExtensionInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class FieldType.
+ */
 class FieldType extends AbstractType
 {
     /**

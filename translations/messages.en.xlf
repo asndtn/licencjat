@@ -94,6 +94,10 @@
                 <source>message.form_error</source>
                 <target>Form has errors.</target>
             </trans-unit>
+            <trans-unit id="message.category_contains_inputs">
+                <source>message.category_contains_inputs</source>
+                <target>Cannot delete. Category is assigned to an input.</target>
+            </trans-unit>
 
             <!-- Actions -->
             <trans-unit id="action.view">

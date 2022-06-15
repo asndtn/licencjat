@@ -14,11 +14,22 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 interface NationalityServiceInterface
 {
     /**
+     * Get paginated list.
+     *
      * @param int $page Page number
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
     public function getPaginatedList(int $page): PaginationInterface;
+
+    /**
+     * Can Nationality be deleted?
+     *
+     * @param Nationality $nationality Nationality entity
+     *
+     * @return bool Result
+     */
+    public function canBeDeleted(Nationality $nationality): bool;
 
     /**
      * Save entity.

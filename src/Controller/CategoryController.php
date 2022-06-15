@@ -156,14 +156,23 @@ class CategoryController extends AbstractController
     /**
      * Delete action.
      *
-     * @param Request  $request  HTTP Request
+     * @param Request  $request  HTTP request
      * @param Category $category Category entity
      *
-     * @return Response HTTP Response
+     * @return Response HTTP response
      */
     #[Route('/{id}/delete', name: 'category_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Category $category): Response
     {
+        if (!$this->categoryService->canBeDeleted($category)) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.category_contains_inputs')
+            );
+
+            return $this->redirectToRoute('category_index');
+        }
+
         $form = $this->createForm(FormType::class, $category, [
             'method' => 'DELETE',
             'action' => $this->generateUrl('category_delete', ['id' => $category->getId()]),

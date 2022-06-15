@@ -5,12 +5,20 @@
 
 namespace App\Repository;
 
+use App\Entity\Artist;
+use App\Entity\Category;
+use App\Entity\Field;
 use App\Entity\Input;
+use App\Entity\Movement;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
+ * Class InputRepository.
+ *
  * @method Input|null find($id, $lockMode = null, $lockVersion = null)
  * @method Input|null findOneBy(array $criteria, array $orderBy = null)
  * @method Input[]    findAll()
@@ -58,15 +66,87 @@ class InputRepository extends ServiceEntityRepository
     }
 
     /**
-     * Get or create new query builder.
+     * Count inputs by category.
      *
-     * @param QueryBuilder|null $queryBuilder Query builder
+     * @param Category $category Category
      *
-     * @return QueryBuilder Query builder
+     * @return int Number of inputs in category
+     *
+     * @throws NoResultException
+     * @throws NonUniqueResultException
      */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    public function countByCategory(Category $category): int
     {
-        return $queryBuilder ?? $this->createQueryBuilder('input');
+        $qb = $this->getOrCreateQueryBuilder();
+
+        return $qb->select($qb->expr()->countDistinct('input.id'))
+            ->where('input.category = :category')
+            ->setParameter(':category', $category)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * Count inputs by field.
+     *
+     * @param Field $field Field
+     *
+     * @return int Number of inputs in field
+     *
+     * @throws NoResultException
+     * @throws NonUniqueResultException
+     */
+    public function countByField(Field $field): int
+    {
+        $qb = $this->getOrCreateQueryBuilder();
+
+        return $qb->select($qb->expr()->countDistinct('input.id'))
+            ->where('input.field = :field')
+            ->setParameter(':field', $field)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * Count inputs by movement.
+     *
+     * @param Movement $movement Movement
+     *
+     * @return int Number of inputs in movement
+     *
+     * @throws NoResultException
+     * @throws NonUniqueResultException
+     */
+    public function countByMovement(Movement $movement): int
+    {
+        $qb = $this->getOrCreateQueryBuilder();
+
+        return $qb->select($qb->expr()->countDistinct('input.id'))
+            ->where('input.movement = :movement')
+            ->setParameter(':movement', $movement)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * Count inputs by artist.
+     *
+     * @param Artist $artist Artist
+     *
+     * @return int Number of inputs in artist
+     *
+     * @throws NoResultException
+     * @throws NonUniqueResultException
+     */
+    public function countByArtist(Artist $artist): int
+    {
+        $qb = $this->getOrCreateQueryBuilder();
+
+        return $qb->select($qb->expr()->countDistinct('input.id'))
+            ->where('input.artist = :artist')
+            ->setParameter(':artist', $artist)
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 
     /**
@@ -89,5 +169,17 @@ class InputRepository extends ServiceEntityRepository
     {
         $this->_em->remove($input);
         $this->_em->flush();
+    }
+
+    /**
+     * Get or create new query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return $queryBuilder ?? $this->createQueryBuilder('input');
     }
 }

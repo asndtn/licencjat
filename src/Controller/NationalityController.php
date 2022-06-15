@@ -164,6 +164,15 @@ class NationalityController extends AbstractController
     #[Route('/{id}/delete', name: 'nationality_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Nationality $nationality): Response
     {
+        if (!$this->nationalityService->canBeDeleted($nationality)) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.nationality_contains_inputs')
+            );
+
+            return $this->redirectToRoute('nationality_index');
+        }
+
         $form = $this->createForm(FormType::class, $nationality, [
             'method' => 'DELETE',
             'action' => $this->generateUrl('nationality_delete', ['id' => $nationality->getId()]),

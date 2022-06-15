@@ -6,7 +6,10 @@
 namespace App\Repository;
 
 use App\Entity\Artist;
+use App\Entity\Nationality;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -58,15 +61,24 @@ class ArtistRepository extends ServiceEntityRepository
     }
 
     /**
-     * Get or create new query builder.
+     * Count artists by nationality.
      *
-     * @param QueryBuilder|null $queryBuilder Query builder
+     * @param Nationality $nationality Nationality
      *
-     * @return QueryBuilder Query builder
+     * @return int Number of artists in nationality
+     *
+     * @throws NoResultException
+     * @throws NonUniqueResultException
      */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    public function countByNationality(Nationality $nationality): int
     {
-        return $queryBuilder ?? $this->createQueryBuilder('artist');
+        $qb = $this->getOrCreateQueryBuilder();
+
+        return $qb->select($qb->expr()->countDistinct('artist.id'))
+            ->where('artist.nationality = :nationality')
+            ->setParameter(':nationality', $nationality)
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 
     /**
@@ -89,5 +101,17 @@ class ArtistRepository extends ServiceEntityRepository
     {
         $this->_em->remove($artist);
         $this->_em->flush();
+    }
+
+    /**
+     * Get or create new query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return $queryBuilder ?? $this->createQueryBuilder('artist');
     }
 }

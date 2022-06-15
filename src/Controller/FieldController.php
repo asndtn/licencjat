@@ -164,6 +164,15 @@ class FieldController extends AbstractController
     #[Route('/{id}/delete', name: 'field_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Field $field): Response
     {
+        if (!$this->fieldService->canBeDeleted($field)) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.field_contains_inputs')
+            );
+
+            return $this->redirectToRoute('field_index');
+        }
+
         $form = $this->createForm(FormType::class, $field, [
             'method' => 'DELETE',
             'action' => $this->generateUrl('field_delete', ['id' => $field->getId()]),

@@ -164,6 +164,15 @@ class ArtistController extends AbstractController
     #[Route('/{id}/delete', name: 'artist_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Artist $artist): Response
     {
+        if (!$this->artistService->canBeDeleted($artist)) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.artist_contains_inputs')
+            );
+
+            return $this->redirectToRoute('artist_index');
+        }
+
         $form = $this->createForm(FormType::class, $artist, [
             'method' => 'DELETE',
             'action' => $this->generateUrl('artist_delete', ['id' => $artist->getId()]),

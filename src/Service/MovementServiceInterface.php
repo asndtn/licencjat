@@ -14,6 +14,8 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 interface MovementServiceInterface
 {
     /**
+     * Get paginated list.
+     *
      * @param int $page Page number
      *
      * @return PaginationInterface<string, mixed> Paginated list
@@ -26,6 +28,15 @@ interface MovementServiceInterface
      * @param Movement $movement Movement entity
      */
     public function save(Movement $movement): void;
+
+    /**
+     * Can Movement be deleted?
+     *
+     * @param Movement $movement Movement entity
+     *
+     * @return bool Result
+     */
+    public function canBeDeleted(Movement $movement): bool;
 
     /**
      * Delete entity.

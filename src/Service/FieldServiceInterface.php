@@ -14,11 +14,22 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 interface FieldServiceInterface
 {
     /**
+     * Get paginated list.
+     *
      * @param int $page Page number
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
     public function getPaginatedList(int $page): PaginationInterface;
+
+    /**
+     * Can Field be deleted?
+     *
+     * @param Field $field Field entity
+     *
+     * @return bool Result
+     */
+    public function canBeDeleted(Field $field): bool;
 
     /**
      * Save entity.

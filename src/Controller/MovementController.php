@@ -164,6 +164,15 @@ class MovementController extends AbstractController
     #[Route('/{id}/delete', name: 'movement_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Movement $movement): Response
     {
+        if (!$this->movementService->canBeDeleted($movement)) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.movement_contains_inputs')
+            );
+
+            return $this->redirectToRoute('movement_index');
+        }
+
         $form = $this->createForm(FormType::class, $movement, [
             'method' => 'DELETE',
             'action' => $this->generateUrl('movement_delete', ['id' => $movement->getId()]),

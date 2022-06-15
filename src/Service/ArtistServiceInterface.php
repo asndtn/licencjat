@@ -14,11 +14,22 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 interface ArtistServiceInterface
 {
     /**
+     * Get paginated list.
+     *
      * @param int $page Page number
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
     public function getPaginatedList(int $page): PaginationInterface;
+
+    /**
+     * Can Artist be deleted?
+     *
+     * @param Artist $artist Artist entity
+     *
+     * @return bool Result
+     */
+    public function canBeDeleted(Artist $artist): bool;
 
     /**
      * Save entity.
