@@ -32,7 +32,7 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
             return;
         }
 
-        $this->createMany(100, 'inputs', function (int $i) {
+        $this->createMany(50, 'inputs', function (int $i) {
             $input = new Input();
             $input->setTitle($this->faker->sentence);
             $input->setDescription($this->faker->sentence);
@@ -53,6 +53,11 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
             $artist = $this->getRandomReference('artists');
             $input->setArtist($artist);
 
+            $tags = $this->getRandomReferences('tags', $this->faker->numberBetween(0, 5));
+            foreach ($tags as $tag) {
+                $input->addTag($tag);
+            }
+
             return $input;
         });
 
@@ -61,6 +66,6 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
 
     public function getDependencies(): array
     {
-        return [CategoryFixtures::class, FieldFixtures::class, MovementFixtures::class, ArtistFixtures::class];
+        return [CategoryFixtures::class, FieldFixtures::class, MovementFixtures::class, ArtistFixtures::class, TagFixtures::class];
     }
 }

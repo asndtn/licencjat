@@ -6,13 +6,13 @@
 namespace App\Entity;
 
 use App\Repository\InputRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Input.
- *
- * @psalm-suppress MissingConstructor
  */
 #[ORM\Entity(repositoryClass: InputRepository::class)]
 #[ORM\Table(name: 'inputs')]
@@ -56,6 +56,8 @@ class Input
      * @var Category
      */
     #[ORM\ManyToOne(targetEntity: Category::class, fetch: 'EXTRA_LAZY')]
+    #[Assert\Type(Category::class)]
+    #[Assert\NotBlank]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
@@ -65,6 +67,8 @@ class Input
      * @var Field
      */
     #[ORM\ManyToOne(targetEntity: Field::class, fetch: 'EXTRA_LAZY')]
+    #[Assert\Type(Field::class)]
+    #[Assert\NotBlank]
     #[ORM\JoinColumn(nullable: false)]
     private ?Field $field = null;
 
@@ -74,6 +78,8 @@ class Input
      * @var Movement
      */
     #[ORM\ManyToOne(targetEntity: Movement::class, fetch: 'EXTRA_LAZY')]
+    #[Assert\Type(Movement::class)]
+    #[Assert\NotBlank]
     #[ORM\JoinColumn(nullable: false)]
     private ?Movement $movement = null;
 
@@ -85,6 +91,24 @@ class Input
     #[ORM\ManyToOne(targetEntity: Artist::class, fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Artist $artist = null;
+
+    /**
+     * Tags.
+     *
+     * @var ArrayCollection<int, Tag>
+     */
+    #[Assert\Valid]
+    #[ORM\ManyToMany(targetEntity: Tag::class, fetch: 'EXTRA_LAZY', orphanRemoval: true)]
+    #[ORM\JoinTable(name: 'inputs_tags')]
+    private $tags;
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->tags = new ArrayCollection();
+    }
 
     /**
      * Getter for Id.
@@ -214,5 +238,37 @@ class Input
     public function setArtist(?Artist $artist): void
     {
         $this->artist = $artist;
+    }
+
+    /**
+     * Getter for tags.
+     *
+     * @return Collection<int, Tag> Tags collection
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    /**
+     * Add tag.
+     *
+     * @param Tag $tag Tag entity
+     */
+    public function addTag(Tag $tag): void
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+        }
+    }
+
+    /**
+     * Remove tag.
+     *
+     * @param Tag $tag Tag entity
+     */
+    public function removeTag(Tag $tag): void
+    {
+        $this->tags->removeElement($tag);
     }
 }

@@ -22,6 +22,15 @@
             <dd>{{  input.title }}</dd>
             <dt>{{ 'label.description'|trans }}</dt>
             <dd>{{ input.description }}</dd>
+            <dt>{{ 'label.tags'|trans }}</dt>
+            <dd>{% if input.tags is defined and input.tags|length %}
+                    {% for tag in input.tags %}
+                        {{ tag.name }}
+                    {% endfor %}
+                {% else %}
+                    &nbsp;
+                    {% endif %}
+            </dd>
         </dl>
         <p>
             <a href="{{ url('input_index') }}" title="{{ 'action.back_to_list'|trans }}">

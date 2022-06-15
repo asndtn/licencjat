@@ -10,6 +10,7 @@ use App\Entity\Category;
 use App\Entity\Field;
 use App\Entity\Input;
 use App\Entity\Movement;
+use App\Form\DataTransformer\TagsDataTransformer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -22,6 +23,21 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class InputType extends AbstractType
 {
+    /**
+     * Tags data transformer.
+     */
+    private TagsDataTransformer $tagsDataTransformer;
+
+    /**
+     * Constructor.
+     *
+     * @param TagsDataTransformer $tagsDataTransformer Tags data transformer
+     */
+    public function __construct(TagsDataTransformer $tagsDataTransformer)
+    {
+        $this->tagsDataTransformer = $tagsDataTransformer;
+    }
+
     /**
      * Builds the form.
      *
@@ -108,6 +124,20 @@ class InputType extends AbstractType
                 'required' => true,
                 'attr' => ['max_length' => 255],
             ]
+        );
+
+        $builder->add(
+            'tags',
+            TextType::class,
+            [
+                'label' => 'label.tags',
+                'required' => false,
+                'attr' => ['max_length' => 128],
+            ]
+        );
+
+        $builder->get('tags')->addModelTransformer(
+            $this->tagsDataTransformer
         );
     }
 
