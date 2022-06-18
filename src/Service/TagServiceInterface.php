@@ -23,23 +23,23 @@ interface TagServiceInterface
      */
     public function getPaginatedList(int $page): PaginationInterface;
 
-    /**
-     * Find by name.
-     *
-     * @param string $name Tag name
-     *
-     * @return Tag|null Tag entity
-     */
-    public function findOneByName(string $name): ?Tag;
+//    /**
+//     * Find by name.
+//     *
+//     * @param string $name Tag name
+//     *
+//     * @return Tag|null Tag entity
+//     */
+//    public function findOneByName(string $name): ?Tag;
 
-    /**
-     * Can Tag be deleted?
-     *
-     * @param Tag $tag Tag entity
-     *
-     * @return bool Result
-     */
-    public function canBeDeleted(Tag $tag): bool;
+//    /**
+//     * Can Tag be deleted?
+//     *
+//     * @param Tag $tag Tag entity
+//     *
+//     * @return bool Result
+//     */
+//    public function canBeDeleted(Tag $tag): bool;
 
     /**
      * Save entity.

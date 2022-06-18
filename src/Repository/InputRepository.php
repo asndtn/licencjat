@@ -10,6 +10,7 @@ use App\Entity\Category;
 use App\Entity\Field;
 use App\Entity\Input;
 use App\Entity\Movement;
+use App\Entity\Tag;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
@@ -148,6 +149,27 @@ class InputRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+
+//    /**
+//     * Count inputs by tag.
+//     *
+//     * @param Tag $tag Tag
+//     *
+//     * @return int Number of inputs in tag
+//     *
+//     * @throws NoResultException
+//     * @throws NonUniqueResultException
+//     */
+//    public function countByTag(Tag $tag): int
+//    {
+//        $qb = $this->getOrCreateQueryBuilder();
+//
+//        return $qb->select($qb->expr()->countDistinct('input.id'))
+//            ->where('input.tag = :tag')
+//            ->setParameter(':tag', $tag)
+//            ->getQuery()
+//            ->getSingleScalarResult();
+//    }
 
     /**
      * Save entity.

@@ -6,7 +6,7 @@
 namespace App\Service;
 
 use App\Entity\Tag;
-use App\Repository\ArtistRepository;
+use App\Repository\InputRepository;
 use App\Repository\TagRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
@@ -26,7 +26,7 @@ class TagService implements TagServiceInterface
     /**
      * ArtistRepository.
      */
-    private ArtistRepository $artistRepository;
+    private InputRepository $inputRepository;
 
     /**
      * Paginator.
@@ -39,10 +39,12 @@ class TagService implements TagServiceInterface
      * @param TagRepository      $tagRepository Tag repository
      * @param PaginatorInterface $paginator     Paginator
      */
-    public function __construct(TagRepository $tagRepository, PaginatorInterface $paginator)
+    public function __construct(TagRepository $tagRepository, InputRepository $inputRepository, PaginatorInterface $paginator)
     {
         $this->tagRepository = $tagRepository;
         $this->paginator = $paginator;
+
+        $this->inputRepository = $inputRepository;
     }
 
     /**
@@ -61,35 +63,35 @@ class TagService implements TagServiceInterface
         );
     }
 
-    /**
-     * Find by name.
-     *
-     * @param string $name Tag name
-     *
-     * @return Tag|null Tag entity
-     */
-    public function findOneByName(string $name): ?Tag
-    {
-        return $this->tagRepository->findOneByName($name);
-    }
+//    /**
+//     * Find by name.
+//     *
+//     * @param string $name Tag name
+//     *
+//     * @return Tag|null Tag entity
+//     */
+//    public function findOneByName(string $name): ?Tag
+//    {
+//        return $this->tagRepository->findOneByName($name);
+//    }
 
-    /**
-     * Can Tag be deleted?
-     *
-     * @param Tag $tag Tag entity
-     *
-     * @return bool Result
-     */
-    public function canBeDeleted(Tag $tag): bool
-    {
-        try {
-            $result = $this->artistRepository->countByTag($tag);
-
-            return !($result > 0);
-        } catch (NoResultException|NonUniqueResultException) {
-            return false;
-        }
-    }
+//    /**
+//     * Can Tag be deleted?
+//     *
+//     * @param Tag $tag Tag entity
+//     *
+//     * @return bool Result
+//     */
+//    public function canBeDeleted(Tag $tag): bool
+//    {
+//        try {
+//            $result = $this->inputRepository->countByTag($tag);
+//
+//            return !($result > 0);
+//        } catch (NoResultException|NonUniqueResultException) {
+//            return false;
+//        }
+//    }
 
     /**
      * Save entity.
