@@ -12,6 +12,7 @@ use App\Entity\Input;
 use App\Entity\Movement;
 use App\Entity\Tag;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Doctrine\DBAL\Types\TextType;
 
 /**
  * Class InputFixtures.
@@ -34,7 +35,7 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
         $this->createMany(50, 'inputs', function (int $i) {
             $input = new Input();
             $input->setTitle($this->faker->sentence);
-            $input->setDescription($this->faker->sentence);
+            $input->setDescription($this->faker->text);
 
             /** @var Category $category */
             $category = $this->getRandomReference('categories');

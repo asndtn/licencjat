@@ -9,6 +9,7 @@ use App\Repository\InputRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -38,17 +39,6 @@ class Input
     #[Assert\NotBlank]
     #[Assert\Length(min: 3, max: 64)]
     private ?string $title = null;
-
-    /**
-     * Description.
-     *
-     * @var string|null
-     */
-    #[ORM\Column(type: 'string', length: 255)]
-    #[Assert\Type('string')]
-    #[Assert\NotBlank]
-    #[Assert\Length(min: 3, max: 255)]
-    private ?string $description = null;
 
     /**
      * Category.
@@ -109,6 +99,15 @@ class Input
     private $author;
 
     /**
+     * Description.
+     *
+     * @var string|null
+     */
+    #[ORM\Column(type: 'string', nullable: true)]
+    #[Assert\Type('string')]
+    private ?string $description = null;
+
+    /**
      * Constructor.
      */
     public function __construct()
@@ -144,26 +143,6 @@ class Input
     public function setTitle(?string $title): void
     {
         $this->title = $title;
-    }
-
-    /**
-     * Getter for Description.
-     *
-     * @return string|null Description
-     */
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    /**
-     * Setter for Description.
-     *
-     * @param string|null $description Description
-     */
-    public function setDescription(?string $description): void
-    {
-        $this->description = $description;
     }
 
     /**
@@ -296,5 +275,25 @@ class Input
     public function setAuthor(?User $author): void
     {
         $this->author = $author;
+    }
+
+    /**
+     * Getter for Description.
+     *
+     * @return string|null Description
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * Setter for Description.
+     *
+     * @param string|null $description Description
+     */
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
     }
 }
