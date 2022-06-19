@@ -11,6 +11,7 @@ use App\Entity\Field;
 use App\Entity\Input;
 use App\Entity\Movement;
 use App\Entity\Tag;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
@@ -148,6 +149,16 @@ class InputRepository extends ServiceEntityRepository
             ->setParameter(':artist', $artist)
             ->getQuery()
             ->getSingleScalarResult();
+    }
+
+    public function queryByAuthor(User $user): QueryBuilder
+    {
+        $queryBuilder = $this->queryAll();
+
+        $queryBuilder->andWhere('input.author = :author')
+            ->setParameter('author', $user);
+
+        return $queryBuilder;
     }
 
 //    /**

@@ -167,7 +167,7 @@ class FieldController extends AbstractController
         if (!$this->fieldService->canBeDeleted($field)) {
             $this->addFlash(
                 'warning',
-                $this->translator->trans('message.field_contains_inputs')
+                $this->translator->trans('message.contains_inputs')
             );
 
             return $this->redirectToRoute('field_index');

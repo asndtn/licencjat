@@ -167,7 +167,7 @@ class CategoryController extends AbstractController
         if (!$this->categoryService->canBeDeleted($category)) {
             $this->addFlash(
                 'warning',
-                $this->translator->trans('message.category_contains_inputs')
+                $this->translator->trans('message.contains_inputs')
             );
 
             return $this->redirectToRoute('category_index');

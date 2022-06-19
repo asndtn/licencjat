@@ -167,7 +167,7 @@ class MovementController extends AbstractController
         if (!$this->movementService->canBeDeleted($movement)) {
             $this->addFlash(
                 'warning',
-                $this->translator->trans('message.movement_contains_inputs')
+                $this->translator->trans('message.contains_inputs')
             );
 
             return $this->redirectToRoute('movement_index');

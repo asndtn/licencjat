@@ -44,6 +44,10 @@
                 <source>label.tags</source>
                 <target>Tagi</target>
             </trans-unit>
+            <trans-unit id="label.tag">
+                <source>label.tag</source>
+                <target>Tag</target>
+            </trans-unit>
             <trans-unit id="label.none">
                 <source>label.none</source>
                 <target>None</target>
@@ -82,9 +86,9 @@
                 <source>message.form_error</source>
                 <target>Formularz zawiera błędy.</target>
             </trans-unit>
-            <trans-unit id="message.category_contains_inputs">
-                <source>message.category_contains_inputs</source>
-                <target>Nie można usunąć. Kategoria jest w użyciu.</target>
+            <trans-unit id="message.contains_inputs">
+                <source>message.contains_inputs</source>
+                <target>Nie można usunąć. Element jest w użyciu</target>
             </trans-unit>
 
             <!-- Actions -->
@@ -116,6 +120,10 @@
             <!-- Labels -->
             <trans-unit id="label.name">
                 <source>label.name</source>
+                <target>Nazwa</target>
+            </trans-unit>
+            <trans-unit id="label.name_surname">
+                <source>label.name_surname</source>
                 <target>Imię i nazwisko</target>
             </trans-unit>
             <trans-unit id="label.dateOfBirth">
@@ -255,6 +263,26 @@
             <trans-unit id="title.artist_delete">
                 <source>title.artist_delete</source>
                 <target>Usuń artystę</target>
+            </trans-unit>
+            <trans-unit id="title.record_list_tag">
+                <source>title.record_list_tag</source>
+                <target>Lista tagów</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_tag">
+                <source>title.record_details_tag</source>
+                <target>Szczegóły tagu</target>
+            </trans-unit>
+            <trans-unit id="title.tag_create">
+                <source>title.tag_create</source>
+                <target>Utwórz tag</target>
+            </trans-unit>
+            <trans-unit id="title.tag_edit">
+                <source>title.tag_edit</source>
+                <target>Edytuj tag</target>
+            </trans-unit>
+            <trans-unit id="title.tag_delete">
+                <source>title.tag_delete</source>
+                <target>Usuń tag</target>
             </trans-unit>
 
         <!-- Miscellaneous -->

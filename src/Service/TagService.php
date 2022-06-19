@@ -63,17 +63,17 @@ class TagService implements TagServiceInterface
         );
     }
 
-//    /**
-//     * Find by name.
-//     *
-//     * @param string $name Tag name
-//     *
-//     * @return Tag|null Tag entity
-//     */
-//    public function findOneByName(string $name): ?Tag
-//    {
-//        return $this->tagRepository->findOneByName($name);
-//    }
+    /**
+     * Find by name.
+     *
+     * @param string $name Tag name
+     *
+     * @return Tag|null Tag entity
+     */
+    public function findOneByName(string $name): ?Tag
+    {
+        return $this->tagRepository->findOneByName($name);
+    }
 
 //    /**
 //     * Can Tag be deleted?

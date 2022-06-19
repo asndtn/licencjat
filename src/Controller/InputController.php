@@ -6,8 +6,10 @@
 namespace App\Controller;
 
 use App\Entity\Input;
+use App\Entity\User;
 use App\Form\InputType;
 use App\Service\InputServiceInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -95,8 +97,15 @@ class InputController extends AbstractController
     )]
     public function create(Request $request): Response
     {
+        /** @var User $user */
+        $user = $this->getUser();
         $input = new Input();
-        $form = $this->createForm(InputType::class, $input);
+        $input->setAuthor($user);
+        $form = $this->createForm(
+            InputType::class,
+            $input,
+            ['action' => $this->generateUrl('input_create')]
+        );
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -125,6 +134,7 @@ class InputController extends AbstractController
      * @return Response HTTP response
      */
     #[Route('/{id}/edit', name: 'input_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    #[IsGranted('EDIT', subject: 'input')]
     public function edit(Request $request, Input $input): Response
     {
         $form = $this->createForm(InputType::class, $input, [
@@ -162,6 +172,7 @@ class InputController extends AbstractController
      * @return Response HTTP Response
      */
     #[Route('/{id}/delete', name: 'input_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
+    #[IsGranted('DELETE', subject: 'input')]
     public function delete(Request $request, Input $input): Response
     {
         $form = $this->createForm(FormType::class, $input, [

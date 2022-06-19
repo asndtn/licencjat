@@ -64,6 +64,10 @@
                 <source>label.sure</source>
                 <target>Are you sure you want to delete record: #%id%</target>
             </trans-unit>
+            <trans-unit id="label.tag">
+                <source>label.tag</source>
+                <target>Tag</target>
+            </trans-unit>
             <trans-unit id="label.none">
                 <source>label.none</source>
                 <target>None</target>
@@ -94,9 +98,9 @@
                 <source>message.form_error</source>
                 <target>Form has errors.</target>
             </trans-unit>
-            <trans-unit id="message.category_contains_inputs">
-                <source>message.category_contains_inputs</source>
-                <target>Cannot delete. Category is assigned to an input.</target>
+            <trans-unit id="message.contains_inputs">
+                <source>message.contains_inputs</source>
+                <target>Cannot delete. This item is asigned to an input.</target>
             </trans-unit>
 
             <!-- Actions -->
@@ -253,6 +257,26 @@
             <trans-unit id="title.field_delete">
                 <source>title.field_delete</source>
                 <target>Delete a field</target>
+            </trans-unit>
+            <trans-unit id="title.record_list_tag">
+                <source>title.record_list_tag</source>
+                <target>Tag list</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_tag">
+                <source>title.record_details_tag</source>
+                <target>Tag details</target>
+            </trans-unit>
+            <trans-unit id="title.tag_create">
+                <source>title.tag_create</source>
+                <target>Create a tag</target>
+            </trans-unit>
+            <trans-unit id="title.tag_edit">
+                <source>title.tag_edit</source>
+                <target>Edit a tag</target>
+            </trans-unit>
+            <trans-unit id="title.tag_delete">
+                <source>title.tag_delete</source>
+                <target>Delete a tag</target>
             </trans-unit>
 
             <!-- Miscellaneous -->

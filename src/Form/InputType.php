@@ -73,7 +73,7 @@ class InputType extends AbstractType
                     return $category->getName();
                 },
                 'label' => 'label.category',
-                'placeholder' => 'label_none',
+                'placeholder' => 'label.none',
                 'required' => true,
             ]
         );
@@ -87,7 +87,7 @@ class InputType extends AbstractType
                     return $field->getName();
                 },
                 'label' => 'label.field',
-                'placeholder' => 'label_none',
+                'placeholder' => 'label.none',
                 'required' => true,
             ]
         );
@@ -101,7 +101,7 @@ class InputType extends AbstractType
                     return $movement->getName();
                 },
                 'label' => 'label.movement',
-                'placeholder' => 'label_none',
+                'placeholder' => 'label.none',
                 'required' => true,
             ]
         );

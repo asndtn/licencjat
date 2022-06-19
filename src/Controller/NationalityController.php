@@ -167,7 +167,7 @@ class NationalityController extends AbstractController
         if (!$this->nationalityService->canBeDeleted($nationality)) {
             $this->addFlash(
                 'warning',
-                $this->translator->trans('message.nationality_contains_inputs')
+                $this->translator->trans('message.contains_inputs')
             );
 
             return $this->redirectToRoute('nationality_index');

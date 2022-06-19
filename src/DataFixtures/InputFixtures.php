@@ -10,12 +10,11 @@ use App\Entity\Category;
 use App\Entity\Field;
 use App\Entity\Input;
 use App\Entity\Movement;
+use App\Entity\Tag;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
  * Class InputFixtures.
- *
- * @psalm-suppress MissingConstructor
  */
 class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
@@ -53,10 +52,14 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
             $artist = $this->getRandomReference('artists');
             $input->setArtist($artist);
 
+            /** @var array<array-key, Tag> $tags */
             $tags = $this->getRandomReferences('tags', $this->faker->numberBetween(0, 5));
             foreach ($tags as $tag) {
                 $input->addTag($tag);
             }
+
+            $author = $this->getRandomReference('users');
+            $input->setAuthor($author);
 
             return $input;
         });
@@ -64,8 +67,16 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
         $this->manager->flush();
     }
 
+    /**
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on.
+     *
+     * @return string[] of dependencies
+     *
+     * @psalm-return array{0: CategoryFixtures::class, 1: TagFixtures::class, 2: UserFixtures::class}
+     */
     public function getDependencies(): array
     {
-        return [CategoryFixtures::class, FieldFixtures::class, MovementFixtures::class, ArtistFixtures::class, TagFixtures::class];
+        return [CategoryFixtures::class, FieldFixtures::class, MovementFixtures::class, ArtistFixtures::class, TagFixtures::class, UserFixtures::class];
     }
 }

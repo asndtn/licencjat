@@ -102,6 +102,12 @@ class Input
     #[ORM\JoinTable(name: 'inputs_tags')]
     private $tags;
 
+    #[ORM\ManyToOne(targetEntity: User::class, fetch: 'EXTRA_LAZY')]
+    #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\Type(User::class)]
+    private $author;
+
     /**
      * Constructor.
      */
@@ -270,5 +276,25 @@ class Input
     public function removeTag(Tag $tag): void
     {
         $this->tags->removeElement($tag);
+    }
+
+    /**
+     * Getter for Author.
+     *
+     * @return User|null User
+     */
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    /**
+     * Setter for Author.
+     *
+     * @param User|null $author User
+     */
+    public function setAuthor(?User $author): void
+    {
+        $this->author = $author;
     }
 }

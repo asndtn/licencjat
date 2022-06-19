@@ -167,7 +167,7 @@ class ArtistController extends AbstractController
         if (!$this->artistService->canBeDeleted($artist)) {
             $this->addFlash(
                 'warning',
-                $this->translator->trans('message.artist_contains_inputs')
+                $this->translator->trans('message.contains_inputs')
             );
 
             return $this->redirectToRoute('artist_index');
