@@ -108,6 +108,14 @@ class Input
     private ?string $description = null;
 
     /**
+     * Painting filename.
+     *
+     * @var string|null
+     */
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $paintingFilename;
+
+    /**
      * Constructor.
      */
     public function __construct()
@@ -295,5 +303,26 @@ class Input
     public function setDescription(?string $description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * Getter for Painting filename.
+     *
+     * @return string|null
+     */
+    public function getPaintingFilename(): ?string
+    {
+        return $this->paintingFilename;
+    }
+
+
+    /**
+     * Setter for Painting filename.
+     *
+     * @param string|null $paintingFilename
+     */
+    public function setPaintingFilename(?string $paintingFilename): void
+    {
+        $this->paintingFilename = $paintingFilename;
     }
 }

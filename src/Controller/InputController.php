@@ -8,6 +8,7 @@ namespace App\Controller;
 use App\Entity\Input;
 use App\Entity\User;
 use App\Form\InputType;
+use App\Service\FileUploader;
 use App\Service\InputServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -95,7 +96,7 @@ class InputController extends AbstractController
         name: 'input_create',
         methods: 'GET|POST'
     )]
-    public function create(Request $request): Response
+    public function create(Request $request, FileUploader $fileUploader): Response
     {
         /** @var User $user */
         $user = $this->getUser();
@@ -109,6 +110,12 @@ class InputController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $paintingFile = $form->get('painting')->getData();
+            if ($paintingFile) {
+                $paintingFilename = $fileUploader->upload($paintingFile);
+                $input->setPaintingFilename($paintingFilename);
+            }
+
             $this->inputService->save($input);
 
             $this->addFlash(

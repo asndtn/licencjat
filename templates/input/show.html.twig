@@ -24,6 +24,12 @@
             <dd>{{  input.title }}</dd>
             <dt>{{ 'label.description'|trans }}</dt>
             <dd>{{ input.description|markdown_to_html }}</dd>
+            <dt>{{ 'label.painting'|trans }}</dt>
+            <dd>
+                {% if input.paintingFilename is defined and input.paintingFilename|length %}
+                    <img class="img-fluid" alt="Responsive image" src="{{ asset(paintings_directory~input.paintingFilename) }}">
+                    {% endif %}
+                    </dd>
             <dt>{{ 'label.tags'|trans }}</dt>
             <dd>{% if input.tags is defined and input.tags|length %}
                     {% for tag in input.tags %}
