@@ -5,7 +5,9 @@
 
 namespace App\Service;
 
+use Gedmo\Sluggable\Util\Urlizer;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
@@ -43,10 +45,16 @@ class FileUploader
      *
      * @return string Filename of uploaded file
      */
-    public function upload(UploadedFile $file): string
+    public function upload(File $file): string
     {
-        $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-        $safeFilename = $this->slugger->slug($originalFilename);
+        if ($file instanceof UploadedFile) {
+            $originalFilename = $file->getClientOriginalName();
+        } else {
+            $originalFilename = $file->getFilename();
+        }
+
+//        $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $safeFilename = $this->slugger->slug(pathinfo($originalFilename, PATHINFO_FILENAME));
         $fileName = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
 
         try {

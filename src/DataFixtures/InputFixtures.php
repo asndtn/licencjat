@@ -11,14 +11,43 @@ use App\Entity\Field;
 use App\Entity\Input;
 use App\Entity\Movement;
 use App\Entity\Tag;
+use App\Entity\User;
+use App\Service\FileUploader;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\DBAL\Types\TextType;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Class InputFixtures.
  */
 class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
+    private static $inputPaintings = [
+        'basquiat.jpg',
+        'bubbles.jpg',
+        'castle.jpg',
+        'cat.jpg',
+        'differences.jpg',
+        'goose.jpg',
+        'seagul.jpg',
+        'serpentyna.jpg',
+        'squirrel.jpg',
+        'tub.jpg'
+    ];
+
+    /**
+     * File uploader.
+     *
+     * @var FileUploader
+     */
+    private $fileUploader;
+
+    public function __construct(FileUploader $fileUploader)
+    {
+        $this->fileUploader = $fileUploader;
+    }
+
     /**
      * Load data.
      *
@@ -32,10 +61,15 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
             return;
         }
 
-        $this->createMany(50, 'inputs', function (int $i) {
+        $this->createMany(20, 'inputs', function (int $i) {
             $input = new Input();
             $input->setTitle($this->faker->sentence);
             $input->setDescription($this->faker->text);
+
+            $imageFilename = $this->fakeUploadImage();
+
+            /** @var string $painting */
+            $input->setPaintingFilename($imageFilename);
 
             /** @var Category $category */
             $category = $this->getRandomReference('categories');
@@ -59,6 +93,7 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
                 $input->addTag($tag);
             }
 
+            /** @var User $author */
             $author = $this->getRandomReference('users');
             $input->setAuthor($author);
 
@@ -79,5 +114,21 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
     public function getDependencies(): array
     {
         return [CategoryFixtures::class, FieldFixtures::class, MovementFixtures::class, ArtistFixtures::class, TagFixtures::class, UserFixtures::class];
+    }
+
+    /**
+     * Fake upload.
+     *
+     * @return string Path
+     */
+    private function fakeUploadImage(): string
+    {
+        $randomImage = $this->faker->randomElement(self::$inputPaintings);
+        $fs = new Filesystem();
+        $targetPath = sys_get_temp_dir().'/'.$randomImage;
+        $fs->copy(__DIR__.'/images/'.$randomImage, $targetPath, true);
+
+        return $this->fileUploader
+            ->upload(new File($targetPath));
     }
 }
