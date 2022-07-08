@@ -5,8 +5,8 @@
 
 namespace App\Entity;
 
-use App\Repository\NationalityRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Mapping\Annotation\Slug;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -14,45 +14,46 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Class Nationality.
  *
- * @psalm-suppress MissingConstructor
+ * @ORM\Entity(repositoryClass="App\Repository\NationalityRepository")
+ * @ORM\Table(name="nationalities")
+ *
+ * @UniqueEntity(fields={"name"})
  */
-#[ORM\Entity(repositoryClass: NationalityRepository::class)]
-#[ORM\Table(name: 'nationalities')]
-#[ORM\UniqueConstraint(name: 'uq_nationalities_name', columns: ['name'])]
-#[UniqueEntity(fields: ['name'])]
 class Nationality
 {
     /**
      * Primary key.
      *
-     * @var int|null
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer", nullable="false")
      */
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private ?int $id = null;
+    private int $id;
 
     /**
      * Name.
      *
-     * @var string|null
+     * @ORM\Column(type="string", length=64,)
+     *
+     * @Assert\Type(type="string")
+     * @Assert\NotBlank
+     * @Assert\Length(min="3", max="64")
      */
-    #[ORM\Column(type: 'string', length: 64)]
-    #[Assert\Type('string')]
-    #[Assert\NotBlank]
-    #[Assert\Length(min: 3, max: 64)]
     private ?string $name;
 
-    /**
-     * Slug.
-     *
-     * @var string|null Slug
-     */
-    #[ORM\Column(type: 'string', length: 64)]
-    #[Assert\Type('string')]
-    #[Assert\Length(min: 3, max: 64)]
-    #[Slug(fields: ['name'])]
-    private ?string $slug;
+//    /**
+//     * Slug.
+//     *
+//     * @var string|null Slug
+//     *
+//     * @ORM\Column(type="string", length=64,)
+//     *
+//     * @Assert\Type(type="string")
+//     * @Assert\Length(min="3", max="64")
+//     *
+//     * @Gedmo\Slug(fields={"name"})
+//     */
+//    private ?string $slug;
 
     /**
      * Getter for Id.
@@ -84,23 +85,23 @@ class Nationality
         $this->name = $name;
     }
 
-    /**
-     * Getter for Slug.
-     *
-     * @return string|null Slug
-     */
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    /**
-     * Setter for Slug.
-     *
-     * @param string $slug Slug
-     */
-    public function setSlug(string $slug): void
-    {
-        $this->slug = $slug;
-    }
+//    /**
+//     * Getter for Slug.
+//     *
+//     * @return string|null Slug
+//     */
+//    public function getSlug(): ?string
+//    {
+//        return $this->slug;
+//    }
+//
+//    /**
+//     * Setter for Slug.
+//     *
+//     * @param string $slug Slug
+//     */
+//    public function setSlug(string $slug): void
+//    {
+//        $this->slug = $slug;
+//    }
 }

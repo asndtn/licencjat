@@ -96,7 +96,7 @@ class CategoryService implements CategoryServiceInterface
             $result = $this->inputRepository->countByCategory($category);
 
             return !($result > 0);
-        } catch (NoResultException|NonUniqueResultException) {
+        } catch (NoResultException|NonUniqueResultException $ex) {
             return false;
         }
     }

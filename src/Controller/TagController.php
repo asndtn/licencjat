@@ -17,8 +17,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class TagController.
+ *
+ * @Route("/tag")
  */
-#[Route('/tag')]
 class TagController extends AbstractController
 {
     /**
@@ -49,8 +50,9 @@ class TagController extends AbstractController
      * @param Request $request User request
      *
      * @return Response HTTP Response
+     *
+     * @Route("/", name="tag_index", methods={"GET"})
      */
-    #[Route(name: 'tag_index', methods: 'GET')]
     public function index(Request $request): Response
     {
         $pagination = $this->tagService->getPaginatedList(
@@ -66,13 +68,9 @@ class TagController extends AbstractController
      * @param Tag $tag Tag entity
      *
      * @return Response HTTP Response
+     *
+     * @Route("/{id}", name="tag_show", requirements={"id": "[1-9]\d*"}, methods={"GET"})
      */
-    #[Route(
-        '/{id}',
-        name: 'tag_show',
-        requirements: ['id' => '[1-9]\d*'],
-        methods: 'GET'
-    )]
     public function show(Tag $tag): Response
     {
         return $this->render(
@@ -87,12 +85,9 @@ class TagController extends AbstractController
      * @param Request $request HTTP request
      *
      * @return Response HTTP response
+     *
+     * @Route("/create", name="tag_create", methods={"GET", "POST"})
      */
-    #[Route(
-        '/create',
-        name: 'tag_create',
-        methods: 'GET|POST'
-    )]
     public function create(Request $request): Response
     {
         $tag = new Tag();
@@ -123,8 +118,9 @@ class TagController extends AbstractController
      * @param Tag     $tag     Tag entity
      *
      * @return Response HTTP response
+     *
+     * @Route("/{id}/edit", name="tag_edit", requirements={"id": "[1-9]\d*"}, methods={"GET", "PUT"})
      */
-    #[Route('/{id}/edit', name: 'tag_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, Tag $tag): Response
     {
         $form = $this->createForm(TagType::class, $tag, [
@@ -160,8 +156,9 @@ class TagController extends AbstractController
      * @param Tag     $tag     Tag entity
      *
      * @return Response HTTP Response
+     *
+     * @Route("/{id}/delete", name="tag_delete", requirements={"id": "[1-9]\d*"}, methods={"GET", "DELETE"})
      */
-    #[Route('/{id}/delete', name: 'tag_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Tag $tag): Response
     {
 //        if (!$this->tagService->canBeDeleted($tag)) {

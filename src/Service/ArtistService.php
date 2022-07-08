@@ -76,7 +76,7 @@ class ArtistService implements ArtistServiceInterface
             $result = $this->inputRepository->countByArtist($artist);
 
             return !($result > 0);
-        } catch (NoResultException|NonUniqueResultException) {
+        } catch (NoResultException|NonUniqueResultException $ex) {
             return false;
         }
     }

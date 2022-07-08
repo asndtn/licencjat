@@ -20,8 +20,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class InputController.
+ *
+ * @Route("/input")
  */
-#[Route('/input')]
 class InputController extends AbstractController
 {
     /**
@@ -52,8 +53,9 @@ class InputController extends AbstractController
      * @param Request $request User request
      *
      * @return Response HTTP Response
+     *
+     * @Route("/", name="input_index", methods={"GET"})]
      */
-    #[Route(name: 'input_index', methods: 'GET')]
     public function index(Request $request): Response
     {
         $pagination = $this->inputService->getPaginatedList(
@@ -69,13 +71,9 @@ class InputController extends AbstractController
      * @param Input $input Input entity
      *
      * @return Response HTTP Response
+     *
+     * @Route("/{id}", name="input_show", requirements={"id": "[1-9]\d*"}, methods={"GET"})
      */
-    #[Route(
-        '/{id}',
-        name: 'input_show',
-        requirements: ['id' => '[1-9]\d*'],
-        methods: 'GET'
-    )]
     public function show(Input $input): Response
     {
         return $this->render(
@@ -90,12 +88,9 @@ class InputController extends AbstractController
      * @param Request $request HTTP request
      *
      * @return Response HTTP response
+     *
+     * @Route("/create", name="input_create", methods={"GET", "POST"})
      */
-    #[Route(
-        '/create',
-        name: 'input_create',
-        methods: 'GET|POST'
-    )]
     public function create(Request $request, FileUploader $fileUploader): Response
     {
         /** @var User $user */
@@ -139,9 +134,10 @@ class InputController extends AbstractController
      * @param Input   $input   Input entity
      *
      * @return Response HTTP response
+     *
+     * @Route("/{id}/edit", name="input_edit", requirements={"id": "[1-9]\d*"}, methods={"GET|PUT"})
+     * @IsGranted("EDIT", subject="input")
      */
-    #[Route('/{id}/edit', name: 'input_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
-    #[IsGranted('EDIT', subject: 'input')]
     public function edit(Request $request, Input $input): Response
     {
         $form = $this->createForm(InputType::class, $input, [
@@ -177,9 +173,10 @@ class InputController extends AbstractController
      * @param Input   $input   Input entity
      *
      * @return Response HTTP Response
+     *
+     * @Route("/{id}/delete", name="input_delete", requirements={"id": "[1-9]\d*"}, methods={"GET|DELETE"})
+     * @IsGranted("DELETE", subject="input")
      */
-    #[Route('/{id}/delete', name: 'input_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
-    #[IsGranted('DELETE', subject: 'input')]
     public function delete(Request $request, Input $input): Response
     {
         $form = $this->createForm(FormType::class, $input, [

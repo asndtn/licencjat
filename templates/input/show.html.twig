@@ -5,31 +5,31 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.record_details_input'|trans({'%id%': input.id|default('')}) }}</h1>
+    <h1 class="title">{{ input.title }}</h1>
     {% if input is defined and input|length %}
         <dl class="dl-horizontal">
-            <dt>{{ 'label.id'|trans }}</dt>
-            <dd>{{ input.id }}</dd>
-            <dt>{{ 'label.author'|trans }}</dt>
-            <dd>{{ input.author.email }}</dd>
-            <dt>{{ 'label.artist'|trans }}</dt>
-            <dd>{{ input.artist.name }}</dd>
-            <dt>{{ 'label.category'|trans }}</dt>
-            <dd>{{ input.category.name }}</dd>
-            <dt>{{ 'label.field'|trans }}</dt>
-            <dd>{{ input.field.name }}</dd>
-            <dt>{{ 'label.movement'|trans }}</dt>
-            <dd>{{ input.movement.name }}</dd>
-            <dt>{{ 'label.title'|trans }}</dt>
-            <dd>{{  input.title }}</dd>
-            <dt>{{ 'label.description'|trans }}</dt>
-            <dd>{{ input.description|markdown_to_html }}</dd>
-            <dt>{{ 'label.painting'|trans }}</dt>
-            <dd>
+            <div class="rooow">
+                <dt>{{ 'label.artist'|trans }}</dt>
+                <dd>{{ input.artist.name }}</dd>
+            </div>
+            <div class="rooow">
+                <dt>{{ 'label.field'|trans }}</dt>
+                <dd>{{ input.field.name }}</dd>
+            </div>
+            <div class="rooow">
+                <dt>{{ 'label.movement'|trans }}</dt>
+                <dd>{{ input.movement.name }}</dd>
+            </div>
+            <div class="rooow">
+                <dt>{{ 'label.category'|trans }}</dt>
+                <dd>{{ input.category.name }}</dd>
+            </div>
                 {% if input.paintingFilename is defined and input.paintingFilename|length %}
                     <img class="img-fluid" alt="Responsive image" src="{{ asset(paintings_directory~input.paintingFilename) }}">
-                    {% endif %}
-                    </dd>
+                {% endif %}
+            </dd>
+            <dt>{{ 'label.description'|trans }}</dt>
+            <dd>{{ input.description|markdown_to_html }}</dd>
             <dt>{{ 'label.tags'|trans }}</dt>
             <dd>{% if input.tags is defined and input.tags|length %}
                     {% for tag in input.tags %}

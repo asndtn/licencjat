@@ -5,7 +5,6 @@
 
 namespace App\Service;
 
-use Gedmo\Sluggable\Util\Urlizer;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -29,8 +28,8 @@ class FileUploader
     /**
      * Constructor.
      *
-     * @param string $targetDirectory Target directory
-     * @param SluggerInterface $slugger Slugger
+     * @param string           $targetDirectory Target directory
+     * @param SluggerInterface $slugger         Slugger
      */
     public function __construct(string $targetDirectory, SluggerInterface $slugger)
     {

@@ -10,12 +10,14 @@ use App\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * Class SecurityController.
+ */
 class SecurityController extends AbstractController
 {
     /**
@@ -29,10 +31,10 @@ class SecurityController extends AbstractController
     private TranslatorInterface $translator;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param UserService $userService User service
-     * @param TranslatorInterface $translator Translator
+     * @param UserService         $userService User service
+     * @param TranslatorInterface $translator  Translator
      */
     public function __construct(UserService $userService, TranslatorInterface $translator)
     {
@@ -46,8 +48,9 @@ class SecurityController extends AbstractController
      * @param AuthenticationUtils $authenticationUtils Authentication Utils
      *
      * @return Response HTTP Response
+     *
+     * @Route("/login", name="app_login")
      */
-    #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         // if ($this->getUser()) {
@@ -65,14 +68,14 @@ class SecurityController extends AbstractController
     /**
      * Register action.
      *
-     * @param Request $request HTTP Request
-     *
+     * @param Request                     $request        HTTP Request
      * @param UserPasswordHasherInterface $passwordHasher Password hasher
-     * @param UserRepository $userRepository User repository
+     * @param UserRepository              $userRepository User repository
      *
      * @return Response HTTP Response
+     *
+     * @Route("/register", name="app_register")
      */
-    #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $passwordHasher, UserRepository $userRepository): Response
     {
         $user = new User();
@@ -102,19 +105,15 @@ class SecurityController extends AbstractController
     /**
      * Password change action.
      *
-     * @param Request $request HTTP request
-     * @param User $user User entity
-     * @param UserService $userService User service
+     * @param Request                     $request        HTTP request
+     * @param User                        $user           User entity
+     * @param UserService                 $userService    User service
      * @param UserPasswordHasherInterface $passwordHasher Password hasher
      *
      * @return Response HTTP Response
+     *
+     * @Route("/user/{id}/password_change", name="app_change-password", requirements={"id": "[1-9]\d*"}, methods={"GET", "PUT"})
      */
-    #[Route(
-        'user/{id}/password_change',
-        name: 'app_change-password',
-        requirements: ['id' => '[1-9]\d*'],
-        methods: 'GET|PUT'
-    )]
     public function passwordChange(Request $request, User $user, UserService $userService, UserPasswordHasherInterface $passwordHasher): Response
     {
         $form = $this->createForm(PasswordChangeType::class, $user, ['method' => 'PUT']);
@@ -145,7 +144,11 @@ class SecurityController extends AbstractController
         );
     }
 
-    #[Route(path: '/logout', name: 'app_logout')]
+    /**
+     * Logout action.
+     *
+     * @Route("/logout", name="app_logout")
+     */
     public function logout(): void
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');

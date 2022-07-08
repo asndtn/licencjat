@@ -17,8 +17,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class FieldController.
+ *
+ * @Route("/field")
  */
-#[Route('/field')]
 class FieldController extends AbstractController
 {
     /**
@@ -49,8 +50,9 @@ class FieldController extends AbstractController
      * @param Request $request User request
      *
      * @return Response HTTP Response
+     *
+     * @Route("/", name="field_index", methods={"GET"})
      */
-    #[Route(name: 'field_index', methods: 'GET')]
     public function index(Request $request): Response
     {
         $pagination = $this->fieldService->getPaginatedList(
@@ -66,13 +68,8 @@ class FieldController extends AbstractController
      * @param Field $field Field entity
      *
      * @return Response HTTP Response
+     * @Route("/{id}", name="field_show", requirements={"id": "[1-9]\d*"}, methods={"GET"})
      */
-    #[Route(
-        '/{id}',
-        name: 'field_show',
-        requirements: ['id' => '[1-9]\d*'],
-        methods: 'GET'
-    )]
     public function show(Field $field): Response
     {
         return $this->render(
@@ -87,12 +84,8 @@ class FieldController extends AbstractController
      * @param Request $request HTTP request
      *
      * @return Response HTTP response
+     * @Route("/create", name="field_create", methods={"GET", "POST"})
      */
-    #[Route(
-        '/create',
-        name: 'field_create',
-        methods: 'GET|POST'
-    )]
     public function create(Request $request): Response
     {
         $field = new Field();
@@ -123,8 +116,9 @@ class FieldController extends AbstractController
      * @param Field   $field   Field entity
      *
      * @return Response HTTP response
+     *
+     * @Route("/{id}/edit", name="field_edit", requirements={"id": "[1-9]\d*"}, methods={"GET|PUT"})]
      */
-    #[Route('/{id}/edit', name: 'field_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, Field $field): Response
     {
         $form = $this->createForm(FieldType::class, $field, [
@@ -160,8 +154,9 @@ class FieldController extends AbstractController
      * @param Field   $field   Field entity
      *
      * @return Response HTTP Response
+     *
+     * @Route("/{id}/delete", name="field_delete", requirements={"id": "[1-9]\d*"}, methods={"GET", "DELETE"})
      */
-    #[Route('/{id}/delete', name: 'field_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Field $field): Response
     {
         if (!$this->fieldService->canBeDeleted($field)) {

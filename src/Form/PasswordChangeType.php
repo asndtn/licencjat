@@ -17,7 +17,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class PasswordChangeType extends AbstractType
 {
-
     /**
      * Builds the form.
      *

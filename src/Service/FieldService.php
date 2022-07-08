@@ -96,7 +96,7 @@ class FieldService implements FieldServiceInterface
             $result = $this->inputRepository->countByField($field);
 
             return !($result > 0);
-        } catch (NoResultException|NonUniqueResultException) {
+        } catch (NoResultException|NonUniqueResultException $ex) {
             return false;
         }
     }

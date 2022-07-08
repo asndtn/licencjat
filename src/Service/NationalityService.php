@@ -76,7 +76,7 @@ class NationalityService implements NationalityServiceInterface
             $result = $this->artistRepository->countByNationality($nationality);
 
             return !($result > 0);
-        } catch (NoResultException|NonUniqueResultException) {
+        } catch (NoResultException|NonUniqueResultException $ex) {
             return false;
         }
     }

@@ -14,7 +14,6 @@ use App\Entity\Tag;
 use App\Entity\User;
 use App\Service\FileUploader;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -23,7 +22,7 @@ use Symfony\Component\HttpFoundation\File\File;
  */
 class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
-    private static $inputPaintings = [
+    private static array $inputPaintings = [
         'basquiat.jpg',
         'bubbles.jpg',
         'castle.jpg',
@@ -33,15 +32,13 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
         'seagul.jpg',
         'serpentyna.jpg',
         'squirrel.jpg',
-        'tub.jpg'
+        'tub.jpg',
     ];
 
     /**
      * File uploader.
-     *
-     * @var FileUploader
      */
-    private $fileUploader;
+    private FileUploader $fileUploader;
 
     public function __construct(FileUploader $fileUploader)
     {
@@ -68,7 +65,7 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
 
             $imageFilename = $this->fakeUploadImage();
 
-            /** @var string $painting */
+            /* @var string $painting */
             $input->setPaintingFilename($imageFilename);
 
             /** @var Category $category */
@@ -109,7 +106,7 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
      *
      * @return string[] of dependencies
      *
-     * @psalm-return array{0: CategoryFixtures::class, 1: TagFixtures::class, 2: UserFixtures::class}
+     * @psalm-return array{0: CategoryFixtures::class, 1: FieldFixtures::class, 2: MovementFixtures::class, 3: ArtistFixtures::class, 4: TagFixtures::class, 5: UserFixtures::class}
      */
     public function getDependencies(): array
     {

@@ -52,6 +52,26 @@
                 <source>label.none</source>
                 <target>None</target>
             </trans-unit>
+            <trans-unit id="label.author">
+                <source>label.author</source>
+                <target>Autor</target>
+            </trans-unit>
+            <trans-unit id="label.email">
+                <source>label.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="label.password">
+                <source>label.password</source>
+                <target>Hasło</target>
+            </trans-unit>
+            <trans-unit id="label.repeatedPassword">
+                <source>label.repeatedPassword</source>
+                <target>Powtórz hasło</target>
+            </trans-unit>
+            <trans-unit id="label.logged">
+                <source>label.logged</source>
+                <target>Hello </target>
+            </trans-unit>
 
             <!-- Messages -->
             <trans-unit id="message.empty_list">
@@ -90,6 +110,14 @@
                 <source>message.contains_inputs</source>
                 <target>Nie można usunąć. Element jest w użyciu</target>
             </trans-unit>
+            <trans-unit id="message.registered_successfully">
+                <source>message.registered_successfully</source>
+                <target>Registered successfully!</target>
+            </trans-unit>
+            <trans-unit id="message.pass_changed_successfully">
+                <source>message.pass_changed_successfully</source>
+                <target>Password changed successfully!</target>
+            </trans-unit>
 
             <!-- Actions -->
             <trans-unit id="action.view">
@@ -115,6 +143,18 @@
             <trans-unit id="action.create">
                 <source>action.create</source>
                 <target>Utwórz</target>
+            </trans-unit>
+            <trans-unit id="action.logout">
+                <source>action.logout</source>
+                <target>Wyloguj się</target>
+            </trans-unit>
+            <trans-unit id="action.login">
+                <source>action.login</source>
+                <target>Zaloguj się</target>
+            </trans-unit>
+            <trans-unit id="action.register">
+                <source>action.register</source>
+                <target>Zarejestruj się</target>
             </trans-unit>
 
             <!-- Labels -->
@@ -142,8 +182,20 @@
                 <source>label.sure</source>
                 <target>Czy na pewno chcesz usunąć kategorię #%id%?</target>
             </trans-unit>
+            <trans-unit id="label.painting">
+                <source>label.painting</source>
+                <target>Obraz</target>
+            </trans-unit>
+            <trans-unit id="label.idea">
+                <source>label.idea</source>
+                <target>Idea</target>
+            </trans-unit>
 
             <!-- Titles -->
+            <trans-unit id="title.app">
+                <source>title.app</source>
+                <target>Obrazy dyskryminacji</target>
+            </trans-unit>
             <trans-unit id="title.record_list_input">
                 <source>title.record_list_input</source>
                 <target>Lista wpisów</target>
@@ -154,11 +206,11 @@
             </trans-unit>
             <trans-unit id="title.record_list_artist">
                 <source>title.record_list_artist</source>
-                <target>Lista artystów</target>
+                <target>Artyści</target>
             </trans-unit>
             <trans-unit id="title.record_list_category">
                 <source>title.record_list_category</source>
-                <target>Lista kategorii</target>
+                <target>Kateogrie</target>
             </trans-unit>
             <trans-unit id="title.record_list_movement">
                 <source>title.record_list_movement</source>
@@ -178,7 +230,7 @@
             </trans-unit>
             <trans-unit id="title.record_details_artist">
                 <source>title.record_details_artist</source>
-                <target>Szczegóły artysty</target>
+                <target>Szczegóły artysty #%id%</target>
             </trans-unit>
             <trans-unit id="title.record_details_category">
                 <source>title.record_details_category</source>
@@ -266,7 +318,7 @@
             </trans-unit>
             <trans-unit id="title.record_list_tag">
                 <source>title.record_list_tag</source>
-                <target>Lista tagów</target>
+                <target>Tagi</target>
             </trans-unit>
             <trans-unit id="title.record_details_tag">
                 <source>title.record_details_tag</source>
@@ -283,6 +335,22 @@
             <trans-unit id="title.tag_delete">
                 <source>title.tag_delete</source>
                 <target>Usuń tag</target>
+            </trans-unit>
+            <trans-unit id="title.record_list_user">
+                <source>title.record_list_user</source>
+                <target>Lista użytkowników</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_user">
+                <source>title.record_details_user</source>
+                <target>Szczegóły użytkownika</target>
+            </trans-unit>
+            <trans-unit id="title.user_edit">
+                <source>title.user_edit</source>
+                <target>Edytuj użytkownika</target>
+            </trans-unit>
+            <trans-unit id="title.user_delete">
+                <source>title.user_delete</source>
+                <target>Usuń użytkownika</target>
             </trans-unit>
 
         <!-- Miscellaneous -->

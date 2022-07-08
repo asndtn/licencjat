@@ -18,8 +18,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class UserController.
+ *
+ * @Route("/user")
  */
-#[Route('/user')]
 class UserController extends AbstractController
 {
     /**
@@ -36,7 +37,7 @@ class UserController extends AbstractController
      * Constructor.
      *
      * @param UserServiceInterface $userService User service
-     * @param TranslatorInterface $translator Translator
+     * @param TranslatorInterface  $translator  Translator
      */
     public function __construct(UserServiceInterface $userService, TranslatorInterface $translator)
     {
@@ -50,8 +51,9 @@ class UserController extends AbstractController
      * @param Request $request User request
      *
      * @return Response HTTP Response
+     *
+     * @Route("/", name="user_index", methods={"GET"})]
      */
-    #[Route(name: 'user_index', methods: 'GET')]
     public function index(Request $request): Response
     {
         $pagination = $this->userService->GetPaginatedList(
@@ -67,8 +69,9 @@ class UserController extends AbstractController
      * @param User $user User entity
      *
      * @return Response HTTP Response
+     *
+     * @Route("/{id}/show", name="user_show", requirements={"id": "[1-9]\d*"}, methods={"GET", "PUT"})
      */
-    #[Route('/{id}/show', name: 'user_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function show(User $user): Response
     {
         return $this->render(
@@ -81,12 +84,13 @@ class UserController extends AbstractController
      * Edit action.
      *
      * @param Request $request HTTP Request
-     * @param User $user User entity
+     * @param User    $user    User entity
      *
      * @return Response HTTP Response
+     *
+     * @Route("/{id}/edit", name="user_edit", requirements={"id": "[1-9]\d*"}, methods={"GET", "PUT"})
+     * @IsGranted("EDIT", subject="input")
      */
-    #[Route('/{id}/edit', name: 'user_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
-    #[IsGranted('EDIT', subject: 'input')]
     public function edit(Request $request, User $user): Response
     {
         $form = $this->createForm(
@@ -94,7 +98,7 @@ class UserController extends AbstractController
             $user,
             [
             'method' => 'PUT',
-                'action' => $this->generateUrl('user_edit', ['id' => $user->getId()])
+                'action' => $this->generateUrl('user_edit', ['id' => $user->getId()]),
             ]
         );
         $form->handleRequest($request);
@@ -119,7 +123,9 @@ class UserController extends AbstractController
         );
     }
 
-    #[Route('/{id}/delete', name: 'user_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
+    /**
+     * @Route("/{id}/delete", name="user_delete", requirements={"id": "[1-9]\d*"}, methods={"GET", "DELETE"})
+     */
     public function delete(Request $request, User $user): Response
     {
         $form = $this->createForm(FormType::class, $user, [

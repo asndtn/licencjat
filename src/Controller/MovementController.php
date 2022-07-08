@@ -17,8 +17,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class MovementController.
+ *
+ * @Route("/movement")
  */
-#[Route('/movement')]
 class MovementController extends AbstractController
 {
     /**
@@ -49,8 +50,9 @@ class MovementController extends AbstractController
      * @param Request $request User request
      *
      * @return Response HTTP Response
+     *
+     * @Route("/", name="movement_index", methods={"GET"})
      */
-    #[Route(name: 'movement_index', methods: 'GET')]
     public function index(Request $request): Response
     {
         $pagination = $this->movementService->getPaginatedList(
@@ -66,13 +68,9 @@ class MovementController extends AbstractController
      * @param Movement $movement Movement entity
      *
      * @return Response HTTP Response
+     *
+     * @Route("/{id}", name="movement_show", requirements={"id": "[1-9]\d*"}, methods={"GET"})
      */
-    #[Route(
-        '/{id}',
-        name: 'movement_show',
-        requirements: ['id' => '[1-9]\d*'],
-        methods: 'GET'
-    )]
     public function show(Movement $movement): Response
     {
         return $this->render(
@@ -87,12 +85,9 @@ class MovementController extends AbstractController
      * @param Request $request HTTP request
      *
      * @return Response HTTP response
+     *
+     * @Route("/create", name="movement_create", methods={"GET|POST"})
      */
-    #[Route(
-        '/create',
-        name: 'movement_create',
-        methods: 'GET|POST'
-    )]
     public function create(Request $request): Response
     {
         $movement = new Movement();
@@ -123,8 +118,9 @@ class MovementController extends AbstractController
      * @param Movement $movement Movement entity
      *
      * @return Response HTTP response
+     *
+     * @Route("/{id}/edit", name="movement_edit", requirements={"id": "[1-9]\d*"}, methods={"GET|PUT"})
      */
-    #[Route('/{id}/edit', name: 'movement_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, Movement $movement): Response
     {
         $form = $this->createForm(MovementType::class, $movement, [
@@ -160,8 +156,9 @@ class MovementController extends AbstractController
      * @param Movement $movement Movement entity
      *
      * @return Response HTTP Response
+     *
+     * @Route("/{id}/delete", name="movement_delete", requirements={"id": "[1-9]\d*"}, methods={"GET", "DELETE"})
      */
-    #[Route('/{id}/delete', name: 'movement_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Movement $movement): Response
     {
         if (!$this->movementService->canBeDeleted($movement)) {

@@ -15,22 +15,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class RegistrationController.
+ *
+ * @Route("/register", name="app_register")
  */
-#[Route('/register', name: 'app_register')]
 class RegistrationController extends AbstractController
 {
-    /**
-     * @param Request $request
-     * @param UserPasswordHasherInterface $userPasswordHasher
-     * @param UserAuthenticatorInterface $userAuthenticator
-     * @param LoginFormAuthenticator $authenticator
-     * @param EntityManagerInterface $entityManager
-     * @return Response
-     */
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginFormAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
         $user = new User();

@@ -5,114 +5,120 @@
 
 namespace App\Entity;
 
-use App\Repository\InputRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Input.
+ *
+ * @ORM\Entity(repositoryClass="App\Repository\InputRepository")
+ * @ORM\Table(name="inputs")
  */
-#[ORM\Entity(repositoryClass: InputRepository::class)]
-#[ORM\Table(name: 'inputs')]
 class Input
 {
     /**
      * Primary key.
      *
-     * @var int|null
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
     /**
      * Title.
      *
-     * @var string|null
+     * @ORM\Column(type="string", length=180)
+     *
+     * @Assert\Type("string")
+     * @Assert\NotBlank
+     * @Assert\Length(min=3, max=180)
      */
-    #[ORM\Column(type: 'string', length: 180)]
-    #[Assert\Type('string')]
-    #[Assert\NotBlank]
-    #[Assert\Length(min: 3, max: 64)]
     private ?string $title = null;
 
     /**
      * Category.
      *
-     * @var Category
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", fetch="EXTRA_LAZY")
+     *
+     * @Assert\Type("App\Entity\Category")
+     * @Assert\NotBlank
+     * @ORM\JoinColumn(nullable=false)
      */
-    #[ORM\ManyToOne(targetEntity: Category::class, fetch: 'EXTRA_LAZY')]
-    #[Assert\Type(Category::class)]
-    #[Assert\NotBlank]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Category $category = null;
+    private Category $category;
 
     /**
      * Field.
      *
-     * @var Field
+     * @ORM\ManyToOne(targetEntity="App\Entity\Field", fetch="EXTRA_LAZY")
+     *
+     * @Assert\Type("App\Entity\Field")
+     * @Assert\NotBlank()
+     *
+     * @ORM\JoinColumn(nullable=false)
      */
-    #[ORM\ManyToOne(targetEntity: Field::class, fetch: 'EXTRA_LAZY')]
-    #[Assert\Type(Field::class)]
-    #[Assert\NotBlank]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Field $field = null;
+    private Field $field;
 
     /**
      * Movement.
      *
-     * @var Movement
+     * @ORM\ManyToOne(targetEntity="App\Entity\Movement", fetch="EXTRA_LAZY")
+     *
+     * @Assert\Type("App\Entity\Movement")
+     * @Assert\NotBlank
+     *
+     * @ORM\JoinColumn(nullable=false)
      */
-    #[ORM\ManyToOne(targetEntity: Movement::class, fetch: 'EXTRA_LAZY')]
-    #[Assert\Type(Movement::class)]
-    #[Assert\NotBlank]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Movement $movement = null;
+    private Movement $movement;
 
     /**
      * Artist.
      *
-     * @var Artist
+     * @ORM\ManyToOne(targetEntity="App\Entity\Artist", fetch="EXTRA_LAZY")
+     * @ORM\JoinColumn(nullable=true)
+     *
+     * @Assert\Type(type="App\Entity\Artist")
      */
-    #[ORM\ManyToOne(targetEntity: Artist::class, fetch: 'EXTRA_LAZY')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Artist $artist = null;
+    private Artist $artist;
 
     /**
      * Tags.
      *
-     * @var ArrayCollection<int, Tag>
+     * @var array
+     *
+     * @Assert\Valid
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", fetch="EXTRA_LAZY", orphanRemoval=true)
+     * @ORM\JoinTable(name="inputs_tags")
      */
-    #[Assert\Valid]
-    #[ORM\ManyToMany(targetEntity: Tag::class, fetch: 'EXTRA_LAZY', orphanRemoval: true)]
-    #[ORM\JoinTable(name: 'inputs_tags')]
     private $tags;
 
-    #[ORM\ManyToOne(targetEntity: User::class, fetch: 'EXTRA_LAZY')]
-    #[ORM\JoinColumn(nullable: false)]
-    #[Assert\NotBlank]
-    #[Assert\Type(User::class)]
+    /**
+     * Author.
+     *
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", fetch="EXTRA_LAZY")
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank
+     * @Assert\Type("App\Entity\User")
+     */
     private $author;
 
     /**
      * Description.
      *
-     * @var string|null
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Type("string")
      */
-    #[ORM\Column(type: 'string', nullable: true)]
-    #[Assert\Type('string')]
     private ?string $description = null;
 
     /**
      * Painting filename.
      *
-     * @var string|null
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $paintingFilename;
 
     /**
@@ -308,18 +314,15 @@ class Input
     /**
      * Getter for Painting filename.
      *
-     * @return string|null
+     * @return string|null Painting filename
      */
     public function getPaintingFilename(): ?string
     {
         return $this->paintingFilename;
     }
 
-
     /**
      * Setter for Painting filename.
-     *
-     * @param string|null $paintingFilename
      */
     public function setPaintingFilename(?string $paintingFilename): void
     {

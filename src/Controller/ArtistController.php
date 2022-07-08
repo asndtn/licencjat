@@ -8,6 +8,7 @@ namespace App\Controller;
 use App\Entity\Artist;
 use App\Form\ArtistType;
 use App\Service\ArtistServiceInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,8 +18,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class ArtistController.
+ *
+ * @Route("/artist")
  */
-#[Route('/artist')]
 class ArtistController extends AbstractController
 {
     /**
@@ -49,8 +51,9 @@ class ArtistController extends AbstractController
      * @param Request $request User request
      *
      * @return Response HTTP Response
+     *
+     * @Route("/", name="artist_index", methods={"GET"})
      */
-    #[Route(name: 'artist_index', methods: 'GET')]
     public function index(Request $request): Response
     {
         $pagination = $this->artistService->getPaginatedList(
@@ -65,14 +68,10 @@ class ArtistController extends AbstractController
      *
      * @param Artist $artist Artist entity
      *
-     * @return Response HTTP Response
+     * @return Response HTTP Response]
+     *
+     * @Route("/{id}", name="artist_show", requirements={"id": "[1-9]\d*"}, methods={"GET"})
      */
-    #[Route(
-        '/{id}',
-        name: 'artist_show',
-        requirements: ['id' => '[1-9]\d*'],
-        methods: 'GET'
-    )]
     public function show(Artist $artist): Response
     {
         return $this->render(
@@ -87,12 +86,10 @@ class ArtistController extends AbstractController
      * @param Request $request HTTP request
      *
      * @return Response HTTP response
+     * @Route("/create", name="artist_create", methods={"GET|POST"})
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
-    #[Route(
-        '/create',
-        name: 'artist_create',
-        methods: 'GET|POST'
-    )]
     public function create(Request $request): Response
     {
         $artist = new Artist();
@@ -123,8 +120,11 @@ class ArtistController extends AbstractController
      * @param Artist  $artist  Artist entity
      *
      * @return Response HTTP response
+     *
+     * @Route("/{id}/edit", name="artist_edit", requirements={"id": "[1-9]\d*"}, methods={"GET|PUT"})
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
-    #[Route('/{id}/edit', name: 'artist_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, Artist $artist): Response
     {
         $form = $this->createForm(ArtistType::class, $artist, [
@@ -160,8 +160,11 @@ class ArtistController extends AbstractController
      * @param Artist  $artist  Artist entity
      *
      * @return Response HTTP Response
+     *
+     * @Route("/{id}/delete", name="artist_delete", requirements={"id": "[1-9]\d*"}, methods={"GET", "DELETE"})
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
-    #[Route('/{id}/delete', name: 'artist_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Artist $artist): Response
     {
         if (!$this->artistService->canBeDeleted($artist)) {

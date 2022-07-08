@@ -61,14 +61,14 @@ class InputType extends AbstractType
                 'required' => false,
                 'constraints' => [
                     new File([
-                        'maxSize' => '2048k',
+                        'maxSize' => '4096k',
                         'mimeTypes' => [
                             'image/png',
                             'image/jpg',
-                            'image/jpeg'
+                            'image/jpeg',
                         ],
                         'mimeTypesMessage' => 'Please upload a valid image',
-                    ])
+                    ]),
                 ],
                 ]
         );

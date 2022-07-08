@@ -5,7 +5,6 @@
 
 namespace App\Entity;
 
-use App\Repository\ArtistRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -14,61 +13,67 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Class Artist.
  *
+ * @ORM\Entity(repositoryClass="App\Repository\ArtistRepository")
+ * @ORM\Table("artists")
+ *
+ * @UniqueEntity(fields={"name"})
+ *
  * @psalm-suppress MissingConstructor
  */
-#[ORM\Entity(repositoryClass: ArtistRepository::class)]
-#[ORM\Table(name: 'artists')]
-#[ORM\UniqueConstraint(name: 'uq_artists_name', columns: ['name'])]
-#[UniqueEntity(fields: ['name'])]
+// #[ORM\UniqueConstraint(name: 'uq_artists_name', columns: ['name'])]
 class Artist
 {
     /**
      * Primary key.
      *
-     * @var int|null
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
     /**
      * Name.
      *
      * @var string|null Name
+     *
+     * @ORM\Column(type="string", length=64)
+     *
+     * @Assert\Type("string")
+     * @Assert\NotBlank
+     * @Assert\Length(min="3", max="64")
      */
-    #[ORM\Column(type: 'string', length: 64)]
-    #[Assert\Type('string')]
-    #[Assert\NotBlank]
-    #[Assert\Length(min: 3, max: 64)]
     private ?string $name;
 
     /**
      * DateOfBirth.
      *
      * @var DateTimeImmutable|null DateOfBirth
+     *
+     * @ORM\Column(type="datetime_immutable")
+     *
+     * @Assert\Type("DateTimeImmutable")
      */
-    #[ORM\Column(type: 'datetime_immutable')]
-    #[Assert\Type(DateTimeImmutable::class)]
     private ?DateTimeImmutable $dateOfBirth;
 
     /**
      * DateOfDeath.
      *
      * @var DateTimeImmutable|null DateOfDeath
+     *
+     * @ORM\Column(type="datetime_immutable", nullable=true)
+     *
+     * @Assert\Type("DateTimeImmutable")
      */
-    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
-    #[Assert\Type(DateTimeImmutable::class)]
     private ?DateTimeImmutable $dateOfDeath = null;
 
     /**
      * Nationality.
      *
-     * @var Nationality
+     * @ORM\ManyToOne(targetEntity="App\Entity\Nationality", fetch="EXTRA_LAZY")
+     * @ORM\JoinColumn(nullable=false)
      */
-    #[ORM\ManyToOne(targetEntity: Nationality::class, fetch: 'EXTRA_LAZY')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Nationality $nationality = null;
+    private Nationality $nationality;
 
     /**
      * Getter for Id.

@@ -17,8 +17,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class CategoryController.
+ *
+ * @Route("/category")
  */
-#[Route('/category')]
 class CategoryController extends AbstractController
 {
     /**
@@ -49,8 +50,9 @@ class CategoryController extends AbstractController
      * @param Request $request User request
      *
      * @return Response HTTP Response
+     *
+     * @Route("/", name="category_index", methods={"GET"})
      */
-    #[Route(name: 'category_index', methods: 'GET')]
     public function index(Request $request): Response
     {
         $pagination = $this->categoryService->getPaginatedList(
@@ -66,13 +68,9 @@ class CategoryController extends AbstractController
      * @param Category $category Category entity
      *
      * @return Response HTTP Response
+     *
+     * @Route("/{id}", name="category_show", requirements={"id": "[1-9]\d*"}, methods={"GET"})
      */
-    #[Route(
-        '/{id}',
-        name: 'category_show',
-        requirements: ['id' => '[1-9]\d*'],
-        methods: 'GET'
-    )]
     public function show(Category $category): Response
     {
         return $this->render(
@@ -87,12 +85,9 @@ class CategoryController extends AbstractController
      * @param Request $request HTTP request
      *
      * @return Response HTTP response
+     *
+     * @Route("/create", name="category_create", methods={"GET", "POST"})
      */
-    #[Route(
-        '/create',
-        name: 'category_create',
-        methods: 'GET|POST'
-    )]
     public function create(Request $request): Response
     {
         $category = new Category();
@@ -123,8 +118,9 @@ class CategoryController extends AbstractController
      * @param Category $category Category entity
      *
      * @return Response HTTP response
+     *
+     * @Route("/{id}/edit", name="category_edit", requirements={"id": "[1-9]\d*"}, methods={"GET", "PUT"})
      */
-    #[Route('/{id}/edit', name: 'category_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, Category $category): Response
     {
         $form = $this->createForm(CategoryType::class, $category, [
@@ -160,8 +156,9 @@ class CategoryController extends AbstractController
      * @param Category $category Category entity
      *
      * @return Response HTTP response
+     *
+     * @Route("{id}/delete", name="category_delete", requirements={"id": "[1-9]\d*"}, methods={"GET", "DELETE"})
      */
-    #[Route('/{id}/delete', name: 'category_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Category $category): Response
     {
         if (!$this->categoryService->canBeDeleted($category)) {

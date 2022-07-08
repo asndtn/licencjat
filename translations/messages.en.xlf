@@ -72,6 +72,34 @@
                 <source>label.none</source>
                 <target>None</target>
             </trans-unit>
+            <trans-unit id="label.author">
+                <source>label.author</source>
+                <target>Author</target>
+            </trans-unit>
+            <trans-unit id="label.email">
+                <source>label.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="label.password">
+                <source>label.password</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="label.repeatedPassword">
+                <source>label.repeatedPassword</source>
+                <target>Repeat password</target>
+            </trans-unit>
+            <trans-unit id="label.painting">
+                <source>label.painting</source>
+                <target>Painting</target>
+            </trans-unit>
+            <trans-unit id="label.idea">
+                <source>label.idea</source>
+                <target>Idea</target>
+            </trans-unit>
+            <trans-unit id="label.logged">
+                <source>label.logged</source>
+                <target>Hello </target>
+            </trans-unit>
 
             <!-- Messages -->
             <trans-unit id="message.empty_list">
@@ -102,6 +130,14 @@
                 <source>message.contains_inputs</source>
                 <target>Cannot delete. This item is asigned to an input.</target>
             </trans-unit>
+            <trans-unit id="message.registered_successfully">
+                <source>message.registered_successfully</source>
+                <target>Registered successfully!</target>
+            </trans-unit>
+            <trans-unit id="message.pass_changed_successfully">
+                <source>message.pass_changed_successfully</source>
+                <target>Password changed successfully!</target>
+            </trans-unit>
 
             <!-- Actions -->
             <trans-unit id="action.view">
@@ -128,8 +164,24 @@
                 <source>action.create</source>
                 <target>Create</target>
             </trans-unit>
+            <trans-unit id="action.logout">
+                <source>action.logout</source>
+                <target>Log out</target>
+            </trans-unit>
+            <trans-unit id="action.login">
+                <source>action.login</source>
+                <target>Log in</target>
+            </trans-unit>
+            <trans-unit id="action.register">
+                <source>action.register</source>
+                <target>Register</target>
+            </trans-unit>
 
             <!-- Titles -->
+            <trans-unit id="title.app">
+                <source>title.app</source>
+                <target>Images of discrimination</target>
+            </trans-unit>
             <trans-unit id="title.record_list">
                 <source>title.record_list</source>
                 <target>List</target>
@@ -180,11 +232,11 @@
             </trans-unit>
             <trans-unit id="title.record_list_artist">
                 <source>title.record_list_artist</source>
-                <target>Artist list</target>
+                <target>Artists</target>
             </trans-unit>
             <trans-unit id="title.record_details_artist">
                 <source>title.record_details_artist</source>
-                <target>Artist details</target>
+                <target>Artist details #%id%</target>
             </trans-unit>
             <trans-unit id="title.artist_create">
                 <source>title.artist_create</source>
@@ -200,7 +252,7 @@
             </trans-unit>
             <trans-unit id="title.record_list_category">
                 <source>title.record_list_category</source>
-                <target>Category list</target>
+                <target>Categories</target>
             </trans-unit>
             <trans-unit id="title.record_details_category">
                 <source>title.record_details_category</source>
@@ -260,7 +312,7 @@
             </trans-unit>
             <trans-unit id="title.record_list_tag">
                 <source>title.record_list_tag</source>
-                <target>Tag list</target>
+                <target>Tags</target>
             </trans-unit>
             <trans-unit id="title.record_details_tag">
                 <source>title.record_details_tag</source>
@@ -277,6 +329,22 @@
             <trans-unit id="title.tag_delete">
                 <source>title.tag_delete</source>
                 <target>Delete a tag</target>
+            </trans-unit>
+            <trans-unit id="title.record_list_user">
+                <source>title.record_list_user</source>
+                <target>User list</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_user">
+                <source>title.record_details_user</source>
+                <target>User details</target>
+            </trans-unit>
+            <trans-unit id="title.user_edit">
+                <source>title.user_edit</source>
+                <target>Edit an user</target>
+            </trans-unit>
+            <trans-unit id="title.user_delete">
+                <source>title.user_delete</source>
+                <target>Delete an user</target>
             </trans-unit>
 
             <!-- Miscellaneous -->

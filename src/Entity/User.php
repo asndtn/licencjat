@@ -5,8 +5,6 @@
 
 namespace App\Entity;
 
-use App\Entity\Enum\UserRole;
-use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -15,11 +13,20 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class user.
+ *
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Table(
+ *     name="users",
+ *     uniqueConstraints={
+ *          @ORM\UniqueConstraint(
+ *               name="email_idx",
+ *               columns={"email"},
+ *              )
+ *          }
+ *     )
+ *
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
-#[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: 'users')]
-#[ORM\UniqueConstraint(name: 'email_idx', columns: ['email'])]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
@@ -39,39 +46,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * Primary key.
      *
-     * @var int|null
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
     /**
      * Email.
      *
-     * @var string|null
+     * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank
+     * @Assert\Email
      */
-    #[ORM\Column(type: 'string', length: 180, unique: true)]
-    #[Assert\NotBlank]
-    #[Assert\Email]
     private ?string $email;
 
     /**
      * Roles.
      *
-     * @var array<int, string>
+     * @ORM\Column(type="json")
      */
-    #[ORM\Column(type: 'json')]
     private array $roles = [];
 
     /**
      * Password.
      *
-     * @var string|null
+     * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank
+     * @Assert\Length(min=8, max=255)
      */
-    #[ORM\Column(type: 'string')]
-    #[Assert\NotBlank]
-    #[Assert\Length(min: 8, max: 255)]
     private ?string $password;
 
     /**

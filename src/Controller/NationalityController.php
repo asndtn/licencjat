@@ -17,8 +17,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class NationalityController.
+ *
+ * @Route("/nationality")
  */
-#[Route('/nationality')]
 class NationalityController extends AbstractController
 {
     /**
@@ -49,8 +50,9 @@ class NationalityController extends AbstractController
      * @param Request $request User request
      *
      * @return Response HTTP Response
+     *
+     * @Route("/", name="nationality_index", methods={"GET"})
      */
-    #[Route(name: 'nationality_index', methods: 'GET')]
     public function index(Request $request): Response
     {
         $pagination = $this->nationalityService->getPaginatedList(
@@ -66,15 +68,11 @@ class NationalityController extends AbstractController
      * @param Nationality $nationality Nationality entity
      *
      * @return Response HTTP Response
+     *
+     * @Route("/{id}", name="nationality_show", requirements={"id": "[1-9]\d*"}, methods={"GET"})
      */
-    #[Route(
-        '/{id}',
-        name: 'nationality_show',
-        requirements: ['id' => '[1-9]\d*'],
-        methods: 'GET'
-    )]
     public function show(Nationality $nationality): Response
-    {
+    {// TODO: fix nationality show action xD
         return $this->render(
             'nationality/show.html.twig',
             ['nationality' => $nationality]
@@ -87,12 +85,9 @@ class NationalityController extends AbstractController
      * @param Request $request HTTP request
      *
      * @return Response HTTP response
+     *
+     * @Route("/create", name="nationality_create", methods={"GET|POST"})]
      */
-    #[Route(
-        '/create',
-        name: 'nationality_create',
-        methods: 'GET|POST'
-    )]
     public function create(Request $request): Response
     {
         $nationality = new Nationality();
@@ -123,8 +118,9 @@ class NationalityController extends AbstractController
      * @param Nationality $nationality Nationality entity
      *
      * @return Response HTTP response
+     *
+     * @Route("/{id}/edit", name="nationality_edit", requirements={"id": "[1-9]\d*"}, methods={"GET", "PUT"})]
      */
-    #[Route('/{id}/edit', name: 'nationality_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, Nationality $nationality): Response
     {
         $form = $this->createForm(NationalityType::class, $nationality, [
@@ -160,8 +156,9 @@ class NationalityController extends AbstractController
      * @param Nationality $nationality Nationality entity
      *
      * @return Response HTTP Response
+     *
+     * @Route("/{id}/delete", name="nationality_delete", requirements={"id": "[1-9]\d*"}, methods={"GET", "DELETE"})]
      */
-    #[Route('/{id}/delete', name: 'nationality_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Nationality $nationality): Response
     {
         if (!$this->nationalityService->canBeDeleted($nationality)) {

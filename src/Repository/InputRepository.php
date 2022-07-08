@@ -39,7 +39,7 @@ class InputRepository extends ServiceEntityRepository
      *
      * @constant int
      */
-    public const PAGINATOR_ITEMS_PER_PAGE = 10;
+    public const PAGINATOR_ITEMS_PER_PAGE = 8;
 
     /**
      * Constructor.
@@ -60,7 +60,7 @@ class InputRepository extends ServiceEntityRepository
     {
         return $this->getOrCreateQueryBuilder()
             ->select(
-                'partial input.{id, title}',
+                'partial input.{id, title, paintingFilename}',
                 'partial artist.{id, name}'
             )
             ->join('input.artist', 'artist')

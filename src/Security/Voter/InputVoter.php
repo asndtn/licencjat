@@ -25,13 +25,6 @@ class InputVoter extends Voter
     public const EDIT = 'EDIT';
 
     /**
-     * View permission.
-     *
-     * @const string
-     */
-    public const VIEW = 'VIEW';
-
-    /**
      * Delete permission.
      *
      * @const string
@@ -63,7 +56,7 @@ class InputVoter extends Voter
      */
     protected function supports(string $attribute, $subject): bool
     {
-        return in_array($attribute, [self::EDIT, self::VIEW, self::DELETE])
+        return in_array($attribute, [self::EDIT, self::DELETE])
             && $subject instanceof Input;
     }
 
@@ -87,8 +80,6 @@ class InputVoter extends Voter
         switch ($attribute) {
             case self::EDIT:
                 return $this->canEdit($subject, $user);
-            case self::VIEW:
-                return $this->canView($subject, $user);
             case self::DELETE:
                 return $this->canDelete($subject, $user);
         }
@@ -105,19 +96,6 @@ class InputVoter extends Voter
      * @return bool Result
      */
     private function canEdit(Input $input, User $user): bool
-    {
-        return $input->getAuthor() === $user;
-    }
-
-    /**
-     * Checks if user can view input.
-     *
-     * @param Input $input Input entity
-     * @param User  $user  User
-     *
-     * @return bool Result
-     */
-    private function canView(Input $input, User $user): bool
     {
         return $input->getAuthor() === $user;
     }
