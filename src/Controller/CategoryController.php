@@ -8,6 +8,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Service\CategoryServiceInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -87,6 +88,8 @@ class CategoryController extends AbstractController
      * @return Response HTTP response
      *
      * @Route("/create", name="category_create", methods={"GET", "POST"})
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
     public function create(Request $request): Response
     {
@@ -120,13 +123,15 @@ class CategoryController extends AbstractController
      * @return Response HTTP response
      *
      * @Route("/{id}/edit", name="category_edit", requirements={"id": "[1-9]\d*"}, methods={"GET", "PUT"})
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Category $category): Response
     {
         $form = $this->createForm(CategoryType::class, $category, [
             'method' => 'PUT',
                 'action' => $this->generateUrl('category_edit', ['id' => $category->getId()]),
-            ]);
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -157,7 +162,9 @@ class CategoryController extends AbstractController
      *
      * @return Response HTTP response
      *
-     * @Route("{id}/delete", name="category_delete", requirements={"id": "[1-9]\d*"}, methods={"GET", "DELETE"})
+     * @Route("/{id}/delete", name="category_delete", requirements={"id": "[1-9]\d*"}, methods={"GET", "DELETE"})
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Category $category): Response
     {

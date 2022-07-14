@@ -8,6 +8,7 @@ namespace App\Controller;
 use App\Entity\Field;
 use App\Form\FieldType;
 use App\Service\FieldServiceInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +20,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * Class FieldController.
  *
  * @Route("/field")
+ *
+ * @IsGranted("ROLE_ADMIN")
  */
 class FieldController extends AbstractController
 {
@@ -68,6 +71,7 @@ class FieldController extends AbstractController
      * @param Field $field Field entity
      *
      * @return Response HTTP Response
+     *
      * @Route("/{id}", name="field_show", requirements={"id": "[1-9]\d*"}, methods={"GET"})
      */
     public function show(Field $field): Response
@@ -84,6 +88,7 @@ class FieldController extends AbstractController
      * @param Request $request HTTP request
      *
      * @return Response HTTP response
+     *
      * @Route("/create", name="field_create", methods={"GET", "POST"})
      */
     public function create(Request $request): Response

@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.record_details_user'|trans({'%id%': user.id|default('')}) }}
+    {{ 'title.record_details_nationality'|trans({'%id%': nationality.id|default('')}) }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.record_details_user'|trans({'%id%': user.id|default('')}) }}</h1>
-    {% if user is defined and user|length %}
+    <h1>{{ 'title.record_details_nationality'|trans({'%id%': nationality.id|default('')}) }}</h1>
+    {% if nationality is defined and nationality|length %}
         <dl class="dl-horizontal">
             <dt>{{ 'label.id'|trans }}</dt>
-            <dd>{{ user.id }}</dd>
+            <dd>{{ nationality.id }}</dd>
             <dt>{{ 'label.email'|trans }}</dt>
-            <dd>{{ user.email }}</dd>
+            <dd>{{ nationality.name }}</dd>
         </dl>
         <p>
-            <a href="{{ url('user_index') }}" title="{{ 'action.back_to_list'|trans }}">
+            <a href="{{ url('nationality_index') }}" title="{{ 'action.back_to_list'|trans }}">
                 {{ 'action.back_to_list'|trans }}
             </a>
         </p>

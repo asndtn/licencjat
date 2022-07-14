@@ -14,6 +14,7 @@ use App\Form\DataTransformer\TagsDataTransformer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormTypeExtensionInterface;
@@ -58,7 +59,7 @@ class InputType extends AbstractType
             [
                 'label' => 'label.painting',
                 'mapped' => false,
-                'required' => false,
+                'required' => true,
                 'constraints' => [
                     new File([
                         'maxSize' => '4096k',
@@ -135,17 +136,17 @@ class InputType extends AbstractType
             [
                 'label' => 'label.title',
                 'required' => true,
-                'attr' => ['max_length' => 90],
+                'attr' => ['max_length' => 180],
             ]
         );
 
         $builder->add(
             'description',
-            TextType::class,
+            TextareaType::class,
             [
                 'label' => 'label.description',
                 'required' => true,
-                'attr' => ['max_length' => 255],
+                'attr' => ['max_length' => 2048],
             ]
         );
 

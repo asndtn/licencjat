@@ -20,7 +20,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @psalm-suppress MissingConstructor
  */
-// #[ORM\UniqueConstraint(name: 'uq_artists_name', columns: ['name'])]
+/** #[ORM\UniqueConstraint(name: 'uq_artists_name', columns: ['name'])] */
 class Artist
 {
     /**

@@ -1,53 +1,69 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.record_details_input'|trans({'%id%': input.id|default('')}) }}
+    {{ input.title }}
 {% endblock %}
 
 {% block body %}
-    <h1 class="title">{{ input.title }}</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <h1 class="title col-6">{{ input.title }}</h1>
+        </div>
     {% if input is defined and input|length %}
-        <dl class="dl-horizontal">
-            <div class="rooow">
-                <dt>{{ 'label.artist'|trans }}</dt>
-                <dd>{{ input.artist.name }}</dd>
+        <div class="row">
+            <div class="col">
+                <div class="data">
+                <div class="roow">
+                    <dt>{{ 'label.artist'|trans }}</dt>
+                    <dd>{{ input.artist.name }}</dd>
+                </div>
+                <div class="roow">
+                    <dt>{{ 'label.field'|trans }}</dt>
+                    <dd>{{ input.field.name }}</dd>
+                </div>
+                <div class="roow">
+                    <dt>{{ 'label.movement'|trans }}</dt>
+                    <dd>{{ input.movement.name }}</dd>
+                </div>
+                <div class="roow">
+                    <dt>{{ 'label.category'|trans }}</dt>
+                    <dd>{{ input.category.name }}</dd>
+                </div>
+                <div class="roow">
+                    <dt>{{ 'label.author'|trans }}</dt>
+                    <dd>{{ input.author.email }}</dd>
+                </div>
+                </div>
+                <div class="idk">
+                    {{ input.description|markdown_to_html }}
+                </div>
             </div>
-            <div class="rooow">
-                <dt>{{ 'label.field'|trans }}</dt>
-                <dd>{{ input.field.name }}</dd>
-            </div>
-            <div class="rooow">
-                <dt>{{ 'label.movement'|trans }}</dt>
-                <dd>{{ input.movement.name }}</dd>
-            </div>
-            <div class="rooow">
-                <dt>{{ 'label.category'|trans }}</dt>
-                <dd>{{ input.category.name }}</dd>
-            </div>
-                {% if input.paintingFilename is defined and input.paintingFilename|length %}
-                    <img class="img-fluid" alt="Responsive image" src="{{ asset(paintings_directory~input.paintingFilename) }}">
-                {% endif %}
-            </dd>
-            <dt>{{ 'label.description'|trans }}</dt>
-            <dd>{{ input.description|markdown_to_html }}</dd>
-            <dt>{{ 'label.tags'|trans }}</dt>
-            <dd>{% if input.tags is defined and input.tags|length %}
-                    {% for tag in input.tags %}
-                        {{ tag.name }}
-                    {% endfor %}
-                {% else %}
-                    &nbsp;
-                    {% endif %}
-            </dd>
-        </dl>
-        <p>
-            <a href="{{ url('input_index') }}" title="{{ 'action.back_to_list'|trans }}">
-                {{ 'action.back_to_list'|trans }}
-            </a>
-        </p>
+
+    <div class="col d-flex justify-content-end">
+        {% if input.paintingFilename is defined and input.paintingFilename|length %}
+            <figure><img class="img-fluid" alt="Responsive image"
+                    src="{{ asset(paintings_directory~input.paintingFilename) }}"></figure>
+        {% endif %}
+    </div>
+        </div>
+
+{#    <div class="row">#}
+{#        <span class="col-6">{{ input.description|markdown_to_html }}</span>#}
+
+{#        <div class="col-12">#}
+{#            <dt>{{ 'label.tags'|trans }}</dt>#}
+{#            <dd>{% if input.tags is defined and input.tags|length %}#}
+{#                    {% for tag in input.tags %}#}
+{#                        {{ tag.name }}#}
+{#                    {% endfor %}#}
+{#                {% else %}#}
+{#                    &nbsp;#}
+{#                {% endif %}#}
+{#            </dd>#}
+{#        </div>#}
+{#    </div>#}
+        </div>
     {% else %}
-        <p>
-            {{ 'message.record_not_found'|trans }}
-        </p>
+        <p>{{ 'message.record_not_found'|trans }}</p>
     {% endif %}
 {% endblock %}

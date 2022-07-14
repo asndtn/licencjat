@@ -37,6 +37,7 @@ class FieldService implements FieldServiceInterface
      * Constructor.
      *
      * @param FieldRepository    $fieldRepository Field repository
+     * @param InputRepository    $inputRepository Input repository
      * @param PaginatorInterface $paginator       Paginator
      */
     public function __construct(FieldRepository $fieldRepository, InputRepository $inputRepository, PaginatorInterface $paginator)

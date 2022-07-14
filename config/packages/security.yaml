@@ -42,6 +42,7 @@ security:
         # - { path: ^/user, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/register, roles: PUBLIC_ACCESS }
         - { path: ^/input/create, roles: ROLE_USER }
         - { path: ^/nationality, roles: ROLE_ADMIN }
         - { path: ^/field, roles: ROLE_ADMIN }

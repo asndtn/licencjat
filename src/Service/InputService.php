@@ -26,15 +26,29 @@ class InputService implements InputServiceInterface
     private PaginatorInterface $paginator;
 
     /**
+     * Category service interface.
+     */
+    private CategoryServiceInterface $categoryService;
+
+    /**
+     * Tag service interface.
+     */
+    private TagServiceInterface $tagService;
+
+    /**
      * Constructor.
      *
-     * @param InputRepository    $inputRepository Input repository
-     * @param PaginatorInterface $paginator       Paginator
+     * @param InputRepository          $inputRepository Input repository
+     * @param PaginatorInterface       $paginator       Paginator
+     * @param CategoryServiceInterface $categoryService Category service interface
+     * @param TagServiceInterface      $tagService      Tag service interface
      */
-    public function __construct(InputRepository $inputRepository, PaginatorInterface $paginator)
+    public function __construct(InputRepository $inputRepository, PaginatorInterface $paginator, CategoryServiceInterface $categoryService, TagServiceInterface $tagService)
     {
         $this->inputRepository = $inputRepository;
         $this->paginator = $paginator;
+        $this->categoryService = $categoryService;
+        $this->tagService = $tagService;
     }
 
     /**

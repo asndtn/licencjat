@@ -85,7 +85,8 @@ class InputController extends AbstractController
     /**
      * Create action.
      *
-     * @param Request $request HTTP request
+     * @param Request      $request      HTTP request
+     * @param FileUploader $fileUploader File uploader
      *
      * @return Response HTTP response
      *
@@ -136,6 +137,7 @@ class InputController extends AbstractController
      * @return Response HTTP response
      *
      * @Route("/{id}/edit", name="input_edit", requirements={"id": "[1-9]\d*"}, methods={"GET|PUT"})
+     *
      * @IsGranted("EDIT", subject="input")
      */
     public function edit(Request $request, Input $input): Response
@@ -143,7 +145,7 @@ class InputController extends AbstractController
         $form = $this->createForm(InputType::class, $input, [
             'method' => 'PUT',
                 'action' => $this->generateUrl('input_edit', ['id' => $input->getId()]),
-            ]);
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -175,6 +177,7 @@ class InputController extends AbstractController
      * @return Response HTTP Response
      *
      * @Route("/{id}/delete", name="input_delete", requirements={"id": "[1-9]\d*"}, methods={"GET|DELETE"})
+     *
      * @IsGranted("DELETE", subject="input")
      */
     public function delete(Request $request, Input $input): Response

@@ -25,7 +25,7 @@ class Input
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private ?int $id = null;
+    private int $id;
 
     /**
      * Title.
@@ -34,9 +34,12 @@ class Input
      *
      * @Assert\Type("string")
      * @Assert\NotBlank
-     * @Assert\Length(min=3, max=180)
+     * @Assert\Length(
+     *     min=3,
+     *     max=180
+     * )
      */
-    private ?string $title = null;
+    private string $title;
 
     /**
      * Category.
@@ -45,6 +48,7 @@ class Input
      *
      * @Assert\Type("App\Entity\Category")
      * @Assert\NotBlank
+     *
      * @ORM\JoinColumn(nullable=false)
      */
     private Category $category;
@@ -55,7 +59,7 @@ class Input
      * @ORM\ManyToOne(targetEntity="App\Entity\Field", fetch="EXTRA_LAZY")
      *
      * @Assert\Type("App\Entity\Field")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank
      *
      * @ORM\JoinColumn(nullable=false)
      */
@@ -77,7 +81,7 @@ class Input
      * Artist.
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\Artist", fetch="EXTRA_LAZY")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=false)
      *
      * @Assert\Type(type="App\Entity\Artist")
      */
@@ -89,6 +93,7 @@ class Input
      * @var array
      *
      * @Assert\Valid
+     *
      * @ORM\ManyToMany(targetEntity="App\Entity\Tag", fetch="EXTRA_LAZY", orphanRemoval=true)
      * @ORM\JoinTable(name="inputs_tags")
      */
@@ -100,26 +105,37 @@ class Input
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\User", fetch="EXTRA_LAZY")
-     * @ORM\JoinColumn(nullable=false)
+     *
      * @Assert\NotBlank
      * @Assert\Type("App\Entity\User")
+     *
+     * @ORM\JoinColumn(nullable=false)
      */
     private $author;
 
     /**
      * Description.
      *
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=false, length=2048)
+     *
      * @Assert\Type("string")
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min="3",
+     *     max="2048",
+     * )
      */
-    private ?string $description = null;
+    private string $description;
 
+    /**
+     * TODO: Umożlwić edycję obrazka.
+     */
     /**
      * Painting filename.
      *
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=false)
      */
-    private ?string $paintingFilename;
+    private string $paintingFilename;
 
     /**
      * Constructor.
@@ -132,9 +148,9 @@ class Input
     /**
      * Getter for Id.
      *
-     * @return int|null Id
+     * @return int Id
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -142,9 +158,9 @@ class Input
     /**
      * Getter for Title.
      *
-     * @return string|null Title
+     * @return string Title
      */
-    public function getTitle(): ?string
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -152,9 +168,9 @@ class Input
     /**
      * Setter for Title.
      *
-     * @param string|null $title Title
+     * @param string $title Title
      */
-    public function setTitle(?string $title): void
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
@@ -162,9 +178,9 @@ class Input
     /**
      * Getter for Category.
      *
-     * @return Category|null Category
+     * @return Category Category
      */
-    public function getCategory(): ?Category
+    public function getCategory(): Category
     {
         return $this->category;
     }
@@ -172,9 +188,9 @@ class Input
     /**
      * Setter for Category.
      *
-     * @param Category|null $category Category
+     * @param Category $category Category
      */
-    public function setCategory(?Category $category): void
+    public function setCategory(Category $category): void
     {
         $this->category = $category;
     }
@@ -182,9 +198,9 @@ class Input
     /**
      * Getter for Field.
      *
-     * @return Field|null Field
+     * @return Field Field
      */
-    public function getField(): ?Field
+    public function getField(): Field
     {
         return $this->field;
     }
@@ -192,9 +208,9 @@ class Input
     /**
      * Setter for Field.
      *
-     * @param Field|null $field Field
+     * @param Field $field Field
      */
-    public function setField(?Field $field): void
+    public function setField(Field $field): void
     {
         $this->field = $field;
     }
@@ -202,9 +218,9 @@ class Input
     /**
      * Getter for Movement.
      *
-     * @return Movement|null Movement
+     * @return Movement Movement
      */
-    public function getMovement(): ?Movement
+    public function getMovement(): Movement
     {
         return $this->movement;
     }
@@ -212,9 +228,9 @@ class Input
     /**
      * Setter for Movement.
      *
-     * @param Movement|null $movement Movement
+     * @param Movement $movement Movement
      */
-    public function setMovement(?Movement $movement): void
+    public function setMovement(Movement $movement): void
     {
         $this->movement = $movement;
     }
@@ -222,9 +238,9 @@ class Input
     /**
      * Getter for Artist.
      *
-     * @return Artist|null Artist
+     * @return Artist Artist
      */
-    public function getArtist(): ?Artist
+    public function getArtist(): Artist
     {
         return $this->artist;
     }
@@ -232,9 +248,9 @@ class Input
     /**
      * Setter for Artist.
      *
-     * @param Artist|null $artist Artist
+     * @param Artist $artist Artist
      */
-    public function setArtist(?Artist $artist): void
+    public function setArtist(Artist $artist): void
     {
         $this->artist = $artist;
     }
@@ -274,9 +290,9 @@ class Input
     /**
      * Getter for Author.
      *
-     * @return User|null User
+     * @return User User
      */
-    public function getAuthor(): ?User
+    public function getAuthor(): User
     {
         return $this->author;
     }
@@ -284,9 +300,9 @@ class Input
     /**
      * Setter for Author.
      *
-     * @param User|null $author User
+     * @param User $author User
      */
-    public function setAuthor(?User $author): void
+    public function setAuthor(User $author): void
     {
         $this->author = $author;
     }
@@ -294,9 +310,9 @@ class Input
     /**
      * Getter for Description.
      *
-     * @return string|null Description
+     * @return string Description
      */
-    public function getDescription(): ?string
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -304,9 +320,9 @@ class Input
     /**
      * Setter for Description.
      *
-     * @param string|null $description Description
+     * @param string $description Description
      */
-    public function setDescription(?string $description): void
+    public function setDescription(string $description): void
     {
         $this->description = $description;
     }
@@ -314,17 +330,19 @@ class Input
     /**
      * Getter for Painting filename.
      *
-     * @return string|null Painting filename
+     * @return string Painting filename
      */
-    public function getPaintingFilename(): ?string
+    public function getPaintingFilename(): string
     {
         return $this->paintingFilename;
     }
 
     /**
      * Setter for Painting filename.
+     *
+     * @param string $paintingFilename Painting filename
      */
-    public function setPaintingFilename(?string $paintingFilename): void
+    public function setPaintingFilename(string $paintingFilename): void
     {
         $this->paintingFilename = $paintingFilename;
     }

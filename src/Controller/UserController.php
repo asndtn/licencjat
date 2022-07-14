@@ -56,7 +56,7 @@ class UserController extends AbstractController
      */
     public function index(Request $request): Response
     {
-        $pagination = $this->userService->GetPaginatedList(
+        $pagination = $this->userService->getPaginatedList(
             $request->query->getInt('page', 1)
         );
 
@@ -89,6 +89,7 @@ class UserController extends AbstractController
      * @return Response HTTP Response
      *
      * @Route("/{id}/edit", name="user_edit", requirements={"id": "[1-9]\d*"}, methods={"GET", "PUT"})
+     *
      * @IsGranted("EDIT", subject="input")
      */
     public function edit(Request $request, User $user): Response
@@ -124,12 +125,19 @@ class UserController extends AbstractController
     }
 
     /**
+     * Delete action,.
+     *
+     * @param Request $request User Request
+     * @param User    $user    User entity
+     *
+     * @return Response HTTP Response
+     *
      * @Route("/{id}/delete", name="user_delete", requirements={"id": "[1-9]\d*"}, methods={"GET", "DELETE"})
      */
     public function delete(Request $request, User $user): Response
     {
         $form = $this->createForm(FormType::class, $user, [
-           'method' => 'DELETE',
+            'method' => 'DELETE',
             'action' => $this->generateUrl('user_delete', ['id' => $user->getId()]),
         ]);
         $form->handleRequest($request);

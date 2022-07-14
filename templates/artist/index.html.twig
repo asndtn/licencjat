@@ -7,13 +7,9 @@
 {% block body %}
     <h1>{{ 'title.record_list_artist'|trans }}</h1>
     {%  if pagination is defined and pagination.items|length %}
-        <div class="navigation text-center">
-            {{ knp_pagination_render(pagination) }}
-        </div>
-
-            <a class="btn btn-primary btn-lg" role="button" href="{{ url('artist_create') }}" title="{{ 'action.create'|trans }}">
-                {{ 'action.create'|trans }}
-            </a>
+{#            <a class="btn btn-primary btn-lg" role="button" href="{{ url('artist_create') }}" title="{{ 'action.create'|trans }}">#}
+{#                {{ 'action.create'|trans }}#}
+{#            </a>#}
 
         <table class="table table-striped">
             <thead>
@@ -35,6 +31,7 @@
                                 {{ 'action.view'|trans }}
                             </a>
                         </li>
+                        {% if is_granted('ROLE_ADMIN') %}
                         <li>
                             <a href="{{ url('artist_edit', {id: artist.id}) }}" title="{{ 'action.edit'|trans }}">
                                 {{ 'action.edit'|trans }}
@@ -45,6 +42,7 @@
                                 {{ 'action.delete'|trans }}
                             </a>
                         </li>
+                        {% endif %}
                     </ul>
                 </td>
             </tr>

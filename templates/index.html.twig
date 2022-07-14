@@ -5,8 +5,45 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'Test' }}</h1>
+    {# TODO: Index page #}
 
-    {# TODO: Bootstrap carousel XD #}
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ asset('uploads/paintings/basquiat-62c734d272fcd.jpg') }}" class="d-block w-100" alt="Basquiat">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Jean-Michel Basquiat</h5>
+                    <p>Some representative placeholder content for the first slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('uploads/paintings/bubbles-62c734d26b9dc.jpg') }}" class="d-block w-100" alt="Bubbles">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Bubbles</h5>
+                    <p>Some representative placeholder content for the second slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('uploads/paintings/seagul-62c734d27007d.jpg') }}" class="d-block w-100" alt="Seagul">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Seagul</h5>
+                    <p>Some representative placeholder content for the third slide.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 
 {% endblock %}

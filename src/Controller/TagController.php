@@ -8,6 +8,7 @@ namespace App\Controller;
 use App\Entity\Tag;
 use App\Form\TagType;
 use App\Service\TagServiceInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -120,6 +121,8 @@ class TagController extends AbstractController
      * @return Response HTTP response
      *
      * @Route("/{id}/edit", name="tag_edit", requirements={"id": "[1-9]\d*"}, methods={"GET", "PUT"})
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Tag $tag): Response
     {
@@ -158,14 +161,23 @@ class TagController extends AbstractController
      * @return Response HTTP Response
      *
      * @Route("/{id}/delete", name="tag_delete", requirements={"id": "[1-9]\d*"}, methods={"GET", "DELETE"})
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Tag $tag): Response
     {
+        // TODO: restrict usuwanie tagów co są przypisane do inputu xddddXDDDD
 //        if (!$this->tagService->canBeDeleted($tag)) {
 //            $this->addFlash(
 //                'warning',
 //                $this->translator->trans('message.tag_contains_inputs')
 //            );
+//
+//            return $this->redirectToRoute('tag_index');
+//        }
+//
+//        if ($input->getTags()->count()) {
+//            $this->addFlash('warning', 'message.tags_contains_inputs');
 //
 //            return $this->redirectToRoute('tag_index');
 //        }

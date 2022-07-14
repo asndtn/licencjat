@@ -8,6 +8,7 @@ namespace App\Controller;
 use App\Entity\Nationality;
 use App\Form\NationalityType;
 use App\Service\NationalityServiceInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +20,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * Class NationalityController.
  *
  * @Route("/nationality")
+ *
+ * @IsGranted("ROLE_ADMIN")
  */
 class NationalityController extends AbstractController
 {
@@ -72,7 +75,7 @@ class NationalityController extends AbstractController
      * @Route("/{id}", name="nationality_show", requirements={"id": "[1-9]\d*"}, methods={"GET"})
      */
     public function show(Nationality $nationality): Response
-    {// TODO: fix nationality show action xD
+    {
         return $this->render(
             'nationality/show.html.twig',
             ['nationality' => $nationality]
