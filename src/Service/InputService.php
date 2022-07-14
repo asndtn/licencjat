@@ -28,8 +28,8 @@ class InputService implements InputServiceInterface
     /**
      * Constructor.
      *
-     * @param InputRepository    $inputRepository Input repository
-     * @param PaginatorInterface $paginator       Paginator
+     * @param InputRepository          $inputRepository Input repository
+     * @param PaginatorInterface       $paginator       Paginator
      */
     public function __construct(InputRepository $inputRepository, PaginatorInterface $paginator)
     {

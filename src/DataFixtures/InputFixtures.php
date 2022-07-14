@@ -37,9 +37,14 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
 
     /**
      * File uploader.
+     *
+     * @var FileUploader File uploader
      */
     private FileUploader $fileUploader;
 
+    /**
+     * Constructor.
+     */
     public function __construct(FileUploader $fileUploader)
     {
         $this->fileUploader = $fileUploader;
@@ -61,7 +66,7 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
         $this->createMany(20, 'inputs', function (int $i) {
             $input = new Input();
             $input->setTitle($this->faker->sentence);
-            $input->setDescription($this->faker->text);
+            $input->setDescription($this->faker->paragraphs(3, true));
 
             $imageFilename = $this->fakeUploadImage();
 

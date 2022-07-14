@@ -86,6 +86,7 @@ class ArtistController extends AbstractController
      * @param Request $request HTTP request
      *
      * @return Response HTTP response
+     *
      * @Route("/create", name="artist_create", methods={"GET|POST"})
      *
      * @IsGranted("ROLE_ADMIN")
@@ -130,7 +131,7 @@ class ArtistController extends AbstractController
         $form = $this->createForm(ArtistType::class, $artist, [
             'method' => 'PUT',
                 'action' => $this->generateUrl('artist_edit', ['id' => $artist->getId()]),
-            ]);
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

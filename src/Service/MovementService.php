@@ -37,6 +37,7 @@ class MovementService implements MovementServiceInterface
      * Constructor.
      *
      * @param MovementRepository $movementRepository Movement repository
+     * @param InputRepository    $inputRepository    Input repository
      * @param PaginatorInterface $paginator          Paginator
      */
     public function __construct(MovementRepository $movementRepository, InputRepository $inputRepository, PaginatorInterface $paginator)

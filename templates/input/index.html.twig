@@ -5,11 +5,12 @@
 {% endblock %}
 
 {% block body %}
+    <h1>{{ 'title.record_list_input'|trans }}</h1>
     {%  if pagination is defined and pagination.items|length %}
         {% for input in pagination.items %}
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="{{ asset(paintings_directory~input.paintingFilename) }}"
-                             alt="{{ input.artist.name }}" alt="{{ input.artist.name }}">
+                             alt="{{ input.artist.name }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ input.title }}</h5>
                             {#                    <p class="card-text">Some txt</p> #}

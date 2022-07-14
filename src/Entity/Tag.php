@@ -21,7 +21,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @UniqueEntity(fields={"name"})
  */
-// #[ORM\UniqueConstraint(name: 'uq_tags_name', columns: ['name'])]
 class Tag
 {
     /**

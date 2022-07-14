@@ -55,6 +55,14 @@ class ArtistFixtures extends AbstractBaseFixtures implements DependentFixtureInt
         $this->manager->flush();
     }
 
+    /**
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on.
+     *
+     * @return string[] of dependencies
+     *
+     * @psalm-return array{0: NationalityFixtures::class}
+     */
     public function getDependencies(): array
     {
         return [NationalityFixtures::class];

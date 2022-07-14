@@ -1,10 +1,22 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 .navbar {
     padding: 10px;
+    margin-bottom: 10px;
+}
+
+#nav-container {
+    padding: 0;
 }
 
 #btn-nav {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 5px 10px;
+}
+
+.col-4 {
+    padding: 10px;
 }
 
 .navbar-text {
@@ -17,19 +29,43 @@
     margin: 10px;
 }
 
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.card-title {
+    width: 100%;
+    height: 5vw;
+}
+
 .title {
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.rooow > dt, dd {
+.data {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.roow > dt, dd {
     display: inline-block;
-    margin: 2px;
 }
 
-.img-fluid {
-    max-height: 50%;
-    max-width: 50%;
-    position: absolute;
-    right: 0;
-    top: 10%;
+.col-12 > dt, dd {
+    display: inline-block;
+}
+
+span.col-12 {
+    margin-top: 20px;
+}
+
+span > p {
+    margin-bottom: 8px;
+}
+
+dd > p {
+    margin-bottom: 0;
 }

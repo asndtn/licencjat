@@ -98,7 +98,11 @@
             </trans-unit>
             <trans-unit id="label.logged">
                 <source>label.logged</source>
-                <target>Hello </target>
+                <target>You are logged in as </target>
+            </trans-unit>
+            <trans-unit id="label.welcome">
+                <source>label.welcome</source>
+                <target>Welcome back!</target>
             </trans-unit>
 
             <!-- Messages -->
@@ -182,17 +186,13 @@
                 <source>title.app</source>
                 <target>Images of discrimination</target>
             </trans-unit>
-            <trans-unit id="title.record_list">
-                <source>title.record_list</source>
-                <target>List</target>
-            </trans-unit>
             <trans-unit id="title.record_details">
                 <source>title.record_details</source>
                 <target>Details #%id%</target>
             </trans-unit>
             <trans-unit id="title.record_list_input">
                 <source>title.record_list_input</source>
-                <target>Input list</target>
+                <target>Artworks</target>
             </trans-unit>
             <trans-unit id="title.record_details_input">
                 <source>title.record_details_input</source>

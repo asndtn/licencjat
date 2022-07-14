@@ -70,7 +70,11 @@
             </trans-unit>
             <trans-unit id="label.logged">
                 <source>label.logged</source>
-                <target>Hello </target>
+                <target>Jesteś zalogowan_ jako </target>
+            </trans-unit>
+            <trans-unit id="label.welcome">
+                <source>label.welcome</source>
+                <target>Witaj z powrotem!</target>
             </trans-unit>
 
             <!-- Messages -->
@@ -81,10 +85,6 @@
             <trans-unit id="message.record_not_found">
                 <source>message.record_not_found</source>
                 <target>Wpis nie istnieje.</target>
-            </trans-unit>
-            <trans-unit id="title.record_list">
-                <source>title.record_list</source>
-                <target>Lista ??</target>
             </trans-unit>
             <trans-unit id="title.record_details">
                 <source>title.record_details</source>
@@ -198,7 +198,7 @@
             </trans-unit>
             <trans-unit id="title.record_list_input">
                 <source>title.record_list_input</source>
-                <target>Lista wpisów</target>
+                <target>Dzieła</target>
             </trans-unit>
             <trans-unit id="title.record_list_nationality">
                 <source>title.record_list_nationality</source>

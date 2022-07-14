@@ -20,7 +20,7 @@ interface UserServiceInterface
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function GetPaginatedList(int $page): PaginationInterface;
+    public function getPaginatedList(int $page): PaginationInterface;
 
     /**
      * Save entity.

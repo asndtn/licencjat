@@ -19,7 +19,7 @@ class IndexController extends AbstractController
      *
      * @return Response HTTP Response
      *
-     * @Route("/")
+     * @Route("/", name="app_index", methods={"GET"})
      */
     public function index(): Response
     {

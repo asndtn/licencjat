@@ -8,6 +8,7 @@ namespace App\Controller;
 use App\Entity\Movement;
 use App\Form\MovementType;
 use App\Service\MovementServiceInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +20,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * Class MovementController.
  *
  * @Route("/movement")
+ *
+ * @IsGranted("ROLE_ADMIN")
  */
 class MovementController extends AbstractController
 {

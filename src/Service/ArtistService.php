@@ -37,6 +37,7 @@ class ArtistService implements ArtistServiceInterface
      * Constructor.
      *
      * @param ArtistRepository   $artistRepository Artist repository
+     * @param InputRepository    $inputRepository  Input repository
      * @param PaginatorInterface $paginator        Paginator
      */
     public function __construct(ArtistRepository $artistRepository, InputRepository $inputRepository, PaginatorInterface $paginator)

@@ -39,7 +39,7 @@ class InputRepository extends ServiceEntityRepository
      *
      * @constant int
      */
-    public const PAGINATOR_ITEMS_PER_PAGE = 8;
+    public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
     /**
      * Constructor.
@@ -151,6 +151,34 @@ class InputRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
+    /**
+     * Count inputs by tag.
+     *
+     * @param Tag $tag Tag
+     *
+     * @return int Number of inputs in tag
+     *
+     * @throws NoResultException
+     * @throws NonUniqueResultException
+     */
+    public function countByTag(Tag $tag): int
+    {
+        $qb = $this->getOrCreateQueryBuilder();
+
+        return $qb->select($qb->expr()->countDistinct('input.id'))
+            ->where('input.tag = :tag')
+            ->setParameter(':tag', $tag)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * Query by Author.
+     *
+     * @param User $user User entity
+     *
+     * @return QueryBuilder Query builder
+     */
     public function queryByAuthor(User $user): QueryBuilder
     {
         $queryBuilder = $this->queryAll();

@@ -23,6 +23,17 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
  */
 class RegistrationController extends AbstractController
 {
+    /**
+     * Register action.
+     *
+     * @param Request                     $request            User Request
+     * @param UserPasswordHasherInterface $userPasswordHasher User Password Hasher
+     * @param UserAuthenticatorInterface  $userAuthenticator  User Authenticator
+     * @param LoginFormAuthenticator      $authenticator      Authenticator
+     * @param EntityManagerInterface      $entityManager      Entity manager
+     *
+     * @return Response HTTP Response
+     */
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginFormAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
         $user = new User();

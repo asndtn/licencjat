@@ -37,6 +37,7 @@ class NationalityService implements NationalityServiceInterface
      * Constructor.
      *
      * @param NationalityRepository $nationalityRepository Nationality repository
+     * @param ArtistRepository      $artistRepository      Artist repository
      * @param PaginatorInterface    $paginator             Paginator
      */
     public function __construct(NationalityRepository $nationalityRepository, ArtistRepository $artistRepository, PaginatorInterface $paginator)
