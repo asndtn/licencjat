@@ -51,20 +51,62 @@ class InputRepository extends ServiceEntityRepository
         parent::__construct($registry, Input::class);
     }
 
+//    /**
+//     * Query by Author.
+//     *
+//     * @param User $user User entity
+//     *
+//     * @return QueryBuilder Query builder
+//     */
+//    public function queryByAuthor(User $user): QueryBuilder
+//    {
+//        $queryBuilder = $this->queryAll();
+//
+//        $queryBuilder->andWhere('input.author = :author')
+//            ->setParameter('author', $user);
+//
+//        return $queryBuilder;
+//    }
+
     /**
      * Query all records.
      *
+     * @param array<string, object> $filters Filters
+     *
      * @return QueryBuilder Query builder
      */
-    public function queryAll(): QueryBuilder
+    public function queryAll(array $filters = []): QueryBuilder
     {
-        return $this->getOrCreateQueryBuilder()
+        $queryBuilder = $this->getOrCreateQueryBuilder()
             ->select(
                 'partial input.{id, title, paintingFilename}',
+                'partial category.{id, name}',
                 'partial artist.{id, name}'
+                //TODO: inne partial daj
             )
             ->join('input.artist', 'artist')
+            ->join('input.category', 'category')
             ->orderBy('input.id', 'ASC');
+
+        return $this->applyFiltersToList($queryBuilder, $filters);
+    }
+
+    /**
+     * Apply filters to paginated list.
+     *
+     * @param QueryBuilder          $queryBuilder Query builder
+     * @param array<string, object> $filters      Filters array
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function applyFiltersToList(QueryBuilder $queryBuilder, array $filters = []): QueryBuilder
+    {
+        if (isset($filters['category']) && $filters['category'] instanceof Category) {
+            $queryBuilder->andWhere('category = :category')
+                ->setParameter('category', $filters['category']);
+        }
+
+        return $queryBuilder;
     }
 
     /**
@@ -170,23 +212,6 @@ class InputRepository extends ServiceEntityRepository
             ->setParameter(':tag', $tag)
             ->getQuery()
             ->getSingleScalarResult();
-    }
-
-    /**
-     * Query by Author.
-     *
-     * @param User $user User entity
-     *
-     * @return QueryBuilder Query builder
-     */
-    public function queryByAuthor(User $user): QueryBuilder
-    {
-        $queryBuilder = $this->queryAll();
-
-        $queryBuilder->andWhere('input.author = :author')
-            ->setParameter('author', $user);
-
-        return $queryBuilder;
     }
 
 //    /**

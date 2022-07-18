@@ -6,6 +6,7 @@
 namespace App\Service;
 
 use App\Entity\Input;
+use App\Entity\User;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**
@@ -17,10 +18,11 @@ interface InputServiceInterface
      * Get paginated list.
      *
      * @param int $page Page number
+     * @param array $filters Filters
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page): PaginationInterface;
+    public function getPaginatedList(int $page, array $filters = []): PaginationInterface;
 
     /**
      * Save entity.
@@ -35,4 +37,13 @@ interface InputServiceInterface
      * @param Input $input Input entity
      */
     public function delete(Input $input): void;
+
+    /**
+     * Prepare fiers for the inputs list.
+     *
+     * @param array $filters Filters
+     *
+     * @return array
+     */
+    public function prepareFilters(array $filters): array;
 }

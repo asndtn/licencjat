@@ -44,4 +44,12 @@ interface CategoryServiceInterface
      * @param Category $category Category entity
      */
     public function delete(Category $category): void;
+
+    /**
+     * Find by id.
+     *
+     * @param int $id Category id
+     * @return Category|null Category entity
+     */
+    public function findOneById(int $id): ?Category;
 }

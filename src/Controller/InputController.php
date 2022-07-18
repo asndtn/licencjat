@@ -58,12 +58,19 @@ class InputController extends AbstractController
      */
     public function index(Request $request): Response
     {
+        $filters = $this->getFilters($request);
         $pagination = $this->inputService->getPaginatedList(
-            $request->query->getInt('page', 1)
+            $request->query->getInt('page', 1),
+            $filters
         );
 
         return $this->render('input/index.html.twig', ['pagination' => $pagination]);
     }
+
+//    public function userInputs(Request $request): Response
+//    {
+//        $pagination = $this->inputService
+//    }
 
     /**
      * Show action.
@@ -206,5 +213,22 @@ class InputController extends AbstractController
                 'input' => $input,
             ]
         );
+    }
+
+    /**
+     * Get filters from request.
+     *
+     * @param Request $request HTTP request
+     *
+     * @return array<string, int> Array of filters
+     *
+     * @psalm-return array{category_id: int, status_id: int}
+     */
+    private function getFilters(Request $request): array
+    {
+        $filters = [];
+        $filters['category_id'] = $request->query->getInt('filters_category_id');
+
+        return $filters;
     }
 }

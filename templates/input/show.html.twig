@@ -27,7 +27,7 @@
                 </div>
                 <div class="roow">
                     <dt>{{ 'label.category'|trans }}</dt>
-                    <dd>{{ input.category.name }}</dd>
+                    <dd><a href="{{ url('input_index', {'filters.category_id' : input.category.id}) }}" title="{{ input.category.id }}">{{ input.category.name }}</a></dd>
                 </div>
                 <div class="roow">
                     <dt>{{ 'label.author'|trans }}</dt>

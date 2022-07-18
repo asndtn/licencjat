@@ -13,7 +13,7 @@
                              alt="{{ input.artist.name }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ input.title }}</h5>
-                            {#                    <p class="card-text">Some txt</p> #}
+                                                {# <p class="card-text"><a href="{{ url('input_index', {'filters.category_id' : input.category.id}) }}" title="{{ input.category.name }}">{{ input.category.name }}</a></p> #}
                             <a href="{{ url('input_show', {id: input.id}) }}" title="{{ 'action.view'|trans }}"
                                class="btn btn-primary">
                                 {{ 'action.view'|trans }}

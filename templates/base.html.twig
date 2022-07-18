@@ -42,6 +42,11 @@
                         </a>
                     </li>
                     <li class="nav-item" id="btn-nav">
+                        <a class="btn btn-primary" role="button" href="{{ url('user_show', {id: app.user.id}) }}" title="{{ 'action.view'|trans }}">
+                            {{ 'action.account'|trans }}
+                        </a>
+                    </li>
+                    <li class="nav-item" id="btn-nav">
                         <a class="btn btn-outline-primary" href="{{ url('app_logout') }}" role="button">{{ 'action.logout'|trans }}</a>
                     </li>
                 {% else %}

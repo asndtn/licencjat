@@ -1,11 +1,10 @@
 <?php
 /**
- * Input voter.
+ * User voter.
  */
 
 namespace App\Security\Voter;
 
-use App\Entity\Input;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
@@ -13,9 +12,9 @@ use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * Class InputVoter.
+ * Class UserVoter.
  */
-class InputVoter extends Voter
+class UserVoter extends Voter
 {
     /**
      * Edit permission.
@@ -25,11 +24,18 @@ class InputVoter extends Voter
     public const EDIT = 'EDIT';
 
     /**
-     * Delete permission.
+     * View permission.
      *
      * @const string
      */
-    public const DELETE = 'DELETE';
+    public const VIEW = 'VIEW';
+
+//    /**
+//     * Delete permission.
+//     *
+//     * @const string
+//     */
+//    public const DELETE = 'DELETE';
 
     /**
      * Security helper.
@@ -58,8 +64,8 @@ class InputVoter extends Voter
      */
     protected function supports(string $attribute, $subject): bool
     {
-        return in_array($attribute, [self::EDIT, self::DELETE])
-            && $subject instanceof Input;
+        return in_array($attribute, [self::VIEW, self::EDIT /*, self::DELETE*/])
+            && $subject instanceof User;
     }
 
     /**
@@ -80,38 +86,19 @@ class InputVoter extends Voter
         }
 
         switch ($attribute) {
+            case self::VIEW:
+                return $this->isOwnerOrAdmin($subject, $user);
             case self::EDIT:
-                return $this->canEdit($subject, $user);
-            case self::DELETE:
-                return $this->canDelete($subject, $user);
+                return $this->isOwnerOrAdmin($subject, $user);
+//            case self::DELETE:
+//                return $this->isOwnerOrAdmin($subject, $user);
         }
 
         return false;
     }
 
-    /**
-     * Checks if user can edit input.
-     *
-     * @param Input $input Input entity
-     * @param User  $user  User
-     *
-     * @return bool Result
-     */
-    private function canEdit(Input $input, User $user): bool
+    private function isOwnerOrAdmin($subject, User $user): bool
     {
-        return $input->getAuthor() === $user;
-    }
-
-    /**
-     * Checks if user can delete input.
-     *
-     * @param Input $input Input entity
-     * @param User  $user  User
-     *
-     * @return bool Result
-     */
-    private function canDelete(Input $input, User $user): bool
-    {
-        return $input->getAuthor() === $user;
+        return $subject->getId() === $user->getId() || (in_array('ROLE_ADMIN', $user->getRoles()));
     }
 }
