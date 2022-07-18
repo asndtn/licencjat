@@ -27,7 +27,7 @@
             {% for category in pagination.items %}
             <tr>
                 <td>{{ category.id }}</td>
-                <td>{{ category.name }}</td>
+                <td><a href="{{ url('input_index', {'filters.category_id' : category.id}) }}" title="category.id">{{ category.name }}</a></td>
                 <td>
                     <ul>
                         <li>

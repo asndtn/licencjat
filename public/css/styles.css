@@ -69,3 +69,31 @@ span > p {
 dd > p {
     margin-bottom: 0;
 }
+
+.col-8 > .img-fluid {
+    object-fit: cover;
+    height: auto;
+    width: 100%;
+}
+
+#text {
+    padding-left: 50px;
+    color: #57295a;
+}
+
+#text a {
+    text-decoration: none;
+    color: #361738;
+}
+
+#text a:hover {
+    color: #58265C;
+}
+
+div.row.align-items-center {
+    background-color: rgb(246, 126, 255);
+}
+
+div.col-8 {
+    padding: 0;
+}

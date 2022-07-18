@@ -71,11 +71,11 @@
 {#        <a class="btn btn-outline-primary" href="{{ url('app_login') }}" role="button">{{ 'action.login'|trans }}</a>#}
 {#    </li>#}
 {#{% endif %}#}
+<div class="container-fluid">
+    {% include 'default/_flash_messages.html.twig' %}
+</div>
 <main role="main" class="container-fluid">
-    <div class="container-fluid">
-        {% include 'default/_flash_messages.html.twig' %}
-        {% block body %}{% endblock %}
-    </div>
+    {% block body %}{% endblock %}
 </main>
 {% block javascripts %}
     <script

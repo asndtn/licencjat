@@ -1,24 +1,47 @@
-{% include 'default/_form.html.twig' with {
-    page_title: 'action.register'|trans,
-    form: form,
-    submit_label: 'action.save'|trans,
-    back_to_list_path: 'input_index',
-} %}
+{% extends 'base.html.twig' %}
 
-{#{% extends 'base.html.twig' %}#}
+{% block title %}{{ 'action.register'|trans }}{% endblock %}
 
-{#{% block title %}Register{% endblock %}#}
+{% block body %}
+    <div class="container d-flex justify-content-center">
+        <form method="post" class="col-4">
 
-{#{% block body %}#}
-{#    <h1>Register</h1>#}
+            {% if app.user %}
+                <div class="mb-3">
+                    {{ 'label.logged'|trans }} {{ app.user.userIdentifier }}, <a
+                            href="{{ path('app_logout') }}">{{ 'action.logout'|trans }}</a>
+                </div>
+            {% endif %}
 
-{#    {{ form_start(registrationForm) }}#}
-{#        {{ form_row(registrationForm.email) }}#}
-{#        {{ form_row(registrationForm.plainPassword, {#}
-{#            label: 'Password'#}
-{#        }) }}#}
-{#        {{ form_row(registrationForm.agreeTerms) }}#}
+            <h1 class="h3 mb-3 font-weight-normal">{{ 'label.register'|trans }}</h1>
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <label for="inputEmail">{{ 'label.email'|trans }}</label>
+                <input type="email" name="email" id="inputEmail" class="form-control"
+                       autocomplete="email" required autofocus>
+            </div>
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <label for="inputPassword">{{ 'label.password'|trans }}</label>
+                <input type="password" name="password" id="inputPassword" class="form-control"
+                       autocomplete="current-password" required>
+            </div>
 
-{#        <button type="submit" class="btn">Register</button>#}
-{#    {{ form_end(registrationForm) }}#}
-{#{% endblock %}#}
+            <div class="form-outline mb-4">
+                <label for="repeatedPassword">{{ 'label.repeatedPassword'|trans }}</label>
+                <input type="password" name="repeatedPassword" id="repeatedPassword" class="form-control" required>
+            </div>
+
+            <!-- Submit button -->
+            <button class="btn btn-primary btn-block mb-4" type="submit">
+                {{ 'action.register'|trans }}
+            </button>
+        </form>
+    </div>
+    <div class="container d-flex justify-content-center">
+        <div class="col-4">
+            {{ 'label.have'|trans }}
+            <a href="{{ url('app_login') }}" title="{{ 'action.login'|trans }}">{{ 'action.login'|trans }}</a>
+        </div>
+    </div>
+{% endblock %}
