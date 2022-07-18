@@ -34,8 +34,8 @@ class InputService implements InputServiceInterface
     /**
      * Constructor.
      *
-     * @param InputRepository $inputRepository Input repository
-     * @param PaginatorInterface $paginator Paginator
+     * @param InputRepository          $inputRepository Input repository
+     * @param PaginatorInterface       $paginator       Paginator
      * @param CategoryServiceInterface $categoryService Category service
      */
     public function __construct(InputRepository $inputRepository, PaginatorInterface $paginator, CategoryServiceInterface $categoryService)
@@ -48,7 +48,7 @@ class InputService implements InputServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int $page Page number
+     * @param int   $page    Page number
      * @param array $filters Filters array
      *
      * @return PaginationInterface<string, mixed> Paginated list
@@ -56,9 +56,26 @@ class InputService implements InputServiceInterface
     public function getPaginatedList(int $page, array $filters = []): PaginationInterface
     {
         $filters = $this->prepareFilters($filters);
-        
+
         return $this->paginator->paginate(
             $this->inputRepository->queryAll($filters),
+            $page,
+            InputRepository::PAGINATOR_ITEMS_PER_PAGE
+        );
+    }
+
+    /**
+     * Filter by author.
+     *
+     * @param int  $page   Page number
+     * @param User $author Author
+     *
+     * @return PaginationInterface<string, mixed> Paginated list
+     */
+    public function getAuthorList(int $page, User $author): PaginationInterface
+    {
+        return $this->paginator->paginate(
+            $this->inputRepository->queryByAuthor($author),
             $page,
             InputRepository::PAGINATOR_ITEMS_PER_PAGE
         );

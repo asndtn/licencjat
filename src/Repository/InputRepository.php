@@ -51,22 +51,22 @@ class InputRepository extends ServiceEntityRepository
         parent::__construct($registry, Input::class);
     }
 
-//    /**
-//     * Query by Author.
-//     *
-//     * @param User $user User entity
-//     *
-//     * @return QueryBuilder Query builder
-//     */
-//    public function queryByAuthor(User $user): QueryBuilder
-//    {
-//        $queryBuilder = $this->queryAll();
-//
-//        $queryBuilder->andWhere('input.author = :author')
-//            ->setParameter('author', $user);
-//
-//        return $queryBuilder;
-//    }
+    /**
+     * Query by Author.
+     *
+     * @param User $user User entity
+     *
+     * @return QueryBuilder Query builder
+     */
+    public function queryByAuthor(User $user): QueryBuilder
+    {
+        $queryBuilder = $this->queryAll();
+
+        $queryBuilder->andWhere('input.author = :author')
+            ->setParameter('author', $user);
+
+        return $queryBuilder;
+    }
 
     /**
      * Query all records.
@@ -82,7 +82,7 @@ class InputRepository extends ServiceEntityRepository
                 'partial input.{id, title, paintingFilename}',
                 'partial category.{id, name}',
                 'partial artist.{id, name}'
-                //TODO: inne partial daj
+                // TODO: inne partial daj
             )
             ->join('input.artist', 'artist')
             ->join('input.category', 'category')

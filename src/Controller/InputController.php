@@ -67,10 +67,24 @@ class InputController extends AbstractController
         return $this->render('input/index.html.twig', ['pagination' => $pagination]);
     }
 
-//    public function userInputs(Request $request): Response
-//    {
-//        $pagination = $this->inputService
-//    }
+    /**
+     * Show only user's inputs action.
+     *
+     * @param Request $request User request
+     *
+     * @return Response HTTP Response
+     *
+     * @Route("/my_inputs", name="my_inputs", methods={"GET"})
+     */
+    public function userInputs(Request $request): Response
+    {
+        $pagination = $this->inputService->getAuthorList(
+            $request->query->getInt('page', 1),
+            $this->getUser()
+        );
+
+        return $this->render('input/index.html.twig', ['pagination' => $pagination]);
+    }
 
     /**
      * Show action.

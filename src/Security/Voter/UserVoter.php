@@ -39,8 +39,6 @@ class UserVoter extends Voter
 
     /**
      * Security helper.
-     *
-     * @var Security
      */
     private Security $security;
 
@@ -64,7 +62,7 @@ class UserVoter extends Voter
      */
     protected function supports(string $attribute, $subject): bool
     {
-        return in_array($attribute, [self::VIEW, self::EDIT /*, self::DELETE*/])
+        return in_array($attribute, [self::VIEW, self::EDIT /* , self::DELETE */])
             && $subject instanceof User;
     }
 

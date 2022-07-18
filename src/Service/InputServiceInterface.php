@@ -17,12 +17,22 @@ interface InputServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int $page Page number
+     * @param int   $page    Page number
      * @param array $filters Filters
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
     public function getPaginatedList(int $page, array $filters = []): PaginationInterface;
+
+    /**
+     * Filter by author.
+     *
+     * @param int  $page   Page number
+     * @param User $author Author
+     *
+     * @return PaginationInterface<string, mixed> Paginated list
+     */
+    public function getAuthorList(int $page, User $author): PaginationInterface;
 
     /**
      * Save entity.
@@ -42,8 +52,6 @@ interface InputServiceInterface
      * Prepare fiers for the inputs list.
      *
      * @param array $filters Filters
-     *
-     * @return array
      */
     public function prepareFilters(array $filters): array;
 }

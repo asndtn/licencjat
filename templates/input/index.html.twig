@@ -21,53 +21,6 @@
                         </div>
                     </div>
         {% endfor %}
-{#        <table class="table table-striped">#}
-{#            <thead>#}
-{#            <tr>#}
-{#                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'input.id') }}</th>#}
-{#                <th>{{ knp_pagination_sortable(pagination, 'label.author'|trans, 'author.email') }}</th>#}
-{#                <th>{{ knp_pagination_sortable(pagination, 'label.artist'|trans, 'artist.name') }}</th>#}
-{#                <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'input.title') }}</th>#}
-{#                <th>{{ 'label.painting'|trans }}</th>#}
-{#                <th>{{ 'label.actions'|trans }}</th>#}
-{#            </tr>#}
-{#            </thead>#}
-{#            <tbody>#}
-{#            {% for input in pagination.items %}#}
-{#            <tr>#}
-{#                <td>{{ input.id }}</td>#}
-{#                <td>{{ input.author.email }}</td>#}
-{#                <td>{{ input.artist.name }}</td>#}
-{#                <td>{{ input.title }}</td>#}
-{#                <td><img src="..." alt="{{ input.artist.name }}" class="img-thumbnail"></td>#}
-{#                <td>#}
-{#                    <ul>#}
-{#                        <li>#}
-{#                            <a href="{{ url('input_show', {id: input.id}) }}" title="{{ 'action.view'|trans }}">#}
-{#                                {{ 'action.view'|trans }}#}
-{#                            </a>#}
-{#                        </li>#}
-{#                        {% if is_granted('EDIT', input) %}#}
-{#                        <li>#}
-{#                            <a href="{{ url('input_edit', {id: input.id}) }}" title="{{ 'action.edit'|trans }}">#}
-{#                                {{ 'action.edit'|trans }}#}
-{#                            </a>#}
-{#                        </li>#}
-{#                        {% endif %}#}
-{#                        {% if is_granted('DELETE', input) %}#}
-{#                        <li>#}
-{#                            <a href="{{ url('input_delete', {id: input.id}) }}" title="{{ 'action.delete'|trans }}">#}
-{#                                {{ 'action.delete'|trans }}#}
-{#                            </a>#}
-{#                        </li>#}
-{#                        {% endif %}#}
-{#                    </ul>#}
-{#                </td>#}
-{#            </tr>#}
-{#            {% endfor %}#}
-{#            </tbody>#}
-{#        </table>#}
-
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>

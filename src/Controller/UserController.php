@@ -53,6 +53,8 @@ class UserController extends AbstractController
      * @return Response HTTP Response
      *
      * @Route("/", name="user_index", methods={"GET"})]
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
     public function index(Request $request): Response
     {
