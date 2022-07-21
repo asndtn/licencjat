@@ -83,7 +83,7 @@ class InputType extends AbstractType
                     return $artist->getName();
                 },
                 'label' => 'label.artist',
-                'placeholder' => 'label.none',
+                'placeholder' => 'label.choose',
                 'required' => true,
             ]
         );
@@ -97,7 +97,7 @@ class InputType extends AbstractType
                     return $category->getName();
                 },
                 'label' => 'label.category',
-                'placeholder' => 'label.none',
+                'placeholder' => 'label.choose',
                 'required' => true,
             ]
         );
@@ -111,7 +111,7 @@ class InputType extends AbstractType
                     return $field->getName();
                 },
                 'label' => 'label.field',
-                'placeholder' => 'label.none',
+                'placeholder' => 'label.choose',
                 'required' => true,
             ]
         );
@@ -125,7 +125,7 @@ class InputType extends AbstractType
                     return $movement->getName();
                 },
                 'label' => 'label.movement',
-                'placeholder' => 'label.none',
+                'placeholder' => 'label.choose',
                 'required' => true,
             ]
         );
