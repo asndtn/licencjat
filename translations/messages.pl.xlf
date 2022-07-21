@@ -12,26 +12,6 @@
                 <source>label.id</source>
                 <target>Id</target>
             </trans-unit>
-            <trans-unit id="label.user">
-                <source>label.user</source>
-                <target>Użytkownik</target>
-            </trans-unit>
-            <trans-unit id="label.artist">
-                <source>label.artist</source>
-                <target>Artysta</target>
-            </trans-unit>
-            <trans-unit id="label.category">
-                <source>label.category</source>
-                <target>Kategoria</target>
-            </trans-unit>
-            <trans-unit id="label.field">
-                <source>label.field</source>
-                <target>Dziedzina sztuki</target>
-            </trans-unit>
-            <trans-unit id="label.movement">
-                <source>label.movement</source>
-                <target>Epoka</target>
-            </trans-unit>
             <trans-unit id="label.title">
                 <source>label.title</source>
                 <target>Tytuł</target>
@@ -44,13 +24,29 @@
                 <source>label.tags</source>
                 <target>Tagi</target>
             </trans-unit>
-            <trans-unit id="label.tag">
-                <source>label.tag</source>
-                <target>Tag</target>
+            <trans-unit id="label.painting">
+                <source>label.painting</source>
+                <target>Obraz</target>
             </trans-unit>
-            <trans-unit id="label.none">
-                <source>label.none</source>
-                <target>None</target>
+            <trans-unit id="label.artist">
+                <source>label.artist</source>
+                <target>Artysta</target>
+            </trans-unit>
+            <trans-unit id="label.category">
+                <source>label.category</source>
+                <target>Rodzaj problemu</target>
+            </trans-unit>
+            <trans-unit id="label.field">
+                <source>label.field</source>
+                <target>Dziedzina sztuki</target>
+            </trans-unit>
+            <trans-unit id="label.movement">
+                <source>label.movement</source>
+                <target>Epoka</target>
+            </trans-unit>
+            <trans-unit id="label.choose">
+                <source>label.choose</source>
+                <target>Wybierz z listy...</target>
             </trans-unit>
             <trans-unit id="label.author">
                 <source>label.author</source>
@@ -76,15 +72,35 @@
                 <source>label.welcome</source>
                 <target>Witaj z powrotem!</target>
             </trans-unit>
+            <trans-unit id="label.my_inputs">
+                <source>label.my_inputs</source>
+                <target>Moje wpisy</target>
+            </trans-unit>
+            <trans-unit id="label.register">
+                <source>label.register</source>
+                <target>Zarejestruj się</target>
+            </trans-unit>
+            <trans-unit id="label.have">
+                <source>label.have</source>
+                <target>Masz już konto?</target>
+            </trans-unit>
+            <trans-unit id="label.donthave">
+                <source>label.donthave</source>
+                <target>Nie masz jeszcze konta?</target>
+            </trans-unit>
 
             <!-- Messages -->
             <trans-unit id="message.empty_list">
                 <source>message.empty_list</source>
-                <target>Lista jest pusta.</target>
+                <target>Żaden wpis nie został przez Ciebie dodany.</target>
             </trans-unit>
             <trans-unit id="message.record_not_found">
                 <source>message.record_not_found</source>
                 <target>Wpis nie istnieje.</target>
+            </trans-unit>
+            <trans-unit id="message.user_not_found">
+                <source>message.user_not_found</source>
+                <target>Nie znaleziono użytkownika.</target>
             </trans-unit>
             <trans-unit id="title.record_details">
                 <source>title.record_details</source>
@@ -118,6 +134,10 @@
                 <source>message.pass_changed_successfully</source>
                 <target>Password changed successfully!</target>
             </trans-unit>
+            <trans-unit id="message.add">
+                <source>message.add</source>
+                <target>Dodaj coś!</target>
+            </trans-unit>
 
             <!-- Actions -->
             <trans-unit id="action.view">
@@ -142,7 +162,7 @@
             </trans-unit>
             <trans-unit id="action.create">
                 <source>action.create</source>
-                <target>Utwórz</target>
+                <target>Dodaj</target>
             </trans-unit>
             <trans-unit id="action.logout">
                 <source>action.logout</source>
@@ -155,6 +175,14 @@
             <trans-unit id="action.register">
                 <source>action.register</source>
                 <target>Zarejestruj się</target>
+            </trans-unit>
+            <trans-unit id="action.password_change">
+                <source>action.password_change</source>
+                <target>Zmień hasło</target>
+            </trans-unit>
+            <trans-unit id="action.account">
+                <source>action.account</source>
+                <target>Moje konto</target>
             </trans-unit>
 
             <!-- Labels -->
@@ -182,10 +210,6 @@
                 <source>label.sure</source>
                 <target>Czy na pewno chcesz usunąć kategorię #%id%?</target>
             </trans-unit>
-            <trans-unit id="label.painting">
-                <source>label.painting</source>
-                <target>Obraz</target>
-            </trans-unit>
             <trans-unit id="label.idea">
                 <source>label.idea</source>
                 <target>Idea</target>
@@ -202,7 +226,7 @@
             </trans-unit>
             <trans-unit id="title.record_list_nationality">
                 <source>title.record_list_nationality</source>
-                <target>Lista narodowości</target>
+                <target>Narodowości</target>
             </trans-unit>
             <trans-unit id="title.record_list_artist">
                 <source>title.record_list_artist</source>
@@ -210,19 +234,15 @@
             </trans-unit>
             <trans-unit id="title.record_list_category">
                 <source>title.record_list_category</source>
-                <target>Kateogrie</target>
+                <target>Rodzaje problemów</target>
             </trans-unit>
             <trans-unit id="title.record_list_movement">
                 <source>title.record_list_movement</source>
-                <target>Lista epok</target>
+                <target>Epoki</target>
             </trans-unit>
             <trans-unit id="title.record_list_field">
                 <source>title.record_list_field</source>
-                <target>Lista dziedzin sztuki</target>
-            </trans-unit>
-            <trans-unit id="title.record_details_input">
-                <source>title.record_details_input</source>
-                <target>Szczegóły wpisu</target>
+                <target>Dziedziny sztuki</target>
             </trans-unit>
             <trans-unit id="title.record_details_nationality">
                 <source>title.record_details_nationality</source>
@@ -246,7 +266,7 @@
             </trans-unit>
             <trans-unit id="title.category_create">
                 <source>title.category_create</source>
-                <target>Utwórz kategorię</target>
+                <target>Dodaj kategorię</target>
             </trans-unit>
             <trans-unit id="title.category_delete">
                 <source>title.category_delete</source>
@@ -258,7 +278,7 @@
             </trans-unit>
             <trans-unit id="title.nationality_create">
                 <source>title.nationality_create</source>
-                <target>Utwórz narodowość</target>
+                <target>Dodaj narodowość</target>
             </trans-unit>
             <trans-unit id="title.nationality_edit">
                 <source>title.nationality_edit</source>
@@ -270,7 +290,7 @@
             </trans-unit>
             <trans-unit id="title.movement_create">
                 <source>title.movement_create</source>
-                <target>Utwórz epokę</target>
+                <target>Dodaj epokę</target>
             </trans-unit>
             <trans-unit id="title.movement_edit">
                 <source>title.movement_edit</source>
@@ -282,7 +302,7 @@
             </trans-unit>
             <trans-unit id="title.field_create">
                 <source>title.field_create</source>
-                <target>Utwórz dziedzinę sztuki</target>
+                <target>Dodaj dziedzinę sztuki</target>
             </trans-unit>
             <trans-unit id="title.field_edit">
                 <source>title.field_edit</source>
@@ -294,7 +314,7 @@
             </trans-unit>
             <trans-unit id="title.input_create">
                 <source>title.input_create</source>
-                <target>Utwórz wpis</target>
+                <target>Dodaj wpis</target>
             </trans-unit>
             <trans-unit id="title.input_edit">
                 <source>title.input_edit</source>
@@ -326,7 +346,7 @@
             </trans-unit>
             <trans-unit id="title.tag_create">
                 <source>title.tag_create</source>
-                <target>Utwórz tag</target>
+                <target>Dodaj tag</target>
             </trans-unit>
             <trans-unit id="title.tag_edit">
                 <source>title.tag_edit</source>
@@ -340,10 +360,6 @@
                 <source>title.record_list_user</source>
                 <target>Lista użytkowników</target>
             </trans-unit>
-            <trans-unit id="title.record_details_user">
-                <source>title.record_details_user</source>
-                <target>Szczegóły użytkownika</target>
-            </trans-unit>
             <trans-unit id="title.user_edit">
                 <source>title.user_edit</source>
                 <target>Edytuj użytkownika</target>
@@ -351,6 +367,10 @@
             <trans-unit id="title.user_delete">
                 <source>title.user_delete</source>
                 <target>Usuń użytkownika</target>
+            </trans-unit>
+            <trans-unit id="title.account">
+                <source>title.account</source>
+                <target>Moje Konto</target>
             </trans-unit>
 
         <!-- Miscellaneous -->

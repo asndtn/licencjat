@@ -64,6 +64,14 @@ class InputController extends AbstractController
             $filters
         );
 
+//        foreach ($pagination as $input) {
+//            $description = $input->getDescription();
+//
+//            $sentences = explode(".", $description);
+//            $teaser = $sentences[0];
+//        }
+//
+//        dd($description);
         return $this->render('input/index.html.twig', ['pagination' => $pagination]);
     }
 
@@ -83,7 +91,7 @@ class InputController extends AbstractController
             $this->getUser()
         );
 
-        return $this->render('input/index.html.twig', ['pagination' => $pagination]);
+        return $this->render('input/my_inputs.html.twig', ['pagination' => $pagination]);
     }
 
     /**

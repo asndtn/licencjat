@@ -15,51 +15,74 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{ url('app_index') }}">{{ 'title.app'|trans }}</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <!-- Logo -->
+            <a class="navbar-brand" href="{{ url('app_index') }}">{{ 'title.app'|trans }}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('input_index') }}">{{ 'title.record_list_input'|trans }}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('artist_index') }}">{{ 'title.record_list_artist'|trans }}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('category_index') }}">{{ 'title.record_list_category'|trans }}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">{{ 'label.idea'|trans }}</a>
-                </li>
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <li class="nav-item" id="btn-nav">
-                        <a class="btn btn-primary" role="button" href="{{ url('input_create') }}" title="{{ 'action.create'|trans }}">
-                            {{ 'action.create'|trans }}
-                        </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('input_index') }}">{{ 'title.record_list_input'|trans }}</a>
                     </li>
-                    <li class="nav-item" id="btn-nav">
-                        <a class="btn btn-primary" role="button" href="{{ url('user_show', {id: app.user.id}) }}" title="{{ 'action.view'|trans }}">
-                            {{ 'action.account'|trans }}
-                        </a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('artist_index') }}">{{ 'title.record_list_artist'|trans }}</a>
                     </li>
-                    <li class="nav-item" id="btn-nav">
-                        <a class="btn btn-outline-primary" href="{{ url('app_logout') }}" role="button">{{ 'action.logout'|trans }}</a>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{{ url('category_index') }}">{{ 'title.record_list_category'|trans }}</a>
                     </li>
-                {% else %}
-                    <li class="nav-item" id="btn-nav">
-                        <a class="btn btn-primary" href="{{ url('app_register') }}" role="button">{{ 'action.register'|trans }}</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{ 'label.idea'|trans }}</a>
                     </li>
-                    <li class="nav-item" id="btn-nav">
-                        <a class="btn btn-outline-primary" href="{{ url('app_login') }}" role="button">{{ 'action.login'|trans }}</a>
-                    </li>
-                {% endif %}
-            </ul>
-        </div>
-    </nav>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="{{ url('nationality_index') }}">{{ 'title.record_list_nationality'|trans }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="{{ url('field_index') }}">{{ 'title.record_list_field'|trans }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="{{ url('movement_index') }}">{{ 'title.record_list_movement'|trans }}</a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li class="nav-item" id="btn-nav">
+                            <a class="btn btn-sm btn-secondary" role="button" href="{{ url('input_create') }}"
+                               title="{{ 'action.create'|trans }}">
+                                {{ 'action.create'|trans }}
+                            </a>
+                        </li>
+                        <li class="nav-item" id="btn-nav">
+                            <a class="btn btn-sm btn-secondary" role="button" href="{{ url('user_show', {id: app.user.id}) }}"
+                               title="{{ 'action.view'|trans }}">
+                                {{ 'action.account'|trans }}
+                            </a>
+                        </li>
+                        <li class="nav-item" id="btn-nav">
+                            <a class="btn btn-sm btn-outline-secondary" href="{{ url('app_logout') }}"
+                               role="button">{{ 'action.logout'|trans }}</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item" id="btn-nav">
+                            <a class="btn btn-sm btn-secondary" href="{{ url('app_register') }}"
+                               role="button">{{ 'action.register'|trans }}</a>
+                        </li>
+                        <li class="nav-item" id="btn-nav">
+                            <a class="btn btn-sm btn-outline-secondary" href="{{ url('app_login') }}"
+                               role="button">{{ 'action.login'|trans }}</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
 </header>
 {#{% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
 {#    <div>Hello {{ app.user.email() }}</div>#}

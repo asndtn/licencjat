@@ -12,9 +12,21 @@
                 <source>label.id</source>
                 <target>Id</target>
             </trans-unit>
-            <trans-unit id="label.user">
-                <source>label.user</source>
-                <target>User</target>
+            <trans-unit id="label.title">
+                <source>label.title</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="label.description">
+                <source>label.description</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="label.tags">
+                <source>label.tags</source>
+                <target>Tags</target>
+            </trans-unit>
+            <trans-unit id="label.painting">
+                <source>label.painting</source>
+                <target>Painting</target>
             </trans-unit>
             <trans-unit id="label.artist">
                 <source>label.artist</source>
@@ -31,18 +43,6 @@
             <trans-unit id="label.movement">
                 <source>label.movement</source>
                 <target>Movement</target>
-            </trans-unit>
-            <trans-unit id="label.title">
-                <source>label.title</source>
-                <target>Title</target>
-            </trans-unit>
-            <trans-unit id="label.description">
-                <source>label.description</source>
-                <target>Description</target>
-            </trans-unit>
-            <trans-unit id="label.tags">
-                <source>label.tags</source>
-                <target>Tags</target>
             </trans-unit>
             <trans-unit id="label.name">
                 <source>label.name</source>
@@ -64,13 +64,9 @@
                 <source>label.sure</source>
                 <target>Are you sure you want to delete record: #%id%</target>
             </trans-unit>
-            <trans-unit id="label.tag">
-                <source>label.tag</source>
-                <target>Tag</target>
-            </trans-unit>
-            <trans-unit id="label.none">
-                <source>label.none</source>
-                <target>None</target>
+            <trans-unit id="label.choose">
+                <source>label.choose</source>
+                <target>Choose from a list...</target>
             </trans-unit>
             <trans-unit id="label.author">
                 <source>label.author</source>
@@ -88,10 +84,6 @@
                 <source>label.repeatedPassword</source>
                 <target>Repeat password</target>
             </trans-unit>
-            <trans-unit id="label.painting">
-                <source>label.painting</source>
-                <target>Painting</target>
-            </trans-unit>
             <trans-unit id="label.idea">
                 <source>label.idea</source>
                 <target>Idea</target>
@@ -104,19 +96,39 @@
                 <source>label.welcome</source>
                 <target>Welcome back!</target>
             </trans-unit>
+            <trans-unit id="label.my_inputs">
+                <source>label.my_inputs</source>
+                <target>My Inputs</target>
+            </trans-unit>
+            <trans-unit id="label.register">
+                <source>label.register</source>
+                <target>Register</target>
+            </trans-unit>
+            <trans-unit id="label.have">
+                <source>label.have</source>
+                <target>Already have an account?</target>
+            </trans-unit>
+            <trans-unit id="label.donthave">
+                <source>label.donthave</source>
+                <target>Don't have an account?</target>
+            </trans-unit>
 
             <!-- Messages -->
             <trans-unit id="message.empty_list">
                 <source>message.empty_list</source>
-                <target>List is empty.</target>
+                <target>No entry has been added by you.</target>
             </trans-unit>
             <trans-unit id="message.record_not_found">
                 <source>message.record_not_found</source>
                 <target>Record not found.</target>
             </trans-unit>
+            <trans-unit id="message.user_not_found">
+                <source>message.user_not_found</source>
+                <target>User not found.</target>
+            </trans-unit>
             <trans-unit id="message.created_successfully">
                 <source>message.created_successfully</source>
-                <target>Created successfully!</target>
+                <target>Addd successfully!</target>
             </trans-unit>
             <trans-unit id="message.edited_successfully">
                 <source>message.edited_successfully</source>
@@ -142,6 +154,10 @@
                 <source>message.pass_changed_successfully</source>
                 <target>Password changed successfully!</target>
             </trans-unit>
+            <trans-unit id="message.add">
+                <source>message.add</source>
+                <target>Add something!</target>
+            </trans-unit>
 
             <!-- Actions -->
             <trans-unit id="action.view">
@@ -166,7 +182,7 @@
             </trans-unit>
             <trans-unit id="action.create">
                 <source>action.create</source>
-                <target>Create</target>
+                <target>Add</target>
             </trans-unit>
             <trans-unit id="action.logout">
                 <source>action.logout</source>
@@ -180,27 +196,27 @@
                 <source>action.register</source>
                 <target>Register</target>
             </trans-unit>
+            <trans-unit id="action.password_change">
+                <source>action.password_change</source>
+                <target>Change your password</target>
+            </trans-unit>
+            <trans-unit id="action.account">
+                <source>action.account</source>
+                <target>My account</target>
+            </trans-unit>
 
             <!-- Titles -->
             <trans-unit id="title.app">
                 <source>title.app</source>
                 <target>Images of discrimination</target>
             </trans-unit>
-            <trans-unit id="title.record_details">
-                <source>title.record_details</source>
-                <target>Details #%id%</target>
-            </trans-unit>
             <trans-unit id="title.record_list_input">
                 <source>title.record_list_input</source>
                 <target>Artworks</target>
             </trans-unit>
-            <trans-unit id="title.record_details_input">
-                <source>title.record_details_input</source>
-                <target>Input details</target>
-            </trans-unit>
             <trans-unit id="title.input_create">
                 <source>title.input_create</source>
-                <target>Create an input</target>
+                <target>Add an input</target>
             </trans-unit>
             <trans-unit id="title.input_edit">
                 <source>title.input_edit</source>
@@ -220,7 +236,7 @@
             </trans-unit>
             <trans-unit id="title.nationality_create">
                 <source>title.nationality_create</source>
-                <target>Create a nationality</target>
+                <target>Add a nationality</target>
             </trans-unit>
             <trans-unit id="title.nationality_edit">
                 <source>title.nationality_edit</source>
@@ -240,7 +256,7 @@
             </trans-unit>
             <trans-unit id="title.artist_create">
                 <source>title.artist_create</source>
-                <target>Create an artist</target>
+                <target>Add an artist</target>
             </trans-unit>
             <trans-unit id="title.artist_edit">
                 <source>title.artist_edit</source>
@@ -260,7 +276,7 @@
             </trans-unit>
             <trans-unit id="title.category_create">
                 <source>title.category_create</source>
-                <target>Create a category</target>
+                <target>Add a category</target>
             </trans-unit>
             <trans-unit id="title.category_edit">
                 <source>title.category_edit</source>
@@ -280,7 +296,7 @@
             </trans-unit>
             <trans-unit id="title.movement_create">
                 <source>title.movement_create</source>
-                <target>Create a movement</target>
+                <target>Add a movement</target>
             </trans-unit>
             <trans-unit id="title.movement_edit">
                 <source>title.movement_edit</source>
@@ -300,7 +316,7 @@
             </trans-unit>
             <trans-unit id="title.field_create">
                 <source>title.field_create</source>
-                <target>Create a field</target>
+                <target>Add a field</target>
             </trans-unit>
             <trans-unit id="title.field_edit">
                 <source>title.field_edit</source>
@@ -320,7 +336,7 @@
             </trans-unit>
             <trans-unit id="title.tag_create">
                 <source>title.tag_create</source>
-                <target>Create a tag</target>
+                <target>Add a tag</target>
             </trans-unit>
             <trans-unit id="title.tag_edit">
                 <source>title.tag_edit</source>
@@ -334,10 +350,6 @@
                 <source>title.record_list_user</source>
                 <target>User list</target>
             </trans-unit>
-            <trans-unit id="title.record_details_user">
-                <source>title.record_details_user</source>
-                <target>User details</target>
-            </trans-unit>
             <trans-unit id="title.user_edit">
                 <source>title.user_edit</source>
                 <target>Edit an user</target>
@@ -345,6 +357,10 @@
             <trans-unit id="title.user_delete">
                 <source>title.user_delete</source>
                 <target>Delete an user</target>
+            </trans-unit>
+            <trans-unit id="title.account">
+                <source>title.account</source>
+                <target>My Account</target>
             </trans-unit>
 
             <!-- Miscellaneous -->

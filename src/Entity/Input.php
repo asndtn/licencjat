@@ -125,7 +125,7 @@ class Input
      *     max="2048",
      * )
      */
-    private string $description;
+    private ?string $description = null;
 
     /**
      * TODO: Umożlwić edycję obrazka.
@@ -310,9 +310,9 @@ class Input
     /**
      * Getter for Description.
      *
-     * @return string Description
+     * @return string|null Description
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -320,9 +320,9 @@ class Input
     /**
      * Setter for Description.
      *
-     * @param string $description Description
+     * @param string|null $description Description
      */
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }

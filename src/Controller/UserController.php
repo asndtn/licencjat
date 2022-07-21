@@ -73,6 +73,7 @@ class UserController extends AbstractController
      * @return Response HTTP Response
      *
      * @Route("/{id}/show", name="user_show", requirements={"id": "[1-9]\d*"}, methods={"GET", "PUT"})
+     *
      * @IsGranted("VIEW", subject="user")
      */
     public function show(User $user): Response

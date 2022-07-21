@@ -38,7 +38,10 @@ class Field
      * @ORM\Column(type="string", length=64,)
      *
      * @Assert\NotBlank
-     * @Assert\Length(64)
+     * @Assert\Length(
+     *     min=2,
+     *     max=64
+     * )
      */
     private ?string $name;
 
