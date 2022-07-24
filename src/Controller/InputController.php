@@ -61,17 +61,10 @@ class InputController extends AbstractController
         $filters = $this->getFilters($request);
         $pagination = $this->inputService->getPaginatedList(
             $request->query->getInt('page', 1),
-            $filters
+            $filters,
+            $request->query->get('q')
         );
 
-//        foreach ($pagination as $input) {
-//            $description = $input->getDescription();
-//
-//            $sentences = explode(".", $description);
-//            $teaser = $sentences[0];
-//        }
-//
-//        dd($description);
         return $this->render('input/index.html.twig', ['pagination' => $pagination]);
     }
 
@@ -148,7 +141,7 @@ class InputController extends AbstractController
                 $this->translator->trans('message.created_successfully')
             );
 
-            return $this->redirectToRoute('input_index');
+            return $this->redirectToRoute('input_show', ['id' => $input->getId()]);
         }
 
         return $this->render(
@@ -185,7 +178,7 @@ class InputController extends AbstractController
                 $this->translator->trans('message.edited_successfully')
             );
 
-            return $this->redirectToRoute('input_index');
+            return $this->redirectToRoute('input_show', ['id' => $input->getId()]);
         }
 
         return $this->render(

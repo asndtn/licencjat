@@ -97,6 +97,6 @@ class UserVoter extends Voter
 
     private function isOwnerOrAdmin($subject, User $user): bool
     {
-        return $subject->getId() === $user->getId() || (in_array('ROLE_ADMIN', $user->getRoles()));
+        return $subject->getId() === $user->getId() || in_array('ROLE_ADMIN', $user->getRoles());
     }
 }

@@ -70,7 +70,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = [];
 
     /**
-     * Password.
+     * Hashed password.
      *
      * @ORM\Column(type="string")
      *
