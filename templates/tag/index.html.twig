@@ -7,13 +7,10 @@
 {% block body %}
     <h1>{{ 'title.record_list_tag'|trans }}</h1>
     {%  if pagination is defined and pagination.items|length %}
-        <div class="navigation text-center">
-            {{ knp_pagination_render(pagination) }}
-        </div>
 
-            <a class="btn btn-primary btn-lg" role="button" href="{{ url('tag_create') }}" title="{{ 'action.create'|trans }}">
-                {{ 'action.create'|trans }}
-            </a>
+{#            <a class="btn btn-primary btn-lg" role="button" href="{{ url('tag_create') }}" title="{{ 'action.create'|trans }}">#}
+{#                {{ 'action.create'|trans }}#}
+{#            </a>#}
 
         <table class="table table-striped">
             <thead>
@@ -53,9 +50,9 @@
             {% endfor %}
             </tbody>
         </table>
-
-        <div class="navigation text-center">
-            {{ knp_pagination_render(pagination) }}
+        <!-- Pagination -->
+        <div class="navigation text-center d-flex justify-content-center">
+            {{ knp_pagination_render(pagination, 'pagination.html.twig') }}
         </div>
 {% else %}
 <p>
