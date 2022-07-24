@@ -7,19 +7,33 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class RegistrationFormType.
  */
 class RegistrationFormType extends AbstractType
 {
+    /**
+     * Translator.
+     */
+    private TranslatorInterface $translator;
+
+    /**
+     * Constructor.
+     *
+     * @param TranslatorInterface $translator Translator
+     */
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
+
     /**
      * Builds the form.
      *
@@ -39,25 +53,19 @@ class RegistrationFormType extends AbstractType
                 [
                     'label' => 'label.email',
                     'required' => 'true',
+                    'attr' => ['max_length' => 180],
                 ]
             )
-//            ->add('agreeTerms', CheckboxType::class, [
-//                'mapped' => false,
-//                'constraints' => [
-//                    new IsTrue([
-//                        'message' => 'You should agree to our terms.',
-//                    ]),
-//                ],
-//            ])
             ->add(
                 'password',
                 RepeatedType::class,
                 [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
                 'type' => PasswordType::class,
+                'attr' => ['max_length' => 255],
+                'help' => $this->translator->trans('help.password'),
                 'first_options' => ['label' => 'label.password'],
                 'second_options' => ['label' => 'label.repeatedPassword'],
+                'invalid_message' => $this->translator->trans('message.password_match'),
                 ]
             );
     }

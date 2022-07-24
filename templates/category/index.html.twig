@@ -7,11 +7,11 @@
 {% block body %}
     <h1>{{ 'title.record_list_category'|trans }}</h1>
     {%  if pagination is defined and pagination.items|length %}
-        <div class="d-flex justify-content-between flex-wrap">
+        <div class="d-flex justify-content-center flex-wrap">
             {% for category in pagination.items %}
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
-                        <a href="{{ url('category_show', {id: category.id}) }}" title="{{ 'action.view'|trans }}" style="text-decoration: none"><h5 class="card-title">{{ category.name }}</h5></a>
+                        <a href="{{ url('input_index', {'filters.category_id' :  category.id}) }}" title="{{ 'action.view'|trans }}" style="text-decoration: none"><h5 class="card-title">{{ category.name }}</h5></a>
                     </div>
                 </div>
             {% endfor %}

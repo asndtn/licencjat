@@ -1,30 +1,47 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: rgba(172, 204, 230, 0.9);
+    /*background-color: rgba(195, 230, 255, 0.8);*/
+}
+
+div.container-fluid {
+    margin-top: 10px;
 }
 
 .navbar {
     padding: 10px;
-    /*border: solid 1px #49A3F2;*/
+    border-bottom: solid 1px gray;
 }
 
 nav.navbar.navbar-expand-lg.navbar-light {
-    background-color:  #a6c9e5;
-    border-radius: 0 0 10px 10px;
+    background-color: #bfddf5;
+    /*border-radius: 0 0 10px 10px;*/
+}
+
+#form {
+    margin-top: 4rem;
 }
 
 #nav-container {
-    padding: 0;
+    margin-top: 0;
 }
 
-a.nav-link, a.navbar-brand {
-    color:  #3277b0  !important;
+a.navbar-brand {
+    color: black !important;
+    font-size: 1.5em;
     display: inline-block;
     position: relative;
 }
 
 a.navbar-brand:hover {
-    color: #4e93cc !important;
+    color: rgba(0, 0, 0, 0.75) !important;
+    transition: color .5s;
+}
+
+a.nav-link {
+    color:  #3277b0  !important;
+    font-size: 1.3em;
+    display: inline-block;
+    position: relative;
 }
 
 /*a.nav-link:hover {*/
@@ -61,11 +78,7 @@ li.nav-item > a.nav-link:hover:after {
 }
 
 #btn-nav {
-    margin: 5px 10px;
-}
-
-div.container-fluid {
-    margin-top: 10px;
+    margin-right: 0.7rem;
 }
 
 a.btn.btn-secondary, input.btn.btn-secondary {
@@ -79,18 +92,36 @@ a.btn.btn-secondary:hover, input.btn.btn-secondary:hover {
     transition: background-color .3s;
 }
 
-a.btn.btn-sm.btn-outline-secondary {
+button.btn.btn-outline-secondary {
+    height: 2.3rem;
+    margin-right: 0.7rem;
+}
+
+a.btn.btn-outline-secondary, button.btn.btn-outline-secondary {
     border-color: #3277b0;
     color: #3277b0;
 }
 
-a.btn.btn-sm.btn-outline-secondary:hover {
+a.btn.btn-outline-secondary:hover, button.btn.btn-outline-secondary:hover {
     background-color: #3277b0;
     color: white;
     transition: background-color .5s;
 }
 
-form.col-4, .row.col-8 {
+input.form-control {
+    height: 2.3rem;
+    margin-right: 0.7rem;
+}
+
+button#btn-nav.btn.btn-outline-secondary {
+    display: inline-block;
+}
+
+.form-control {
+    display: inline-block;
+}
+
+form.col-4, form.col-6, .row.col-8 {
     padding: 20px;
     border: 1px solid #A9AAAB;
     /*border-color: #f8f9fa;*/
@@ -104,11 +135,17 @@ form.col-4, .row.col-8 {
     margin-right: 50px;
 }
 
+#cards {
+    margin-top: 4rem;
+}
+
 .card {
     display: inline-block;
     margin: 10px;
-    background-color: #d2e4f2;
-    border: 0;
+    box-shadow: 2px 6px #989898;
+    border: 1px solid #A9AAAB;
+    background-color: #bfddf5;
+    border-radius: 10px;
 }
 
 .card-img-top {
@@ -121,6 +158,12 @@ form.col-4, .row.col-8 {
     width: 100%;
     height: 5vw;
     color: #232323;
+}
+
+.alert.alert-success {
+    margin-left: -12px;
+    margin-right: -12px;
+    border-radius: 0 !important;
 }
 
 .title {
@@ -163,7 +206,7 @@ div.col-8 {
     padding: 0;
 }
 
-#reglo {
+#reglog {
     margin-top: 10px;
 }
 
@@ -178,8 +221,13 @@ div.col-8 {
     height: 550px;
     width: 100vw;
     object-fit: cover;
-    border-radius: 10px;
-    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0.3)));
+    /*border-radius: 10px;*/
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(255, 255, 255, 0.2)));
+}
+
+#indexCarousel {
+    margin-left: -12px;
+    margin-right: -12px;
 }
 
 /*.carousel-caption.d-none.d-md-block > h4 {*/

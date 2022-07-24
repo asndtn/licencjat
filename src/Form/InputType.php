@@ -112,7 +112,7 @@ class InputType extends AbstractType
                 },
                 'label' => 'label.field',
                 'placeholder' => 'label.choose',
-                'required' => true,
+                'required' => false,
             ]
         );
 
@@ -126,7 +126,7 @@ class InputType extends AbstractType
                 },
                 'label' => 'label.movement',
                 'placeholder' => 'label.choose',
-                'required' => true,
+                'required' => false,
             ]
         );
 

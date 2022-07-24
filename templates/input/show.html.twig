@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
+    <div class="container-fluid" id="show">
         <div class="row">
             <h1 class="title col-6">{{ input.title }}</h1>
         </div>
@@ -17,17 +17,27 @@
                     <dt>{{ 'label.artist'|trans }}</dt>
                     <dd>{{ input.artist.name }}</dd>
                 </div>
+                    {% if input.artist.nationality.name is defined %}
+                    <div class="roow">
+                        <dt>{{ 'label.nationality'|trans }}</dt>
+                        <dd>{{ input.artist.nationality.name }}</dd>
+                    </div>
+                        {% endif %}
+                    {% if input.field.name is defined %}
                 <div class="roow">
                     <dt>{{ 'label.field'|trans }}</dt>
                     <dd>{{ input.field.name }}</dd>
                 </div>
+                        {% endif %}
+                    {% if input.movement.name is defined %}
                 <div class="roow">
                     <dt>{{ 'label.movement'|trans }}</dt>
                     <dd>{{ input.movement.name }}</dd>
                 </div>
+                        {% endif %}
                 <div class="roow">
                     <dt>{{ 'label.category'|trans }}</dt>
-                    <dd><a href="{{ url('input_index', {'filters.category_id' : input.category.id}) }}" title="{{ input.category.id }}">{{ input.category.name }}</a></dd>
+                    <dd>{{ input.category.name }}</dd>
                 </div>
                 <div class="roow">
                     <dt>{{ 'label.author'|trans }}</dt>
@@ -62,6 +72,12 @@
 {#            </dd>#}
 {#        </div>#}
 {#    </div>#}
+        {% if is_granted('EDIT', input) %}
+            <a href="{{ url('input_edit', {id: input.id}) }}" title="{{ 'action.edit'|trans }}">{{ 'action.edit'|trans }}</a>
+        {% endif %}
+        {% if is_granted('DELETE', input) %}
+            <a href="{{ url('input_delete', {id: input.id}) }}" title="{{ 'action.delete'|trans }}">{{ 'action.delete'|trans }}</a>
+        {% endif %}
         </div>
     {% else %}
         <p>{{ 'message.record_not_found'|trans }}</p>

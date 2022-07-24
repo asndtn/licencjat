@@ -74,7 +74,7 @@ class ArtistType extends AbstractType
                 },
                 'label' => 'label.nationality',
                 'placeholder' => 'label.none',
-                'required' => true,
+                'required' => false,
             ]
         );
     }

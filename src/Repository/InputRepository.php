@@ -75,7 +75,7 @@ class InputRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    public function queryAll(array $filters = []): QueryBuilder
+    public function queryAll(array $filters = [], string $search = null): QueryBuilder
     {
         $queryBuilder = $this->getOrCreateQueryBuilder()
             ->select(
@@ -88,7 +88,16 @@ class InputRepository extends ServiceEntityRepository
             ->join('input.category', 'category')
             ->orderBy('input.id', 'ASC');
 
-        return $this->applyFiltersToList($queryBuilder, $filters);
+        if ($search) {
+            $queryBuilder->andWhere('input.title LIKE :searchTerm')
+                ->setParameter('searchTerm', '%'.$search.'%');
+
+            return $queryBuilder;
+//                ->getQuery()
+//                ->getResult();
+        } else {
+            return $this->applyFiltersToList($queryBuilder, $filters);
+        }
     }
 
     /**

@@ -112,11 +112,19 @@
                 <source>label.donthave</source>
                 <target>Don't have an account?</target>
             </trans-unit>
+            <trans-unit id="label.search">
+                <source>label.search</source>
+                <target>Search...</target>
+            </trans-unit>
 
             <!-- Messages -->
+            <trans-unit id="message.your_empty_list">
+                <source>message.your_empty_list</source>
+                <target>No entry has been added by you.</target>
+            </trans-unit>
             <trans-unit id="message.empty_list">
                 <source>message.empty_list</source>
-                <target>No entry has been added by you.</target>
+                <target>Empty list.</target>
             </trans-unit>
             <trans-unit id="message.record_not_found">
                 <source>message.record_not_found</source>
@@ -157,6 +165,10 @@
             <trans-unit id="message.add">
                 <source>message.add</source>
                 <target>Add something!</target>
+            </trans-unit>
+            <trans-unit id="message.password_match">
+                <source>message.password_match</source>
+                <target>The password fields must match. </target>
             </trans-unit>
 
             <!-- Actions -->
@@ -350,9 +362,9 @@
                 <source>title.record_list_user</source>
                 <target>User list</target>
             </trans-unit>
-            <trans-unit id="title.user_edit">
-                <source>title.user_edit</source>
-                <target>Edit an user</target>
+            <trans-unit id="title.email_edit">
+                <source>title.email_edit</source>
+                <target>Edit an email</target>
             </trans-unit>
             <trans-unit id="title.user_delete">
                 <source>title.user_delete</source>
@@ -361,6 +373,12 @@
             <trans-unit id="title.account">
                 <source>title.account</source>
                 <target>My Account</target>
+            </trans-unit>
+
+            <!-- Help -->
+            <trans-unit id="help.password">
+                <source>help.password</source>
+                <target>Password should be min. 8 characters long.</target>
             </trans-unit>
 
             <!-- Miscellaneous -->

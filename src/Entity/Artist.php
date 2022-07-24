@@ -70,9 +70,9 @@ class Artist
      * Nationality.
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\Nationality", fetch="EXTRA_LAZY")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
-    private Nationality $nationality;
+    private ?Nationality $nationality;
 
     /**
      * Getter for Id.

@@ -90,9 +90,13 @@
             </trans-unit>
 
             <!-- Messages -->
+            <trans-unit id="message.your_empty_list">
+                <source>message.your_empty_list</source>
+                <target>Żaden wpis nie został przez Ciebie dodany.</target>
+            </trans-unit>
             <trans-unit id="message.empty_list">
                 <source>message.empty_list</source>
-                <target>Żaden wpis nie został przez Ciebie dodany.</target>
+                <target>Lista jest pusta.</target>
             </trans-unit>
             <trans-unit id="message.record_not_found">
                 <source>message.record_not_found</source>
@@ -128,7 +132,7 @@
             </trans-unit>
             <trans-unit id="message.registered_successfully">
                 <source>message.registered_successfully</source>
-                <target>Registered successfully!</target>
+                <target>Zarejestrowano pomyślnie!</target>
             </trans-unit>
             <trans-unit id="message.pass_changed_successfully">
                 <source>message.pass_changed_successfully</source>
@@ -137,6 +141,10 @@
             <trans-unit id="message.add">
                 <source>message.add</source>
                 <target>Dodaj coś!</target>
+            </trans-unit>
+            <trans-unit id="message.password_match">
+                <source>message.password_match</source>
+                <target>Hasła muszą do siebie pasować.</target>
             </trans-unit>
 
             <!-- Actions -->
@@ -213,6 +221,10 @@
             <trans-unit id="label.idea">
                 <source>label.idea</source>
                 <target>Idea</target>
+            </trans-unit>
+            <trans-unit id="label.search">
+                <source>label.search</source>
+                <target>Szukaj</target>
             </trans-unit>
 
             <!-- Titles -->
@@ -360,9 +372,9 @@
                 <source>title.record_list_user</source>
                 <target>Lista użytkowników</target>
             </trans-unit>
-            <trans-unit id="title.user_edit">
-                <source>title.user_edit</source>
-                <target>Edytuj użytkownika</target>
+            <trans-unit id="title.email_edit">
+                <source>title.email_edit</source>
+                <target>Edytuj email</target>
             </trans-unit>
             <trans-unit id="title.user_delete">
                 <source>title.user_delete</source>
@@ -371,6 +383,12 @@
             <trans-unit id="title.account">
                 <source>title.account</source>
                 <target>Moje Konto</target>
+            </trans-unit>
+
+        <!-- Help -->
+            <trans-unit id="help.password">
+                <source>help.password</source>
+                <target>Hasło powinno mieć przynajmniej 8 znaków.</target>
             </trans-unit>
 
         <!-- Miscellaneous -->

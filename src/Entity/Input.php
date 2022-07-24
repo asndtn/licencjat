@@ -59,11 +59,10 @@ class Input
      * @ORM\ManyToOne(targetEntity="App\Entity\Field", fetch="EXTRA_LAZY")
      *
      * @Assert\Type("App\Entity\Field")
-     * @Assert\NotBlank
      *
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
-    private Field $field;
+    private ?Field $field = null;
 
     /**
      * Movement.
@@ -71,11 +70,10 @@ class Input
      * @ORM\ManyToOne(targetEntity="App\Entity\Movement", fetch="EXTRA_LAZY")
      *
      * @Assert\Type("App\Entity\Movement")
-     * @Assert\NotBlank
      *
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
-    private Movement $movement;
+    private ?Movement $movement = null;
 
     /**
      * Artist.
@@ -198,9 +196,9 @@ class Input
     /**
      * Getter for Field.
      *
-     * @return Field Field
+     * @return Field|null Field
      */
-    public function getField(): Field
+    public function getField(): ?Field
     {
         return $this->field;
     }
@@ -208,9 +206,9 @@ class Input
     /**
      * Setter for Field.
      *
-     * @param Field $field Field
+     * @param Field|null $field Field
      */
-    public function setField(Field $field): void
+    public function setField(?Field $field): void
     {
         $this->field = $field;
     }
@@ -218,9 +216,9 @@ class Input
     /**
      * Getter for Movement.
      *
-     * @return Movement Movement
+     * @return Movement|null Movement
      */
-    public function getMovement(): Movement
+    public function getMovement(): ?Movement
     {
         return $this->movement;
     }
@@ -228,9 +226,9 @@ class Input
     /**
      * Setter for Movement.
      *
-     * @param Movement $movement Movement
+     * @param Movement|null $movement Movement
      */
-    public function setMovement(Movement $movement): void
+    public function setMovement(?Movement $movement): void
     {
         $this->movement = $movement;
     }

@@ -5,32 +5,33 @@
 {% endblock %}
 
 {% block body %}
-    <div class="row">
-        <h1 class="title col-6">{{ 'title.account'|trans }}</h1>
-    </div>
-    {% if user is defined and user|length %}
+    <div class="container-fluid" id="show">
         <div class="row">
-            <div class="col-2">
-                <div class="roow">
-                    <dt>{{ 'label.email'|trans }}</dt>
-                    <dd>{{ user.email }}</dd>
-                </div>
-            </div>
-            <div class="col-6">
-            <a href="{{ url('user_edit', {id: app.user.id}) }}" title="{{ 'action.edit'|trans }}">
-                    {{ 'action.edit'|trans }}
-                </a>
-            </div>
-            <div class="row">
-                <div class="col-3">
-                    <a href="{{ url('app_change-password', {id: app.user.id}) }}" title="{{ 'action.password_change'|trans }}">{{ 'action.password_change'|trans }}</a>
-                </div>
-                <div class="row"><div class="col-3"><a href="{{ url('my_inputs') }}"
-                                       title="{{ 'label.my_inputs'|trans }}">{{ 'label.my_inputs'|trans }}</a></div></div>
+            <h1 class="title col-6">{{ 'title.account'|trans }}</h1>
         </div>
-    {% else %}
-        <p>
-            {{ 'message.user_not_found'|trans }}
-        </p>
-    {% endif %}
+        {% if user is defined and user|length %}
+            <div class="row">
+                <div class="col-2">
+                    <div class="roow">
+                        <dt>{{ 'label.email'|trans }}</dt>
+                        <dd>{{ user.email }}</dd>
+                    </div>
+                </div>
+                <div class="col-6">
+                <a href="{{ url('user_edit', {id: app.user.id}) }}" title="{{ 'action.edit'|trans }}">
+                        {{ 'action.edit'|trans }}
+                    </a>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <a href="{{ url('app_change-password', {id: app.user.id}) }}" title="{{ 'action.password_change'|trans }}">{{ 'action.password_change'|trans }}</a>
+                    </div>
+                    <div class="row"><div class="col-3"><a href="{{ url('my_inputs') }}"
+                                           title="{{ 'label.my_inputs'|trans }}">{{ 'label.my_inputs'|trans }}</a></div></div>
+            </div>
+        {% else %}
+            <p>
+                {{ 'message.user_not_found'|trans }}
+            </p>
+        {% endif %}</div>
 {% endblock %}

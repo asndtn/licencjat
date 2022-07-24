@@ -53,12 +53,12 @@ class InputService implements InputServiceInterface
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page, array $filters = []): PaginationInterface
+    public function getPaginatedList(int $page, array $filters = [], string $search = null): PaginationInterface
     {
         $filters = $this->prepareFilters($filters);
 
         return $this->paginator->paginate(
-            $this->inputRepository->queryAll($filters),
+            $this->inputRepository->queryAll($filters, $search),
             $page,
             InputRepository::PAGINATOR_ITEMS_PER_PAGE
         );
