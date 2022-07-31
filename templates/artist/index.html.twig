@@ -5,12 +5,12 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.record_list_artist'|trans }}</h1>
-    <div class="d-flex justify-content-center flex-wrap">
+    <h1 id="display-h1">{{ 'title.record_list_artist'|trans }}</h1>
     {%  if pagination is defined and pagination.items|length %}
+    <div class="d-flex justify-content-center flex-wrap" id="display-container">
             {% for artist in pagination.items %}
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" id="artist-card" src="{{ asset('uploads/paintings/cat-62dafaf5748ad.jpg') }}" alt="{{ artist.name }}">
+                    <img class="card-img-top" id="artist-card" src="{{ asset(paintings_directory~artist.photoFilename) }}" alt="{{ artist.name }}">
                     <div class="card-body">
                         <a href="{{ url('artist_show', {id: artist.id}) }}" title="{{ 'action.view'|trans }}" id="view-btn" style="text-decoration: none"><h5 class="card-title" id="artist-card-title">{{ artist.name }}</h5></a>
 {#                        <a href="{{ url('artist_show', {id: artist.id}) }}" title="{{ 'action.view'|trans }}" id="view-btn" class="btn btn-primary">{{ 'action.view'|trans }}</a>#}

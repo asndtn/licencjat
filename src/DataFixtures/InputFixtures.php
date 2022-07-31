@@ -44,6 +44,8 @@ class InputFixtures extends AbstractBaseFixtures implements DependentFixtureInte
 
     /**
      * Constructor.
+     *
+     * @param FileUploader $fileUploader File uploader
      */
     public function __construct(FileUploader $fileUploader)
     {

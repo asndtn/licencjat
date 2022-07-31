@@ -95,6 +95,14 @@ class UserVoter extends Voter
         return false;
     }
 
+    /**
+     * Checks if user is Owner or Admin.
+     *
+     * @param $subject Object
+     * @param User $user User
+     *
+     * @return bool Result
+     */
     private function isOwnerOrAdmin($subject, User $user): bool
     {
         return $subject->getId() === $user->getId() || in_array('ROLE_ADMIN', $user->getRoles());

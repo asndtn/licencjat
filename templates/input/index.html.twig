@@ -6,58 +6,59 @@
 
 {% block body %}
     <div id="indexCarousel" class="carousel slide carousel-dark" data-bs-interval="false">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#indexCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#indexCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#indexCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
+{#        <div class="carousel-indicators">#}
+{#            <button type="button" data-bs-target="#indexCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>#}
+{#            <button type="button" data-bs-target="#indexCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>#}
+{#            <button type="button" data-bs-target="#indexCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>#}
+{#        </div>#}
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('uploads/paintings/squirrel-62dafaf55aba8.jpg') }}" class="d-block w-100" alt="Frida Kahlo">
-                <a href="{{ url('input_show', {id: 163} ) }}" title="{{ 'action.view'|trans }}">
+                <img src="{{ asset('css/basquiat-cover.jpeg') }}" class="d-block w-100" alt="Jean-Michel Basquiat">
+                <a href="{{ url('input_show', {id: 298} ) }}" title="{{ 'action.view'|trans }}">
                     <div class="carousel-caption d-none d-md-block">
-                        <h4>{{ 'Prof. Jeremie Stokes - barwna artystka skazana na cierpienie' }}</h4>
-                        <p>{{ 'Zobacz więcej' }}</p>
+                        <h1>{{ 'Zapoznaj się z sylwetkami artystów, którzy swoją sztukę tworzyli w niesprzyjających okolicznościach.' }}</h1>
+{#                        <p>{{ 'Zobacz więcej' }}</p>#}
                     </div>
                 </a>
             </div>
-            <div class="carousel-item">
-                <img src="{{ asset('uploads/paintings/differences-62dafaf56ca4d.jpg') }}" class="d-block w-100" alt="Jean-Michel Basquiat">
-                <a href="{{ url('input_show', {id: 164} ) }}" title="{{ 'action.view'|trans }}">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h4>{{ 'Lucio Kulas' }}</h4>
-                        <p>{{ 'Wygrana walka z hazadrem przyniosła mu jeszcze większa popularność' }}</p>
-                    </div>
-                </a>
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('uploads/paintings/bubbles-62dafaf56bf92.jpg') }}" class="d-block w-100" alt="...">
-                <a href="{{ url('input_show', {id: 165} ) }}" title="{{ 'action.view'|trans }}">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h4>{{ 'Henderson Paucek do końca życia zmagał się z depresją' }}</h4>
-                        <p>{{ 'Zobacz jak wpłynęło to na jego twórczość' }}</p>
-                    </div>
-                </a>
-            </div>
+{#            <div class="carousel-item">#}
+{#                <img src="{{ asset('uploads/paintings/basquiat-62ddd7d2f1160.jpg') }}" class="d-block w-100" alt="Jean-Michel Basquiat">#}
+{#                <a href="{{ url('input_show', {id: 299} ) }}" title="{{ 'action.view'|trans }}">#}
+{#                    <div class="carousel-caption d-none d-md-block">#}
+{#                        <h4>{{ 'Lucio Kulas' }}</h4>#}
+{#                        <p>{{ 'Wygrana walka z hazadrem przyniosła mu jeszcze większa popularność' }}</p>#}
+{#                    </div>#}
+{#                </a>#}
+{#            </div>#}
+{#            <div class="carousel-item">#}
+{#                <img src="{{ asset('uploads/paintings/bubbles-62ddd7d32afa5.jpg') }}" class="d-block w-100" alt="...">#}
+{#                <a href="{{ url('input_show', {id: 300} ) }}" title="{{ 'action.view'|trans }}">#}
+{#                    <div class="carousel-caption d-none d-md-block">#}
+{#                        <h4>{{ 'Henderson Paucek do końca życia zmagał się z depresją' }}</h4>#}
+{#                        <p>{{ 'Zobacz jak wpłynęło to na jego twórczość' }}</p>#}
+{#                    </div>#}
+{#                </a>#}
+{#            </div>#}
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#indexCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#indexCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+{#        <button class="carousel-control-prev" type="button" data-bs-target="#indexCarousel" data-bs-slide="prev">#}
+{#            <span class="carousel-control-prev-icon" aria-hidden="true"></span>#}
+{#            <span class="visually-hidden">Previous</span>#}
+{#        </button>#}
+{#        <button class="carousel-control-next" type="button" data-bs-target="#indexCarousel" data-bs-slide="next">#}
+{#            <span class="carousel-control-next-icon" aria-hidden="true"></span>#}
+{#            <span class="visually-hidden">Next</span>#}
+{#        </button>#}
     </div>
     {%  if pagination is defined and pagination.items|length %}
         <div class="d-flex justify-content-center flex-wrap" id="cards">
         {% for input in pagination.items %}
                     <div class="card" style="width: 21rem;">
-                        <img class="card-img-top" src="{{ asset(paintings_directory~input.paintingFilename) }}"
+{#                        <img class="card-img-top" src="{{ asset(paintings_directory~input.paintingFilename) }}"#}
+{#                             alt="{{ input.artist.name }}">#}
+                        <img class="card-img-top" src="{{ asset(paintings_directory~input.artist.photoFilename) }}"
                              alt="{{ input.artist.name }}">
                         <div class="card-body">
-                            <h5 class="card-title">{{ input.title }}</h5>
-                            <a href="{{ url('input_show', {id: input.id}) }}" title="{{ 'action.view'|trans }}" id="view-btn" class="btn btn-primary">{{ 'action.view'|trans }}</a>
+                            <a id="titlelink" href="{{ url('input_show', {id: input.id}) }}" title="{{ 'action.view'|trans }}"><h5 class="card-title">{{ input.artist.name }}</h5></a>
                         </div>
                     </div>
         {% endfor %}

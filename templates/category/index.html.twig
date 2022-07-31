@@ -5,13 +5,13 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.record_list_category'|trans }}</h1>
+    <h1 id="display-h1">{{ 'title.record_list_category'|trans }}</h1>
     {%  if pagination is defined and pagination.items|length %}
-        <div class="d-flex justify-content-center flex-wrap">
+        <div class="d-flex justify-content-center flex-wrap" id="display-container">
             {% for category in pagination.items %}
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <a href="{{ url('input_index', {'filters.category_id' :  category.id}) }}" title="{{ 'action.view'|trans }}" style="text-decoration: none"><h5 class="card-title">{{ category.name }}</h5></a>
+                <div class="card" id="category-card" style="width: 10rem;">
+                    <div class="card-body d-flex justify-content-center">
+                        <a href="{{ url('input_index', {'filters.category_id' :  category.id}) }}" title="{{ 'action.view'|trans }}" style="text-decoration: none"><span class="align-middle" style="text-decoration: none; color: black">{{ category.name }}</span></a>
                     </div>
                 </div>
             {% endfor %}

@@ -81,7 +81,7 @@ class InputRepository extends ServiceEntityRepository
             ->select(
                 'partial input.{id, title, paintingFilename}',
                 'partial category.{id, name}',
-                'partial artist.{id, name}'
+                'partial artist.{id, name, photoFilename}'
                 // TODO: inne partial daj
             )
             ->join('input.artist', 'artist')

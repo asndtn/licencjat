@@ -53,7 +53,7 @@ class ArtistRepository extends ServiceEntityRepository
     {
         return $this->getOrCreateQueryBuilder()
             ->select(
-                'partial artist.{id, name}',
+                'partial artist.{id, name, photoFilename}',
                 'partial nationality.{id, name}'
             )
             ->join('artist.nationality', 'nationality')

@@ -75,6 +75,13 @@ class Artist
     private ?Nationality $nationality;
 
     /**
+     * Artist's photo filename.
+     *
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    private ?string $photoFilename = null;
+
+    /**
      * Getter for Id.
      *
      * @return int|null Id
@@ -162,5 +169,25 @@ class Artist
     public function setNationality(?Nationality $nationality): void
     {
         $this->nationality = $nationality;
+    }
+
+    /**
+     * Getter for Photo filename.
+     *
+     * @return string|null Photo filename
+     */
+    public function getPhotoFilename(): ?string
+    {
+        return $this->photoFilename;
+    }
+
+    /**
+     * Setter for Photo Filename.
+     *
+     * @param string|null $photoFilename Photo filename
+     */
+    public function setPhotoFilename(?string $photoFilename): void
+    {
+        $this->photoFilename = $photoFilename;
     }
 }

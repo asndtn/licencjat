@@ -7,8 +7,11 @@ namespace App\DataFixtures;
 
 use App\Entity\Artist;
 use App\Entity\Nationality;
+use App\Service\FileUploader;
 use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Class ArtistFixtures.
@@ -17,6 +20,35 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
  */
 class ArtistFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
+    private static array $artistPhotos = [
+        'frida.jpg',
+        'haring.jpg',
+        'j-m-basquiat.jpeg',
+        'munch.jpg',
+        'osiecka.jpg',
+        'plath.jpeg',
+        'poe.jpeg',
+        'przybyszewski.png',
+        'rothko.png',
+        'virginia.jpg',
+        'vonnegut.jpeg',
+    ];
+
+    /**
+     * File uploader.
+     *
+     * @var FileUploader File uploader
+     */
+    private FileUploader $fileUploader;
+
+    /**
+     * Constructor.
+     */
+    public function __construct(FileUploader $fileUploader)
+    {
+        $this->fileUploader = $fileUploader;
+    }
+
     /**
      * Load data.
      *
@@ -49,6 +81,10 @@ class ArtistFixtures extends AbstractBaseFixtures implements DependentFixtureInt
             $nationality = $this->getRandomReference('nationalities');
             $artist->setNationality($nationality);
 
+            $artistPhoto = $this->fakeUploadImage();
+            /* @var string $artistPhoto */
+            $artist->setPhotoFilename($artistPhoto);
+
             return $artist;
         });
 
@@ -66,5 +102,21 @@ class ArtistFixtures extends AbstractBaseFixtures implements DependentFixtureInt
     public function getDependencies(): array
     {
         return [NationalityFixtures::class];
+    }
+
+    /**
+     * Fake upload.
+     *
+     * @return string Path
+     */
+    private function fakeUploadImage(): string
+    {
+        $randomImage = $this->faker->randomElement(self::$artistPhotos);
+        $fs = new Filesystem();
+        $targetPath = sys_get_temp_dir().'/'.$randomImage;
+        $fs->copy(__DIR__.'/images/'.$randomImage, $targetPath, true);
+
+        return $this->fileUploader
+            ->upload(new File($targetPath));
     }
 }
