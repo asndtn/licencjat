@@ -59,7 +59,7 @@ class InputType extends AbstractType
             [
                 'label' => 'label.painting',
                 'mapped' => false,
-                'required' => true,
+                'required' => false,
                 'constraints' => [
                     new File([
                         'maxSize' => '4096k',

@@ -131,7 +131,7 @@ class Input
     /**
      * Painting filename.
      *
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private string $paintingFilename;
 
@@ -328,9 +328,9 @@ class Input
     /**
      * Getter for Painting filename.
      *
-     * @return string Painting filename
+     * @return string|null Painting filename
      */
-    public function getPaintingFilename(): string
+    public function getPaintingFilename(): ?string
     {
         return $this->paintingFilename;
     }
@@ -338,9 +338,9 @@ class Input
     /**
      * Setter for Painting filename.
      *
-     * @param string $paintingFilename Painting filename
+     * @param string|null $paintingFilename Painting filename
      */
-    public function setPaintingFilename(string $paintingFilename): void
+    public function setPaintingFilename(?string $paintingFilename): void
     {
         $this->paintingFilename = $paintingFilename;
     }

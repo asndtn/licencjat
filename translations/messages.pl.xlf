@@ -334,7 +334,7 @@
             </trans-unit>
             <trans-unit id="title.input_delete">
                 <source>title.input_delete</source>
-                <target>Usuń wpis</target>
+                <target>Czy na pewno chcesz usunąć wpis "%title%"?</target>
             </trans-unit>
             <trans-unit id="title.artist_create">
                 <source>title.artist_create</source>

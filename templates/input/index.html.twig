@@ -53,10 +53,10 @@
         <div class="d-flex justify-content-center flex-wrap" id="cards">
         {% for input in pagination.items %}
                     <div class="card" style="width: 21rem;">
-{#                        <img class="card-img-top" src="{{ asset(paintings_directory~input.paintingFilename) }}"#}
-{#                             alt="{{ input.artist.name }}">#}
-                        <img class="card-img-top" src="{{ asset(paintings_directory~input.artist.photoFilename) }}"
+                        <img class="card-img-top" src="{{ asset(paintings_directory~input.paintingFilename) }}"
                              alt="{{ input.artist.name }}">
+{#                        <img class="card-img-top" src="{{ asset(paintings_directory~input.artist.photoFilename) }}"#}
+{#                             alt="{{ input.artist.name }}">#}
                         <div class="card-body">
                             <a id="titlelink" href="{{ url('input_show', {id: input.id}) }}" title="{{ 'action.view'|trans }}"><h5 class="card-title">{{ input.artist.name }}</h5></a>
                         </div>

@@ -236,7 +236,7 @@
             </trans-unit>
             <trans-unit id="title.input_delete">
                 <source>title.input_delete</source>
-                <target>Delete an input</target>
+                <target>Are you sure you want to delete an input "%title%"?</target>
             </trans-unit>
             <trans-unit id="title.record_list_nationality">
                 <source>title.record_list_nationality</source>

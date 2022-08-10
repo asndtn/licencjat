@@ -162,7 +162,7 @@ class InputController extends AbstractController
      *
      * @IsGranted("EDIT", subject="input")
      */
-    public function edit(Request $request, Input $input): Response
+    public function edit(Request $request, Input $input, FileUploader $fileUploader): Response
     {
         $form = $this->createForm(InputType::class, $input, [
             'method' => 'PUT',
@@ -171,6 +171,11 @@ class InputController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $paintingFile = $form->get('painting')->getData();
+            if ($paintingFile) {
+                $paintingFilename = $fileUploader->upload($paintingFile);
+                $input->setPaintingFilename($paintingFilename);
+            }
             $this->inputService->save($input);
 
             $this->addFlash(
