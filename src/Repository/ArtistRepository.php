@@ -56,7 +56,7 @@ class ArtistRepository extends ServiceEntityRepository
                 'partial artist.{id, name, photoFilename}',
                 'partial nationality.{id, name}'
             )
-            ->join('artist.nationality', 'nationality')
+            ->leftJoin('artist.nationality', 'nationality')
             ->orderBy('artist.id', 'ASC');
     }
 
