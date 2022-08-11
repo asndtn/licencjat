@@ -77,9 +77,9 @@ class Artist
     /**
      * Artist's photo filename.
      *
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private ?string $photoFilename = null;
+    private string $photoFilename;
 
     /**
      * Getter for Id.

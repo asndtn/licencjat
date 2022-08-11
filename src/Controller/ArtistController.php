@@ -8,6 +8,7 @@ namespace App\Controller;
 use App\Entity\Artist;
 use App\Form\ArtistType;
 use App\Service\ArtistServiceInterface;
+use App\Service\FileUploader;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -91,13 +92,18 @@ class ArtistController extends AbstractController
      *
      * @IsGranted("ROLE_ADMIN")
      */
-    public function create(Request $request): Response
+    public function create(Request $request, FileUploader $fileUploader): Response
     {
         $artist = new Artist();
         $form = $this->createForm(ArtistType::class, $artist);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $photoFile = $form->get('photo')->getData();
+            if ($photoFile) {
+                $photoFilename = $fileUploader->upload($photoFile);
+                $artist->setPhotoFilename($photoFilename);
+            }
             $this->artistService->save($artist);
 
             $this->addFlash(
@@ -126,7 +132,7 @@ class ArtistController extends AbstractController
      *
      * @IsGranted("ROLE_ADMIN")
      */
-    public function edit(Request $request, Artist $artist): Response
+    public function edit(Request $request, Artist $artist, FileUploader $fileUploader): Response
     {
         $form = $this->createForm(ArtistType::class, $artist, [
             'method' => 'PUT',
@@ -135,6 +141,11 @@ class ArtistController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $photoFilename = $form->get('photo')->getData();
+            if ($photoFilename) {
+                $photoFilename = $fileUploader->upload($photoFilename);
+                $artist->setPhotoFilename($photoFilename);
+            }
             $this->artistService->save($artist);
 
             $this->addFlash(

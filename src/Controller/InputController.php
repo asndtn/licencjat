@@ -69,7 +69,7 @@ class InputController extends AbstractController
     }
 
     /**
-     * Show only user's inputs action.
+     * Show only user's inputs.
      *
      * @param Request $request User request
      *

@@ -7,24 +7,34 @@
 {% block body %}
     <div class="container-fluid" id="show">
         <div class="row">
-            <h1>{{ artist.name }}</h1>
+            <h1 class="title col-6">{{ artist.name }}</h1>
         </div>
         {% if artist is defined and artist|length %}
             <div class="row">
-                <div class="col-2">
+                <div class="col">
                     <div class="roow">
                         <dt>{{ 'label.dateOfBirth'|trans }}</dt>
                         <dd>{{ artist.dateOfBirth|format_date('long') }}</dd>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-2">
+                    {% if artist.dateOfDeath is defined %}
                     <div class="roow">
                         <dt>{{ 'label.dateOfDeath'|trans }}</dt>
                         <dd>{{ artist.dateOfDeath|format_date('long') }}</dd>
                     </div>
+                    {% endif %}
+                    {% if artist.nationality.name is defined %}
+                    <div class="roow">
+                        <dt>{{ 'label.nationality'|trans }}</dt>
+                        <dd>{{ artist.nationality.name }}</dd>
+                    </div>
+                    {% endif %}
                 </div>
+            </div>
+            <div class="col d-flex justify-content-end">
+                {% if artist.photoFilename is defined and artist.photoFilename|length %}
+                    <figure><img class="img-fluid" alt="Responsive image"
+                                 src="{{ asset(paintings_directory~artist.photoFilename) }}" alt="{{ artist.name }}"></figure>
+                {% endif %}
             </div>
             <p>
                 <a href="{{ url('artist_index') }}" title="{{ 'action.back_to_list'|trans }}">

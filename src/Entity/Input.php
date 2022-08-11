@@ -126,9 +126,6 @@ class Input
     private ?string $description = null;
 
     /**
-     * TODO: Umożlwić edycję obrazka.
-     */
-    /**
      * Painting filename.
      *
      * @ORM\Column(type="string", length=255, nullable=true)
