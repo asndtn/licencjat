@@ -9,9 +9,10 @@
     {%  if pagination is defined and pagination.items|length %}
     <div class="d-flex justify-content-center flex-wrap" id="display-container">
             {% for artist in pagination.items %}
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" id="artist-card" src="{{ asset(paintings_directory~artist.photoFilename) }}" alt="{{ artist.name }}">
-                    <div class="card-body">
+                <div class="card text-center">
+                    <figure><img class="card-img-top img-fluid" id="artist-card-img"
+                            src="{{ asset(paintings_directory~artist.photoFilename) }}" alt="{{ artist.name }}"></figure>
+                    <div class="card-body" id="artist-card-body">
                         <a href="{{ url('artist_show', {id: artist.id}) }}" title="{{ 'action.view'|trans }}" id="view-btn" style="text-decoration: none"><h5 class="card-title" id="artist-card-title">{{ artist.name }}</h5></a>
 {#                        <a href="{{ url('artist_show', {id: artist.id}) }}" title="{{ 'action.view'|trans }}" id="view-btn" class="btn btn-primary">{{ 'action.view'|trans }}</a>#}
                     </div>

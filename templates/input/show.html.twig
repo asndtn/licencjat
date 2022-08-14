@@ -5,17 +5,16 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container-fluid" id="show">
-        <div class="row">
-            <h1 class="title col-6">{{ input.title }}</h1>
-        </div>
+    <div class="d-flex justify-content-center" id="show">
+        <div class="row col-10">
+            <h1 class="h1 font-weigh-normal">{{ input.title }}</h1>
     {% if input is defined and input|length %}
         <div class="row">
             <div class="col">
                 <div class="data">
                 <div class="roow">
                     <dt>{{ 'label.artist'|trans }}</dt>
-                    <dd>{{ input.artist.name }}</dd>
+                    <dd><a class="text-decoration-none" style="color: black;" href="{{ url('artist_show', {id: input.artist.id}) }}">{{ input.artist.name }}</a></dd>
                 </div>
                     {% if input.artist.nationality.name is defined %}
                     <div class="roow">
@@ -47,37 +46,27 @@
                 <div class="idk">
                     {{ input.description|markdown_to_html }}
                 </div>
+                {% if is_granted('EDIT', input) %}
+                    {% if is_granted('DELETE', input) %}
+                <div class="roow" id="input-show-buttons">
+                        <a role="button" id="view-btn" class="btn btn-info btn-sm" href="{{ url('input_edit', {id: input.id}) }}" title="{{ 'action.edit'|trans }}">{{ 'action.edit'|trans }}</a>
+                        <a role="button" id="view-btn" class="btn btn-info btn-sm" href="{{ url('input_delete', {id: input.id}) }}" title="{{ 'action.delete'|trans }}">{{ 'action.delete'|trans }}</a>
+                </div>
+                    {% endif %}
+                {% endif %}
             </div>
-
-    <div class="col d-flex justify-content-end">
-        {% if input.paintingFilename is defined and input.paintingFilename|length %}
-            <figure><img class="img-fluid" alt="Responsive image"
-                    src="{{ asset(paintings_directory~input.paintingFilename) }}"></figure>
-        {% endif %}
-    </div>
+            <div class="col d-flex justify-content-end">
+                {% if input.paintingFilename is defined and input.paintingFilename|length %}
+                    <figure>
+                        <img class="img-fluid" id="input-show-img" alt="{{ input.artist.name }}" src="{{ asset(paintings_directory~input.paintingFilename) }}">
+                    </figure>
+                {% endif %}
+            </div>
         </div>
-
-{#    <div class="row">#}
-{#        <span class="col-6">{{ input.description|markdown_to_html }}</span>#}
-
-{#        <div class="col-12">#}
-{#            <dt>{{ 'label.tags'|trans }}</dt>#}
-{#            <dd>{% if input.tags is defined and input.tags|length %}#}
-{#                    {% for tag in input.tags %}#}
-{#                        {{ tag.name }}#}
-{#                    {% endfor %}#}
-{#                {% else %}#}
-{#                    &nbsp;#}
-{#                {% endif %}#}
-{#            </dd>#}
-{#        </div>#}
-{#    </div>#}
-        {% if is_granted('EDIT', input) %}
-            <a href="{{ url('input_edit', {id: input.id}) }}" title="{{ 'action.edit'|trans }}">{{ 'action.edit'|trans }}</a>
-        {% endif %}
-        {% if is_granted('DELETE', input) %}
-            <a href="{{ url('input_delete', {id: input.id}) }}" title="{{ 'action.delete'|trans }}">{{ 'action.delete'|trans }}</a>
-        {% endif %}
+        <div class="roow" id="input-index-btn">
+            <a role="button" id="view-btn" class="btn btn-info btn-sm" href="{{ url('input_index') }}" title="{{ 'action.view_more'|trans }}">{{ 'action.view_more'|trans }}</a>
+        </div>
+        </div>
         </div>
     {% else %}
         <p>{{ 'message.record_not_found'|trans }}</p>

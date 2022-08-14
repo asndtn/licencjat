@@ -16,9 +16,17 @@
                 <source>label.title</source>
                 <target>Title</target>
             </trans-unit>
+            <trans-unit id="label.title_req">
+                <source>label.title_req</source>
+                <target>Title *</target>
+            </trans-unit>
             <trans-unit id="label.description">
                 <source>label.description</source>
                 <target>Description</target>
+            </trans-unit>
+            <trans-unit id="label.description_req">
+                <source>label.description_req</source>
+                <target>Description *</target>
             </trans-unit>
             <trans-unit id="label.tags">
                 <source>label.tags</source>
@@ -28,13 +36,25 @@
                 <source>label.painting</source>
                 <target>Painting</target>
             </trans-unit>
+            <trans-unit id="label.painting_req">
+                <source>label.painting_req</source>
+                <target>Painting *</target>
+            </trans-unit>
             <trans-unit id="label.artist">
                 <source>label.artist</source>
                 <target>Artist</target>
             </trans-unit>
+            <trans-unit id="label.artist_req">
+                <source>label.artist_req</source>
+                <target>Artist *</target>
+            </trans-unit>
             <trans-unit id="label.category">
                 <source>label.category</source>
                 <target>Category</target>
+            </trans-unit>
+            <trans-unit id="label.category_req">
+                <source>label.category_req</source>
+                <target>Category *</target>
             </trans-unit>
             <trans-unit id="label.field">
                 <source>label.field</source>
@@ -115,6 +135,14 @@
             <trans-unit id="label.search">
                 <source>label.search</source>
                 <target>Search...</target>
+            </trans-unit>
+            <trans-unit id="label.required">
+                <source>label.required</source>
+                <target>Fields marked with an asterisk (*) are required.</target>
+            </trans-unit>
+            <trans-unit id="label.artworks">
+                <source>label.artworks</source>
+                <target>Other artworks</target>
             </trans-unit>
 
             <!-- Messages -->
@@ -215,6 +243,10 @@
             <trans-unit id="action.account">
                 <source>action.account</source>
                 <target>My account</target>
+            </trans-unit>
+            <trans-unit id="action.view_more">
+                <source>action.view_more</source>
+                <target>See more...</target>
             </trans-unit>
 
             <!-- Titles -->
@@ -379,6 +411,14 @@
             <trans-unit id="help.password">
                 <source>help.password</source>
                 <target>Password should be min. 8 characters long.</target>
+            </trans-unit>
+            <trans-unit id="help.picture">
+                <source>help.picture</source>
+                <target>Filetypes: JPEG, JPG, PNG. Image must be less than 4MB.</target>
+            </trans-unit>
+            <trans-unit id="help.description">
+                <source>help.description</source>
+                <target>You may use the Markdown markup language.</target>
             </trans-unit>
 
             <!-- Miscellaneous -->

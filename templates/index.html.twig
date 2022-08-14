@@ -5,48 +5,17 @@
 {% endblock %}
 
 {% block body %}
-{#    <div id="indexCarousel" class="carousel slide carousel-dark" data-bs-interval="false">#}
-{#        <div class="carousel-indicators">#}
-{#            <button type="button" data-bs-target="#indexCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>#}
-{#            <button type="button" data-bs-target="#indexCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>#}
-{#            <button type="button" data-bs-target="#indexCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>#}
-{#        </div>#}
-{#        <div class="carousel-inner">#}
-{#            <div class="carousel-item active">#}
-{#                <img src="{{ asset('uploads/paintings/frida-kahlo-a-few-small-nips.jpg') }}" class="d-block w-100" alt="Frida Kahlo">#}
-{#                <a href="{{ url('input_show', {id: 122} ) }}" title="{{ 'action.view'|trans }}">#}
-{#                    <div class="carousel-caption d-none d-md-block">#}
-{#                        <h4>{{ 'Frida Kahlo - barwna artystka skazana na cierpienie' }}</h4>#}
-{#                        <p>{{ 'Zobacz więcej' }}</p>#}
-{#                    </div>#}
-{#                </a>#}
-{#            </div>#}
-{#            <div class="carousel-item">#}
-{#                <img src="{{ asset('uploads/paintings/basquiat-62d6d2a0ce916.jpg') }}" class="d-block w-100" alt="Jean-Michel Basquiat">#}
-{#                <a href="{{ url('input_show', {id: 123} ) }}" title="{{ 'action.view'|trans }}">#}
-{#                    <div class="carousel-caption d-none d-md-block">#}
-{#                        <h4>{{ 'Jean-Michel Basquiat - Cudowne dziecko' }}</h4>#}
-{#                        <p>{{ 'Zobacz więcej' }}</p>#}
-{#                    </div>#}
-{#                </a>#}
-{#            </div>#}
-{#            <div class="carousel-item">#}
-{#                <img src="{{ asset('uploads/paintings/seagul-62d6d2a0df24a.jpg') }}" class="d-block w-100" alt="...">#}
-{#                    <a href="{{ url('input_show', {id: 122} ) }}" title="{{ 'action.view'|trans }}">#}
-{#                        <div class="carousel-caption d-none d-md-block">#}
-{#                            <h4>{{ 'Jan Kowalski - też miał ciężko w życiu' }}</h4>#}
-{#                            <p>{{ 'Zobacz więcej' }}</p>#}
-{#                        </div>#}
-{#                    </a>#}
-{#            </div>#}
-{#        </div>#}
-{#        <button class="carousel-control-prev" type="button" data-bs-target="#indexCarousel" data-bs-slide="prev">#}
-{#            <span class="carousel-control-prev-icon" aria-hidden="true"></span>#}
-{#            <span class="visually-hidden">Previous</span>#}
-{#        </button>#}
-{#        <button class="carousel-control-next" type="button" data-bs-target="#indexCarousel" data-bs-slide="next">#}
-{#            <span class="carousel-control-next-icon" aria-hidden="true"></span>#}
-{#            <span class="visually-hidden">Next</span>#}
-{#        </button>#}
-{#    </div>#}
+    <div id="indexCarousel" class="carousel slide carousel-dark" data-bs-interval="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ asset('css/basquiat-cover.jpeg') }}" class="d-block w-100" alt="Jean-Michel Basquiat">
+                <a href="{{ url('input_index') }}" title="{{ 'action.view'|trans }}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>{{ 'Zapoznaj się z sylwetkami artystów, którzy swoją sztukę tworzyli w niesprzyjających okolicznościach.' }}</h1>
+                                        <p style="margin-top: 1em;">{{ 'Zobacz więcej' }}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

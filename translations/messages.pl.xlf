@@ -16,9 +16,17 @@
                 <source>label.title</source>
                 <target>Tytuł</target>
             </trans-unit>
+            <trans-unit id="label.title_req">
+                <source>label.title_req</source>
+                <target>Tytuł *</target>
+            </trans-unit>
             <trans-unit id="label.description">
                 <source>label.description</source>
                 <target>Opis</target>
+            </trans-unit>
+            <trans-unit id="label.description_req">
+                <source>label.description_req</source>
+                <target>Opis *</target>
             </trans-unit>
             <trans-unit id="label.tags">
                 <source>label.tags</source>
@@ -28,13 +36,25 @@
                 <source>label.painting</source>
                 <target>Obraz</target>
             </trans-unit>
+            <trans-unit id="label.painting_req">
+                <source>label.painting_req</source>
+                <target>Obraz *</target>
+            </trans-unit>
             <trans-unit id="label.artist">
                 <source>label.artist</source>
                 <target>Artysta</target>
             </trans-unit>
+            <trans-unit id="label.artist_req">
+                <source>label.artist_req</source>
+                <target>Artysta *</target>
+            </trans-unit>
             <trans-unit id="label.category">
                 <source>label.category</source>
                 <target>Rodzaj problemu</target>
+            </trans-unit>
+            <trans-unit id="label.category_req">
+                <source>label.category_req</source>
+                <target>Rodzaj problemu *</target>
             </trans-unit>
             <trans-unit id="label.field">
                 <source>label.field</source>
@@ -87,6 +107,14 @@
             <trans-unit id="label.donthave">
                 <source>label.donthave</source>
                 <target>Nie masz jeszcze konta?</target>
+            </trans-unit>
+            <trans-unit id="label.required">
+                <source>label.required</source>
+                <target>Pola oznaczone gwiazdką (*) są wymagane.</target>
+            </trans-unit>
+            <trans-unit id="label.artworks">
+                <source>label.artworks</source>
+                <target>Inne prace</target>
             </trans-unit>
 
             <!-- Messages -->
@@ -191,6 +219,10 @@
             <trans-unit id="action.account">
                 <source>action.account</source>
                 <target>Moje konto</target>
+            </trans-unit>
+            <trans-unit id="action.view_more">
+                <source>action.view_more</source>
+                <target>Zobacz więcej...</target>
             </trans-unit>
 
             <!-- Labels -->
@@ -389,6 +421,14 @@
             <trans-unit id="help.password">
                 <source>help.password</source>
                 <target>Hasło powinno mieć przynajmniej 8 znaków.</target>
+            </trans-unit>
+            <trans-unit id="help.picture">
+                <source>help.picture</source>
+                <target>Rozszerzenia: JPG, PNG, JPEG. Obraz nie może być większy niż 4MB.</target>
+            </trans-unit>
+            <trans-unit id="help.description">
+                <source>help.description</source>
+                <target>Możesz użyć języka znaczników Markdown.</target>
             </trans-unit>
 
         <!-- Miscellaneous -->

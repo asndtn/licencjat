@@ -20,6 +20,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormTypeExtensionInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class InputType.
@@ -32,13 +33,19 @@ class InputType extends AbstractType
     private TagsDataTransformer $tagsDataTransformer;
 
     /**
+     * Translator.
+     */
+    private TranslatorInterface $translator;
+
+    /**
      * Constructor.
      *
      * @param TagsDataTransformer $tagsDataTransformer Tags data transformer
      */
-    public function __construct(TagsDataTransformer $tagsDataTransformer)
+    public function __construct(TagsDataTransformer $tagsDataTransformer, TranslatorInterface $translator)
     {
         $this->tagsDataTransformer = $tagsDataTransformer;
+        $this->translator = $translator;
     }
 
     /**
@@ -57,9 +64,10 @@ class InputType extends AbstractType
             'painting',
             FileType::class,
             [
-                'label' => 'label.painting',
+                'label' => 'label.painting_req',
                 'mapped' => false,
                 'required' => false,
+                'help' => $this->translator->trans('help.picture'),
                 'constraints' => [
                     new File([
                         'maxSize' => '4096k',
@@ -82,7 +90,7 @@ class InputType extends AbstractType
                 'choice_label' => function ($artist) {
                     return $artist->getName();
                 },
-                'label' => 'label.artist',
+                'label' => 'label.artist_req',
                 'placeholder' => 'label.choose',
                 'required' => true,
             ]
@@ -96,7 +104,7 @@ class InputType extends AbstractType
                 'choice_label' => function ($category) {
                     return $category->getName();
                 },
-                'label' => 'label.category',
+                'label' => 'label.category_req',
                 'placeholder' => 'label.choose',
                 'required' => true,
             ]
@@ -134,7 +142,7 @@ class InputType extends AbstractType
             'title',
             TextType::class,
             [
-                'label' => 'label.title',
+                'label' => 'label.title_req',
                 'required' => true,
                 'attr' => ['max_length' => 180],
             ]
@@ -144,25 +152,26 @@ class InputType extends AbstractType
             'description',
             TextareaType::class,
             [
-                'label' => 'label.description',
+                'label' => 'label.description_req',
                 'required' => true,
+                'help' => $this->translator->trans('help.description'),
                 'attr' => ['max_length' => 2048],
             ]
         );
-
-        $builder->add(
-            'tags',
-            TextType::class,
-            [
-                'label' => 'label.tags',
-                'required' => false,
-                'attr' => ['max_length' => 128],
-            ]
-        );
-
-        $builder->get('tags')->addModelTransformer(
-            $this->tagsDataTransformer
-        );
+//
+//        $builder->add(
+//            'tags',
+//            TextType::class,
+//            [
+//                'label' => 'label.tags',
+//                'required' => false,
+//                'attr' => ['max_length' => 128],
+//            ]
+//        );
+//
+//        $builder->get('tags')->addModelTransformer(
+//            $this->tagsDataTransformer
+//        );
     }
 
     /**

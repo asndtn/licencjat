@@ -99,7 +99,7 @@
         ],
         "phpcbf": [
             "vendor/bin/phpcbf --standard=Symfony src/ --ignore=Kernel.php"
-        ],
+        ]
     },
     "conflict": {
         "symfony/symfony": "*"

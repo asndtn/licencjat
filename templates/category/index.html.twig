@@ -11,7 +11,11 @@
             {% for category in pagination.items %}
                 <div class="card" id="category-card" style="width: 10rem;">
                     <div class="card-body d-flex justify-content-center">
-                        <a href="{{ url('input_index', {'filters.category_id' :  category.id}) }}" title="{{ 'action.view'|trans }}" style="text-decoration: none"><span class="align-middle" style="text-decoration: none; color: black">{{ category.name }}</span></a>
+                        <a href="{{ url('input_index', {'filters.category_id' :  category.id}) }}" title="{{ 'action.view'|trans }}" style="text-decoration: none">
+                            <span style="text-decoration: none; color: black; align-self: center">
+                                {{ category.name }}
+                            </span>
+                        </a>
                     </div>
                 </div>
             {% endfor %}
