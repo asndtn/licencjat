@@ -105,7 +105,7 @@ class NationalityController extends AbstractController
                 $this->translator->trans('message.created_successfully')
             );
 
-            return $this->redirectToRoute('nationality_index');
+            return $this->redirectToRoute('nationality_show', ['id' => $nationality->getId()]);
         }
 
         return $this->render(
@@ -140,7 +140,7 @@ class NationalityController extends AbstractController
                 $this->translator->trans('message.edited_successfully')
             );
 
-            return $this->redirectToRoute('nationality_index');
+            return $this->redirectToRoute('nationality_show', ['id' => $nationality->getId()]);
         }
 
         return $this->render(

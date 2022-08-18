@@ -30,12 +30,17 @@ class UserVoter extends Voter
      */
     public const VIEW = 'VIEW';
 
-//    /**
-//     * Delete permission.
-//     *
-//     * @const string
-//     */
-//    public const DELETE = 'DELETE';
+    /**
+     * Delete permission.
+     *
+     * @const string
+     */
+    public const DELETE = 'DELETE';
+
+    /**
+     * Password change permission.
+     */
+    public const PASSWORD = 'PASSWORD';
 
     /**
      * Security helper.
@@ -56,13 +61,13 @@ class UserVoter extends Voter
      * Determines if the attribute and subject are supported by this voter.
      *
      * @param string $attribute An attribute
-     * @param mixed  $subject   The subject to secure, e.g. an object the user wants to access or any other PHP type
+     * @param mixed $subject The subject to secure, e.g. an object the user wants to access or any other PHP type
      *
      * @return bool Result
      */
     protected function supports(string $attribute, $subject): bool
     {
-        return in_array($attribute, [self::VIEW, self::EDIT /* , self::DELETE */])
+        return in_array($attribute, [self::VIEW, self::EDIT, self::DELETE, self::PASSWORD])
             && $subject instanceof User;
     }
 
@@ -70,9 +75,9 @@ class UserVoter extends Voter
      * Perform a single access check operation on a given attribute, subject and token.
      * It is safe to assume that $attribute and $subject already passed the "supports()" method check.
      *
-     * @param string         $attribute Permission name
-     * @param mixed          $subject   Object
-     * @param TokenInterface $token     Security token
+     * @param string $attribute Permission name
+     * @param mixed $subject Object
+     * @param TokenInterface $token Security token
      *
      * @return bool Vote result
      */
@@ -84,12 +89,12 @@ class UserVoter extends Voter
         }
 
         switch ($attribute) {
+            case self::EDIT:
+            case self::DELETE:
             case self::VIEW:
                 return $this->isOwnerOrAdmin($subject, $user);
-            case self::EDIT:
-                return $this->isOwnerOrAdmin($subject, $user);
-//            case self::DELETE:
-//                return $this->isOwnerOrAdmin($subject, $user);
+            case self::PASSWORD:
+                return $this->canChangePassword($subject, $user);
         }
 
         return false;
@@ -103,8 +108,13 @@ class UserVoter extends Voter
      *
      * @return bool Result
      */
-    private function isOwnerOrAdmin($subject, User $user): bool
+    private function isOwnerOrAdmin(object $subject, User $user): bool
     {
         return $subject->getId() === $user->getId() || in_array('ROLE_ADMIN', $user->getRoles());
+    }
+
+    private function canChangePassword(object $subject, User $user): bool
+    {
+        return $subject->getId() === $user->getId();
     }
 }

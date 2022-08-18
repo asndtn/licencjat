@@ -10,6 +10,7 @@ use App\Form\PasswordChangeType;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use App\Service\UserService;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -116,6 +117,8 @@ class SecurityController extends AbstractController
      * @return Response HTTP Response
      *
      * @Route("/user/{id}/password_change", name="app_change-password", requirements={"id": "[1-9]\d*"}, methods={"GET", "PUT"})
+     *
+     * @IsGranted("PASSWORD", subject="user")
      */
     public function passwordChange(Request $request, User $user, UserService $userService, UserPasswordHasherInterface $passwordHasher): Response
     {

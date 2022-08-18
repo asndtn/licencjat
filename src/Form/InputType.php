@@ -27,10 +27,10 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class InputType extends AbstractType
 {
-    /**
-     * Tags data transformer.
-     */
-    private TagsDataTransformer $tagsDataTransformer;
+//    /**
+//     * Tags data transformer.
+//     */
+//    private TagsDataTransformer $tagsDataTransformer;
 
     /**
      * Translator.
@@ -40,11 +40,10 @@ class InputType extends AbstractType
     /**
      * Constructor.
      *
-     * @param TagsDataTransformer $tagsDataTransformer Tags data transformer
+     * @param TranslatorInterface $translator
      */
-    public function __construct(TagsDataTransformer $tagsDataTransformer, TranslatorInterface $translator)
+    public function __construct(TranslatorInterface $translator)
     {
-        $this->tagsDataTransformer = $tagsDataTransformer;
         $this->translator = $translator;
     }
 

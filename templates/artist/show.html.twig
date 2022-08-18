@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.record_details_artist'|trans({'%id%': artist.id|default('')}) }}
+    {{ artist.name }}
 {% endblock %}
 
 {% block body %}
@@ -28,52 +28,27 @@
                                 <dd>{{ artist.nationality.name }}</dd>
                             </div>
                         {% endif %}
-                        <div class="row">
-                            <dt>{{ 'label.artworks'|trans }}</dt>
-                            <div class="row" style="margin-top: 1em;">
-                                <div class="col">
-                                    <img class="img-fluid" style="width: 10vw; height: 10vw; object-fit: cover; border-radius: 5%;" id="artworks"
-                                         src="{{ asset('uploads/paintings/bubbles-62f3fbe00c4c7.jpg') }}"
-                                         alt="{{ artist.name }}">
-                                </div>
-                                <div class="col">
-                                    <img class="img-fluid" style="width: 10vw; height: 10vw; object-fit: cover; border-radius: 5%;" id="artworks"
-                                         src="{{ asset('uploads/paintings/squirrel-62f3fbdfea853.jpg') }}"
-                                         alt="{{ artist.name }}">
-                                </div>
-                                <div class="col">
-                                    <img class="img-fluid" style="width: 10vw; height: 10vw; object-fit: cover; border-radius: 5%;" id="artworks"
-                                         src="{{ asset('uploads/paintings/seagul-62f3fbe0098a4.jpg') }}"
-                                         alt="{{ artist.name }}">
+                        {% if artist.artwork is defined and artist.artwork|length %}
+                            <div class="roow">
+                                <dt>{{ 'label.artworks'|trans }}</dt>
+                                <div class="roow">
+                                    {% for artwork in artist.artwork %}
+                                        <figure id="figure">
+                                            <a href="{{ url('artwork_show', {id: artwork.id}) }}"><img class="img-fluid" id="artworks" alt="{{ artist.name }}" src="{{ asset(paintings_directory~artwork.artworkFilename) }}"></a>
+                                        </figure>
+                                    {% endfor %}
                                 </div>
                             </div>
-                            <div class="row" style="margin-top: 1em;">
-                                <div class="col">
-                                    <img class="img-fluid" style="width: 10vw; height: 10vw; object-fit: cover; border-radius: 5%;" id="artworks"
-                                         src="{{ asset('uploads/paintings/serpentyna-62f3ffa43a470.jpg') }}"
-                                         alt="{{ artist.name }}">
-                                </div>
-                                <div class="col">
-                                    <img class="img-fluid" style="width: 10vw; height: 10vw; object-fit: cover; border-radius: 5%;" id="artworks"
-                                         src="{{ asset('uploads/paintings/differences-62f3fbdfe1089.jpg') }}"
-                                         alt="{{ artist.name }}">
-                                </div>
-                                <div class="col">
-                                    <img class="img-fluid" style="width: 10vw; height: 10vw; object-fit: cover; border-radius: 5%;" id="artworks"
-                                         src="{{ asset('uploads/paintings/castle-62f3fbe012a9e.jpg') }}"
-                                         alt="{{ artist.name }}">
-                                </div>
-                            </div>
-                    </div>
+                        {% endif %}
                     </div>
                 </div>
-            <div class="col d-flex justify-content-end">
-                {% if artist.photoFilename is defined and artist.photoFilename|length %}
-                    <figure>
-                        <img class="img-fluid" id="artist-show-img" src="{{ asset(paintings_directory~artist.photoFilename) }}" alt="{{ artist.name }}">
-                    </figure>
-                {% endif %}
-            </div>
+                <div class="col d-flex justify-content-end">
+                    {% if artist.photoFilename is defined and artist.photoFilename|length %}
+                        <figure>
+                            <img class="img-fluid" id="artist-show-img" src="{{ asset(paintings_directory~artist.photoFilename) }}" alt="{{ artist.name }}">
+                        </figure>
+                    {% endif %}
+                </div>
             </div>
             <div class="roow" id="artist-index-btn">
                 <a role="button" id="view-btn" class="btn btn-info btn-sm" href="{{ url('artist_index') }}" title="{{ 'action.view_more'|trans }}">{{ 'action.view_more'|trans }}</a>
@@ -85,4 +60,41 @@
             </p>
         {% endif %}
     </div>
+    {#                        <div class="row">#}
+    {#                            <dt>{{ 'label.artworks'|trans }}</dt>#}
+    {#                            <div class="row" style="margin-top: 1em;">#}
+    {#                                <div class="col">#}
+    {#                                    <img class="img-fluid" style="width: 10vw; height: 10vw; object-fit: cover; border-radius: 5%;" id="artworks"#}
+    {#                                         src="{{ asset('uploads/paintings/bubbles-62f9f5f2b7dd1.jpg') }}"#}
+    {#                                         alt="{{ artist.name }}">#}
+    {#                                </div>#}
+    {#                                <div class="col">#}
+    {#                                    <img class="img-fluid" style="width: 10vw; height: 10vw; object-fit: cover; border-radius: 5%;" id="artworks"#}
+    {#                                         src="{{ asset('uploads/paintings/squirrel-62f9f5f2c150a.jpg') }}"#}
+    {#                                         alt="{{ artist.name }}">#}
+    {#                                </div>#}
+    {#                                <div class="col">#}
+    {#                                    <img class="img-fluid" style="width: 10vw; height: 10vw; object-fit: cover; border-radius: 5%;" id="artworks"#}
+    {#                                         src="{{ asset('uploads/paintings/seagul-62f9f5f2a6cd9.jpg') }}"#}
+    {#                                         alt="{{ artist.name }}">#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                            <div class="row" style="margin-top: 1em;">#}
+    {#                                <div class="col">#}
+    {#                                    <img class="img-fluid" style="width: 10vw; height: 10vw; object-fit: cover; border-radius: 5%;" id="artworks"#}
+    {#                                         src="{{ asset('uploads/paintings/serpentyna-62f9f5f2a9afa.jpg') }}"#}
+    {#                                         alt="{{ artist.name }}">#}
+    {#                                </div>#}
+    {#                                <div class="col">#}
+    {#                                    <img class="img-fluid" style="width: 10vw; height: 10vw; object-fit: cover; border-radius: 5%;" id="artworks"#}
+    {#                                         src="{{ asset('uploads/paintings/differences-62f9f5f2afd44.jpg') }}"#}
+    {#                                         alt="{{ artist.name }}">#}
+    {#                                </div>#}
+    {#                                <div class="col">#}
+    {#                                    <img class="img-fluid" style="width: 10vw; height: 10vw; object-fit: cover; border-radius: 5%;" id="artworks"#}
+    {#                                         src="{{ asset('uploads/paintings/castle-62f9f5f2a3948.jpg') }}"#}
+    {#                                         alt="{{ artist.name }}">#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                    </div>#}
 {% endblock %}

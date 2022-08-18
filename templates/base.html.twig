@@ -43,15 +43,7 @@
                             <!-- Admin links -->
                             <li class="nav-item">
                                 <a class="nav-link"
-                                   href="{{ url('nationality_index') }}">{{ 'title.record_list_nationality'|trans }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   href="{{ url('field_index') }}">{{ 'title.record_list_field'|trans }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   href="{{ url('movement_index') }}">{{ 'title.record_list_movement'|trans }}</a>
+                                   href="{{ url('app_admin') }}">{{ 'title.admin_panel'|trans }}</a>
                             </li>
                         {% endif %}
                         <!-- Search bar -->
@@ -69,7 +61,7 @@
                             </li>
                             <li class="nav-item" id="btn-nav">
                                 <a class="btn btn-secondary" role="button"
-                                   href="{{ url('user_show', {id: app.user.id}) }}"
+                                   href="{{ url('user_account', {id: app.user.id}) }}"
                                    title="{{ 'action.view'|trans }}">
                                     {{ 'action.account'|trans }}
                                 </a>

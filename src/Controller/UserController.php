@@ -74,12 +74,31 @@ class UserController extends AbstractController
      *
      * @Route("/{id}/show", name="user_show", requirements={"id": "[1-9]\d*"}, methods={"GET", "PUT"})
      *
-     * @IsGranted("VIEW", subject="user")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function show(User $user): Response
     {
         return $this->render(
             'user/show.html.twig',
+            ['user' => $user]
+        );
+    }
+
+    /**
+     * Show action.
+     *
+     * @param User $user User entity
+     *
+     * @return Response HTTP Response
+     *
+     * @Route("/{id}/account", name="user_account", requirements={"id": "[1-9]\d*"}, methods={"GET", "PUT"})
+     *
+     * @IsGranted("VIEW", subject="user")
+     */
+    public function my_account(User $user): Response
+    {
+        return $this->render(
+            'user/my_account.html.twig',
             ['user' => $user]
         );
     }
@@ -128,43 +147,51 @@ class UserController extends AbstractController
         );
     }
 
-//    /**
-//     * Delete action.
-//     *
-//     * @param Request $request User Request
-//     * @param User    $user    User entity
-//     *
-//     * @return Response HTTP Response
-//     *
-//     * @Route("/{id}/delete", name="user_delete", requirements={"id": "[1-9]\d*"}, methods={"GET", "DELETE"})
-//     *
-//     * @IsGranted("DELETE", subject="user")
-//     */
-//    public function delete(Request $request, User $user): Response
-//    {
-//        $form = $this->createForm(FormType::class, $user, [
-//            'method' => 'DELETE',
-//            'action' => $this->generateUrl('user_delete', ['id' => $user->getId()]),
-//        ]);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $this->userService->delete($user);
-//
-//            $this->addFlash(
-//                'success',
-//                $this->translator->trans('message.deleted_successfully')
-//            );
-//
-//            return $this->redirectToRoute('app_index');
-//        }
-//
-//        return $this->render(
-//            'user/delete.html.twig',
-//            [
-//                'form' => $form->createView(),
-//                'user' => $user,
-//            ]
-//        );
-//    }
+    /**
+     * Delete action.
+     *
+     * @param Request $request User Request
+     * @param User    $user    User entity
+     *
+     * @return Response HTTP Response
+     *
+     * @Route("/{id}/delete", name="user_delete", requirements={"id": "[1-9]\d*"}, methods={"GET", "DELETE"})
+     *
+     * @IsGranted("DELETE", subject="user")
+     */
+    public function delete(Request $request, User $user): Response
+    {
+        if (!$this->userService->canBeDeleted($user)) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.contains_inputs')
+            );
+            return $this->redirectToRoute('user_index');
+        }
+
+        $form = $this->createForm(FormType::class, $user, [
+            'method' => 'DELETE',
+            'action' => $this->generateUrl('user_delete', ['id' => $user->getId()]),
+        ]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->userService->delete($user);
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.deleted_successfully')
+            );
+
+            return $this->redirectToRoute('user_index');
+        }
+
+        return $this->render(
+            'user/delete.html.twig',
+            [
+                'form' => $form->createView(),
+                'user' => $user,
+            ]
+        );
+    }
 }

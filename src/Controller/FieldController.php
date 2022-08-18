@@ -105,7 +105,7 @@ class FieldController extends AbstractController
                 $this->translator->trans('message.created_successfully')
             );
 
-            return $this->redirectToRoute('field_index');
+            return $this->redirectToRoute('field_show', ['id' => $field->getId()]);
         }
 
         return $this->render(
@@ -140,7 +140,7 @@ class FieldController extends AbstractController
                 $this->translator->trans('message.edited_successfully')
             );
 
-            return $this->redirectToRoute('field_index');
+            return $this->redirectToRoute('field_show', ['id' => $field->getId()]);
         }
 
         return $this->render(

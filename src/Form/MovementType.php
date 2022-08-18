@@ -33,7 +33,7 @@ class MovementType extends AbstractType
             'name',
             TextType::class,
             [
-                'label' => 'label.name',
+                'label' => 'label.name_req',
                 'required' => true,
                 'attr' => ['max_length' => 64],
             ]

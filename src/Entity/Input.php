@@ -85,17 +85,17 @@ class Input
      */
     private Artist $artist;
 
-    /**
-     * Tags.
-     *
-     * @var array
-     *
-     * @Assert\Valid
-     *
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", fetch="EXTRA_LAZY", orphanRemoval=true)
-     * @ORM\JoinTable(name="inputs_tags")
-     */
-    private $tags;
+//    /**
+//     * Tags.
+//     *
+//     * @var array
+//     *
+//     * @Assert\Valid
+//     *
+//     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", fetch="EXTRA_LAZY", orphanRemoval=true)
+//     * @ORM\JoinTable(name="inputs_tags")
+//     */
+//    private $tags;
 
     /**
      * Author.
@@ -109,7 +109,7 @@ class Input
      *
      * @ORM\JoinColumn(nullable=false)
      */
-    private $author;
+    private User $author;
 
     /**
      * Description.
@@ -132,13 +132,13 @@ class Input
      */
     private string $paintingFilename;
 
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->tags = new ArrayCollection();
-    }
+//    /**
+//     * Constructor.
+//     */
+//    public function __construct()
+//    {
+//        $this->tags = new ArrayCollection();
+//    }
 
     /**
      * Getter for Id.
@@ -250,37 +250,37 @@ class Input
         $this->artist = $artist;
     }
 
-    /**
-     * Getter for tags.
-     *
-     * @return Collection<int, Tag> Tags collection
-     */
-    public function getTags(): Collection
-    {
-        return $this->tags;
-    }
-
-    /**
-     * Add tag.
-     *
-     * @param Tag $tag Tag entity
-     */
-    public function addTag(Tag $tag): void
-    {
-        if (!$this->tags->contains($tag)) {
-            $this->tags[] = $tag;
-        }
-    }
-
-    /**
-     * Remove tag.
-     *
-     * @param Tag $tag Tag entity
-     */
-    public function removeTag(Tag $tag): void
-    {
-        $this->tags->removeElement($tag);
-    }
+//    /**
+//     * Getter for tags.
+//     *
+//     * @return Collection<int, Tag> Tags collection
+//     */
+//    public function getTags(): Collection
+//    {
+//        return $this->tags;
+//    }
+//
+//    /**
+//     * Add tag.
+//     *
+//     * @param Tag $tag Tag entity
+//     */
+//    public function addTag(Tag $tag): void
+//    {
+//        if (!$this->tags->contains($tag)) {
+//            $this->tags[] = $tag;
+//        }
+//    }
+//
+//    /**
+//     * Remove tag.
+//     *
+//     * @param Tag $tag Tag entity
+//     */
+//    public function removeTag(Tag $tag): void
+//    {
+//        $this->tags->removeElement($tag);
+//    }
 
     /**
      * Getter for Author.

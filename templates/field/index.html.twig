@@ -5,13 +5,17 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.record_list_field'|trans }}</h1>
+    {% if is_granted("ROLE_ADMIN") %}
+        <div class="row">
+            <h1 id="h1-adm">{{ 'title.record_list_field'|trans }}</h1>
+            <div class="col-1">
+                <a role="button" id="create-btn-adm" class="btn btn-secondary" href="{{ url('field_create') }}" title="{{ 'action.create'|trans }}">{{ 'action.create'|trans }}</a>
+            </div>
+        </div>
+    {% else %}
+        <h1>{{ 'title.record_list_field'|trans }}</h1>
+    {% endif %}
     {%  if pagination is defined and pagination.items|length %}
-
-{#            <a class="btn btn-primary btn-lg" role="button" href="{{ url('field_create') }}" title="{{ 'action.create'|trans }}">#}
-{#                {{ 'action.create'|trans }}#}
-{#            </a>#}
-
         <table class="table table-striped">
             <thead>
             <tr>
@@ -22,39 +26,29 @@
             </thead>
             <tbody>
             {% for field in pagination.items %}
-            <tr>
-                <td>{{ field.id }}</td>
-                <td>{{ field.name }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ url('field_show', {id: field.id}) }}" title="{{ 'action.view'|trans }}">
-                                {{ 'action.view'|trans }}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('field_edit', {id: field.id}) }}" title="{{ 'action.edit'|trans }}">
-                                {{ 'action.edit'|trans }}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('field_delete', {id: field.id}) }}" title="{{ 'action.delete'|trans }}">
-                                {{ 'action.delete'|trans }}
-                            </a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+                <tr>
+                    <td>{{ field.id }}</td>
+                    <td>{{ field.name }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ url('field_show', {id: field.id}) }}" title="{{ 'action.view'|trans }}">{{ 'action.view'|trans }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('field_edit', {id: field.id}) }}" title="{{ 'action.edit'|trans }}">{{ 'action.edit'|trans }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('field_delete', {id: field.id}) }}" title="{{ 'action.delete'|trans }}">{{ 'action.delete'|trans }}</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
             {% endfor %}
             </tbody>
         </table>
         <!-- Pagination -->
-        <div class="navigation text-center d-flex justify-content-center">
-            {{ knp_pagination_render(pagination, 'pagination.html.twig') }}
-        </div>
-{% else %}
-<p>
-    {{ 'message.empty_list'|trans }}
-</p>
-{% endif %}
+        <div class="navigation text-center d-flex justify-content-center">{{ knp_pagination_render(pagination, 'pagination.html.twig') }}</div>
+    {% else %}
+        <p>{{ 'message.empty_list'|trans }}</p>
+    {% endif %}
 {% endblock %}

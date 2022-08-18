@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'label.artwork'|trans }} {{ artwork.artist.name }}
+{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-center" id="show">
+        <div class="row col-10">
+            <h1 class="h1 font font-weigh-normal">{{ 'label.artwork'|trans }} {{ artwork.artist.name }}</h1>
+            {% if artwork is defined and artwork|length %}
+            <div class="row">
+                <div class="col">
+                    <div class="data">
+                            <div class="roow">
+                                <div class="roow">
+                                        <figure id="figure">
+                                           <img class="img-fluid" id="artworks-img" alt="TODO" src="{{ asset(paintings_directory~artwork.artworkFilename) }}">
+                                        </figure>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="roow" id="artwork-show-buttons">
+                <a role="button" id="view-btn" class="btn btn-info btn-sm" href="{{ url('artwork_edit', {id: artwork.id}) }}" title="{{ 'action.edit'|trans }}">{{ 'action.edit'|trans }}</a>
+                <a role="button" id="view-btn" class="btn btn-info btn-sm" href="{{ url('artwork_delete', {id: artwork.id}) }}" title="{{ 'action.delete'|trans }}">{{ 'action.delete'|trans }}</a>
+            </div>
+            <div class="roow" id="artwork-index-btn">
+                <a role="button" id="view-btn" class="btn btn-info btn-sm" href="{{ url('artwork_index') }}" title="{{ 'action.view_more'|trans }}">{{ 'action.back_to_list'|trans }}</a>
+            </div>
+        </div>
+        {% else %}
+            <p>
+                {{ 'message.record_not_found'|trans }}
+            </p>
+        {% endif %}
+    </div>
+{% endblock %}

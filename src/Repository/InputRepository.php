@@ -203,22 +203,22 @@ class InputRepository extends ServiceEntityRepository
     }
 
     /**
-     * Count inputs by tag.
+     * Count inputs by user.
      *
-     * @param Tag $tag Tag
+     * @param User $user User
      *
-     * @return int Number of inputs in tag
+     * @return int Number of inputs in user
      *
      * @throws NoResultException
      * @throws NonUniqueResultException
      */
-    public function countByTag(Tag $tag): int
+    public function countByUser(User $user): int
     {
         $qb = $this->getOrCreateQueryBuilder();
 
         return $qb->select($qb->expr()->countDistinct('input.id'))
-            ->where('input.tag = :tag')
-            ->setParameter(':tag', $tag)
+            ->where('input.author = :author')
+            ->setParameter(':author', $user)
             ->getQuery()
             ->getSingleScalarResult();
     }
@@ -233,16 +233,16 @@ class InputRepository extends ServiceEntityRepository
 //     * @throws NoResultException
 //     * @throws NonUniqueResultException
 //     */
-//    public function countByTag(Tag $tag): int
-//    {
-//        $qb = $this->getOrCreateQueryBuilder();
-//
-//        return $qb->select($qb->expr()->countDistinct('input.id'))
-//            ->where('input.tag = :tag')
-//            ->setParameter(':tag', $tag)
-//            ->getQuery()
-//            ->getSingleScalarResult();
-//    }
+////    public function countByTag(Tag $tag): int
+////    {
+////        $qb = $this->getOrCreateQueryBuilder();
+////
+////        return $qb->select($qb->expr()->countDistinct('input.id'))
+////            ->where('input.tag = :tag')
+////            ->setParameter(':tag', $tag)
+////            ->getQuery()
+////            ->getSingleScalarResult();
+////    }
 
     /**
      * Save entity.

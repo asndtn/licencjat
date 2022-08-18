@@ -46,7 +46,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * Index action.
+     * Index & filter action.
      *
      * @param Request $request User request
      *
@@ -61,6 +61,24 @@ class CategoryController extends AbstractController
         );
 
         return $this->render('category/index.html.twig', ['pagination' => $pagination]);
+    }
+
+    /**
+     * Index & show action (for Admin only).
+     *
+     * @param Request $request User request
+     *
+     * @return Response HTTP Response
+     *
+     * @Route("/admin", name="category_admin", methods={"GET"})
+     */
+    public function adminIndex(Request $request): Response
+    {
+        $pagination = $this->categoryService->getPaginatedList(
+            $request->query->getInt('page', 1)
+        );
+
+        return $this->render('category/admin.html.twig', ['pagination' => $pagination]);
     }
 
     /**
@@ -105,7 +123,7 @@ class CategoryController extends AbstractController
                 $this->translator->trans('message.created_successfully')
             );
 
-            return $this->redirectToRoute('category_index');
+            return $this->redirectToRoute('category_show', ['id' => $category->getId()]);
         }
 
         return $this->render(
@@ -142,7 +160,7 @@ class CategoryController extends AbstractController
                 $this->translator->trans('message.edited_successfully')
             );
 
-            return $this->redirectToRoute('category_index');
+            return $this->redirectToRoute('category_show', ['id' => $category->getId()]);
         }
 
         return $this->render(
@@ -174,7 +192,7 @@ class CategoryController extends AbstractController
                 $this->translator->trans('message.contains_inputs')
             );
 
-            return $this->redirectToRoute('category_index');
+            return $this->redirectToRoute('category_admin');
         }
 
         $form = $this->createForm(FormType::class, $category, [
@@ -191,7 +209,7 @@ class CategoryController extends AbstractController
                 $this->translator->trans('message.deleted_successfully')
             );
 
-            return $this->redirectToRoute('category_index');
+            return $this->redirectToRoute('category_admin');
         }
 
         return $this->render(

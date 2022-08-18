@@ -105,7 +105,7 @@ class MovementController extends AbstractController
                 $this->translator->trans('message.created_successfully')
             );
 
-            return $this->redirectToRoute('movement_index');
+            return $this->redirectToRoute('movement_show', ['id' => $movement->getId()]);
         }
 
         return $this->render(
@@ -140,7 +140,7 @@ class MovementController extends AbstractController
                 $this->translator->trans('message.edited_successfully')
             );
 
-            return $this->redirectToRoute('movement_index');
+            return $this->redirectToRoute('movement_show', ['id' => $movement->getId()]);
         }
 
         return $this->render(

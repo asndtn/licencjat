@@ -15,20 +15,20 @@
 
             <!-- Email input -->
             <div class="form-outline mb-4">
-                <label class="required" for="user_email">{{ 'label.email'|trans }}</label>
+                <label class="required" for="user_email">{{ 'label.email_req'|trans }}</label>
                 {{ form_widget(form.email) }}
                 {{ form_errors(form.email) }}
             </div>
             <!-- Password input -->
             <div class="form-outline mb-4">
-                <label class="required" for="user_password_first">{{ 'label.password'|trans }}</label>
+                <label class="required" for="user_password_first">{{ 'label.password_req'|trans }}</label>
                 {{ form_widget(form.password.first) }}
                 {{ form_errors(form.password.first) }}
                 {{ form_help(form.password) }}
             </div>
             <!-- Repeated password input -->
             <div class="form-outline mb-4">
-                <label class="required" for="user_password_second">{{ 'label.repeatedPassword'|trans }}</label>
+                <label class="required" for="user_password_second">{{ 'label.repeatedPassword_req'|trans }}</label>
                 {{ form_widget(form.password.second) }}
                 {{ form_errors(form.password.second) }}
             </div>

@@ -5,7 +5,16 @@
 {% endblock %}
 
 {% block body %}
+    {% if is_granted("ROLE_ADMIN") %}
+    <div class="row">
+        <h1 id="display-h1">{{ 'title.record_list_category'|trans }}</h1>
+        <div class="col-1">
+            <a role="button" class="btn btn-secondary" id="create-btn" href="{{ url('category_create') }}" title="{{ 'action.create'|trans }}">{{ 'action.create'|trans }}</a>
+        </div>
+    </div>
+{% else %}
     <h1 id="display-h1">{{ 'title.record_list_category'|trans }}</h1>
+{% endif %}
     {%  if pagination is defined and pagination.items|length %}
         <div class="d-flex justify-content-center flex-wrap" id="display-container">
             {% for category in pagination.items %}

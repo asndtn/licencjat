@@ -14,6 +14,8 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
+ * Class ArtistRepository.
+ *
  * @method Artist|null find($id, $lockMode = null, $lockVersion = null)
  * @method Artist|null findOneBy(array $criteria, array $orderBy = null)
  * @method Artist[]    findAll()

@@ -76,13 +76,25 @@
                 <source>label.email</source>
                 <target>Email</target>
             </trans-unit>
+            <trans-unit id="label.email_req">
+                <source>label.email_req</source>
+                <target>Email *</target>
+            </trans-unit>
             <trans-unit id="label.password">
                 <source>label.password</source>
                 <target>Hasło</target>
             </trans-unit>
+            <trans-unit id="label.password_req">
+                <source>label.password_req</source>
+                <target>Hasło *</target>
+            </trans-unit>
             <trans-unit id="label.repeatedPassword">
                 <source>label.repeatedPassword</source>
                 <target>Powtórz hasło</target>
+            </trans-unit>
+            <trans-unit id="label.repeatedPassword_req">
+                <source>label.repeatedPassword_req</source>
+                <target>Powtórz hasło *</target>
             </trans-unit>
             <trans-unit id="label.logged">
                 <source>label.logged</source>
@@ -108,6 +120,14 @@
                 <source>label.donthave</source>
                 <target>Nie masz jeszcze konta?</target>
             </trans-unit>
+            <trans-unit id="label.photo">
+                <source>label.photo</source>
+                <target>Zdjęcie</target>
+            </trans-unit>
+            <trans-unit id="label.photo_req">
+                <source>label.photo_req</source>
+                <target>Zdjęcie *</target>
+            </trans-unit>
             <trans-unit id="label.required">
                 <source>label.required</source>
                 <target>Pola oznaczone gwiazdką (*) są wymagane.</target>
@@ -115,6 +135,18 @@
             <trans-unit id="label.artworks">
                 <source>label.artworks</source>
                 <target>Inne prace</target>
+            </trans-unit>
+            <trans-unit id="label.artwork">
+                <source>label.artwork</source>
+                <target>Praca</target>
+            </trans-unit>
+            <trans-unit id="label.artwork_req">
+                <source>label.artwork_req</source>
+                <target>Praca *</target>
+            </trans-unit>
+            <trans-unit id="label.tag">
+                <source>label.tag</source>
+                <target>Tag</target>
             </trans-unit>
 
             <!-- Messages -->
@@ -230,13 +262,25 @@
                 <source>label.name</source>
                 <target>Nazwa</target>
             </trans-unit>
+            <trans-unit id="label.name_req">
+                <source>label.name_req</source>
+                <target>Nazwa *</target>
+            </trans-unit>
             <trans-unit id="label.name_surname">
                 <source>label.name_surname</source>
                 <target>Imię i nazwisko</target>
             </trans-unit>
+            <trans-unit id="label.name_surname_req">
+                <source>label.name_surname_req</source>
+                <target>Imię i nazwisko *</target>
+            </trans-unit>
             <trans-unit id="label.dateOfBirth">
                 <source>label.dateOfBirth</source>
                 <target>Data urodzin</target>
+            </trans-unit>
+            <trans-unit id="label.dateOfBirth_req">
+                <source>label.dateOfBirth_req</source>
+                <target>Data urodzin *</target>
             </trans-unit>
             <trans-unit id="label.dateOfDeath">
                 <source>label.dateOfDeath</source>
@@ -314,7 +358,7 @@
             </trans-unit>
             <trans-unit id="title.category_delete">
                 <source>title.category_delete</source>
-                <target>Usuń kategorię</target>
+                <target>Usunąć kategorię %name%?</target>
             </trans-unit>
             <trans-unit id="title.category_edit">
                 <source>title.category_edit</source>
@@ -330,7 +374,7 @@
             </trans-unit>
             <trans-unit id="title.nationality_delete">
                 <source>title.nationality_delete</source>
-                <target>Usuń narodowość</target>
+                <target>Usunąć narodowość %name%?</target>
             </trans-unit>
             <trans-unit id="title.movement_create">
                 <source>title.movement_create</source>
@@ -342,7 +386,7 @@
             </trans-unit>
             <trans-unit id="title.movement_delete">
                 <source>title.movement_delete</source>
-                <target>Usuń epokę</target>
+                <target>Usunąć epokę %name%?</target>
             </trans-unit>
             <trans-unit id="title.field_create">
                 <source>title.field_create</source>
@@ -354,7 +398,7 @@
             </trans-unit>
             <trans-unit id="title.field_delete">
                 <source>title.field_delete</source>
-                <target>Usuń dziedzinę sztuki</target>
+                <target>Usunąć dziedzinę sztuki %name%?</target>
             </trans-unit>
             <trans-unit id="title.input_create">
                 <source>title.input_create</source>
@@ -366,7 +410,7 @@
             </trans-unit>
             <trans-unit id="title.input_delete">
                 <source>title.input_delete</source>
-                <target>Czy na pewno chcesz usunąć wpis "%title%"?</target>
+                <target>Usunąć wpis "%title%"?</target>
             </trans-unit>
             <trans-unit id="title.artist_create">
                 <source>title.artist_create</source>
@@ -378,7 +422,7 @@
             </trans-unit>
             <trans-unit id="title.artist_delete">
                 <source>title.artist_delete</source>
-                <target>Usuń artystę</target>
+                <target>Usunąć artystę %name%?</target>
             </trans-unit>
             <trans-unit id="title.record_list_tag">
                 <source>title.record_list_tag</source>
@@ -412,9 +456,29 @@
                 <source>title.user_delete</source>
                 <target>Usuń użytkownika</target>
             </trans-unit>
+            <trans-unit id="title.record_list_artwork">
+                <source>title.record_list_artwork</source>
+                <target>Lista prac</target>
+            </trans-unit>
+            <trans-unit id="title.artwork_create">
+                <source>title.artwork_create</source>
+                <target>Dodaj prace</target>
+            </trans-unit>
+            <trans-unit id="title.artwork_delete">
+                <source>title.artwork_delete</source>
+                <target>Usunąć pracę %name%?</target>
+            </trans-unit>
             <trans-unit id="title.account">
                 <source>title.account</source>
                 <target>Moje Konto</target>
+            </trans-unit>
+            <trans-unit id="title.admin_panel">
+                <source>title.admin_panel</source>
+                <target>Panel administratora</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_user">
+                <source>title.record_details_user</source>
+                <target>Użytkownik %email%</target>
             </trans-unit>
 
         <!-- Help -->

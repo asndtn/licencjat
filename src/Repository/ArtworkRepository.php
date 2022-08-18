@@ -1,26 +1,26 @@
 <?php
 /**
- * Tag Repository.
+ * Artwork Repository.
  */
 
 namespace App\Repository;
 
-use App\Entity\Tag;
+use App\Entity\Artwork;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * Class TagRepository.
+ * Class Artwork Repository.
  *
- * @method Tag|null find($id, $lockMode = null, $lockVersion = null)
- * @method Tag|null findOneBy(array $criteria, array $orderBy = null)
- * @method Tag[]    findAll()
- * @method Tag[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Artwork|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Artwork|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Artwork[]    findAll()
+ * @method Artwork[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  *
- * @extends ServiceEntityRepository<Tag>
+ * @extends ServiceEntityRepository<Artwork>
  */
-class TagRepository extends ServiceEntityRepository
+class ArtworkRepository extends ServiceEntityRepository
 {
     /**
      * Items per page.
@@ -31,7 +31,7 @@ class TagRepository extends ServiceEntityRepository
      *
      * @constant int
      */
-    public const PAGINATOR_ITEMS_PER_PAGE = 10;
+    public const PAGINATOR_ITEMS_PER_PAGE = 18;
 
     /**
      * Constructor.
@@ -40,7 +40,7 @@ class TagRepository extends ServiceEntityRepository
      */
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Tag::class);
+        parent::__construct($registry, Artwork::class);
     }
 
     /**
@@ -51,29 +51,33 @@ class TagRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->select('partial tag.{id, name}')
-            ->orderBy('tag.name', 'ASC');
+            ->select(
+                'partial artwork.{id, artworkFilename}',
+                'partial artist.{id, name}'
+            )
+            ->leftJoin('artwork.artist', 'artist')
+            ->orderBy('artwork.id', 'ASC');
     }
 
     /**
      * Save entity.
      *
-     * @param Tag $tag Tag entity
+     * @param Artwork $artwork Artwork entity
      */
-    public function save(Tag $tag): void
+    public function save(Artwork $artwork): void
     {
-        $this->_em->persist($tag);
+        $this->_em->persist($artwork);
         $this->_em->flush();
     }
 
     /**
      * Delete entity.
      *
-     * @param Tag $tag Tag entity
+     * @param Artwork $artwork Artwork entity
      */
-    public function delete(Tag $tag): void
+    public function delete(Artwork $artwork): void
     {
-        $this->_em->remove($tag);
+        $this->_em->remove($artwork);
         $this->_em->flush();
     }
 
@@ -86,6 +90,6 @@ class TagRepository extends ServiceEntityRepository
      */
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        return $queryBuilder ?? $this->createQueryBuilder('tag');
+        return $queryBuilder ?? $this->createQueryBuilder('artwork');
     }
 }

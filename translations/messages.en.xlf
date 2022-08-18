@@ -68,9 +68,25 @@
                 <source>label.name</source>
                 <target>Name</target>
             </trans-unit>
+            <trans-unit id="label.name_req">
+                <source>label.name_req</source>
+                <target>Name *</target>
+            </trans-unit>
             <trans-unit id="label.dateOfBirth">
                 <source>label.dateOfBirth</source>
                 <target>Date of birth</target>
+            </trans-unit>
+            <trans-unit id="label.dateOfBirth_req">
+                <source>label.dateOfBirth_req</source>
+                <target>Date of birth *</target>
+            </trans-unit>
+            <trans-unit id="label.name_surname">
+                <source>label.name_surname</source>
+                <target>Name and surname</target>
+            </trans-unit>
+            <trans-unit id="label.name_surname_req">
+                <source>label.name_surname_req</source>
+                <target>Name and surname *</target>
             </trans-unit>
             <trans-unit id="label.dateOfDeath">
                 <source>label.dateOfDeath</source>
@@ -79,6 +95,10 @@
             <trans-unit id="label.nationality">
                 <source>label.nationality</source>
                 <target>Nationality</target>
+            </trans-unit>
+            <trans-unit id="label.tag">
+                <source>label.tag</source>
+                <target>Tag</target>
             </trans-unit>
             <trans-unit id="label.sure">
                 <source>label.sure</source>
@@ -96,13 +116,25 @@
                 <source>label.email</source>
                 <target>Email</target>
             </trans-unit>
+            <trans-unit id="label.email_req">
+                <source>label.email_req</source>
+                <target>Email *</target>
+            </trans-unit>
             <trans-unit id="label.password">
                 <source>label.password</source>
                 <target>Password</target>
             </trans-unit>
+            <trans-unit id="label.password_req">
+                <source>label.password_req</source>
+                <target>Password *</target>
+            </trans-unit>
             <trans-unit id="label.repeatedPassword">
                 <source>label.repeatedPassword</source>
                 <target>Repeat password</target>
+            </trans-unit>
+            <trans-unit id="label.repeatedPassword_req">
+                <source>label.repeatedPassword_req</source>
+                <target>Repeat password *</target>
             </trans-unit>
             <trans-unit id="label.idea">
                 <source>label.idea</source>
@@ -136,6 +168,14 @@
                 <source>label.search</source>
                 <target>Search...</target>
             </trans-unit>
+            <trans-unit id="label.photo">
+                <source>label.photo</source>
+                <target>Photo</target>
+            </trans-unit>
+            <trans-unit id="label.photo_req">
+                <source>label.photo_req</source>
+                <target>Photo *</target>
+            </trans-unit>
             <trans-unit id="label.required">
                 <source>label.required</source>
                 <target>Fields marked with an asterisk (*) are required.</target>
@@ -143,6 +183,22 @@
             <trans-unit id="label.artworks">
                 <source>label.artworks</source>
                 <target>Other artworks</target>
+            </trans-unit>
+            <trans-unit id="label.artwork">
+                <source>label.artwork</source>
+                <target>Artwork</target>
+            </trans-unit>
+            <trans-unit id="label.artwork_req">
+                <source>label.artwork_req</source>
+                <target>Artwork *</target>
+            </trans-unit>
+            <trans-unit id="label_previous">
+                <source>label_previous</source>
+                <target>Previous</target>
+            </trans-unit>
+            <trans-unit id="label_next">
+                <source>label_next</source>
+                <target>Next</target>
             </trans-unit>
 
             <!-- Messages -->
@@ -288,7 +344,7 @@
             </trans-unit>
             <trans-unit id="title.nationality_delete">
                 <source>title.nationality_delete</source>
-                <target>Delete a nationality</target>
+                <target>Do you want to delete nationality %name%?</target>
             </trans-unit>
             <trans-unit id="title.record_list_artist">
                 <source>title.record_list_artist</source>
@@ -308,7 +364,7 @@
             </trans-unit>
             <trans-unit id="title.artist_delete">
                 <source>title.artist_delete</source>
-                <target>Delete an artist</target>
+                <target>Do you want to delete artist %name%?</target>
             </trans-unit>
             <trans-unit id="title.record_list_category">
                 <source>title.record_list_category</source>
@@ -328,7 +384,7 @@
             </trans-unit>
             <trans-unit id="title.category_delete">
                 <source>title.category_delete</source>
-                <target>Delete the category</target>
+                <target>Do you want to delete category %name%?</target>
             </trans-unit>
             <trans-unit id="title.record_list_movement">
                 <source>title.record_list_movement</source>
@@ -348,7 +404,7 @@
             </trans-unit>
             <trans-unit id="title.movement_delete">
                 <source>title.movement_delete</source>
-                <target>Delete a movement</target>
+                <target>Do you want to delete movement %name%?</target>
             </trans-unit>
             <trans-unit id="title.record_list_field">
                 <source>title.record_list_field</source>
@@ -368,7 +424,7 @@
             </trans-unit>
             <trans-unit id="title.field_delete">
                 <source>title.field_delete</source>
-                <target>Delete a field</target>
+                <target>Do you want to delete field %name%?</target>
             </trans-unit>
             <trans-unit id="title.record_list_tag">
                 <source>title.record_list_tag</source>
@@ -402,9 +458,29 @@
                 <source>title.user_delete</source>
                 <target>Delete an user</target>
             </trans-unit>
+            <trans-unit id="title.record_list_artwork">
+                <source>title.record_list_artwork</source>
+                <target>Artworks list</target>
+            </trans-unit>
+            <trans-unit id="title.artwork_create">
+                <source>title.artwork_create</source>
+                <target>Create an artwork</target>
+            </trans-unit>
+            <trans-unit id="title.artwork_delete">
+                <source>title.artwork_delete</source>
+                <target>Do you want to delete artwork %name%?</target>
+            </trans-unit>
             <trans-unit id="title.account">
                 <source>title.account</source>
                 <target>My Account</target>
+            </trans-unit>
+            <trans-unit id="title.admin_panel">
+                <source>title.admin_panel</source>
+                <target>Admin panel</target>
+            </trans-unit>
+            <trans-unit id="title.record_details_user">
+                <source>title.record_details_user</source>
+                <target>%email% user details</target>
             </trans-unit>
 
             <!-- Help -->

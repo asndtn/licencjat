@@ -38,7 +38,7 @@ class ArtistType extends AbstractType
             'photo',
             FileType::class,
             [
-                'label' => 'label.photo',
+                'label' => 'label.photo_req',
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
@@ -59,7 +59,7 @@ class ArtistType extends AbstractType
             'name',
             TextType::class,
             [
-                'label' => 'label.name_surname',
+                'label' => 'label.name_surname_req',
                 'required' => true,
                 'attr' => ['max_length' => 64],
             ]
@@ -72,7 +72,7 @@ class ArtistType extends AbstractType
                 'widget' => 'single_text',
                 'input' => 'datetime_immutable',
                 'input_format' => 'dd-MM-yyyy',
-                'label' => 'label.dateOfBirth',
+                'label' => 'label.dateOfBirth_req',
                 'required' => true,
             ]
         );

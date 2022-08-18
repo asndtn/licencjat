@@ -23,6 +23,15 @@ interface UserServiceInterface
     public function getPaginatedList(int $page): PaginationInterface;
 
     /**
+     * Can User be deleted?
+     *
+     * @param User $user User entity
+     *
+     * @return bool Result
+     */
+    public function canBeDeleted(User $user): bool;
+
+    /**
      * Save entity.
      *
      * @param User $user User entity

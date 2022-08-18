@@ -7,15 +7,18 @@ namespace App\Controller;
 
 use App\Entity\Artist;
 use App\Form\ArtistType;
+use App\Repository\ArtworkRepository;
 use App\Service\ArtistServiceInterface;
 use App\Service\FileUploader;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use function Symfony\Component\Translation\t;
 
 /**
  * Class ArtistController.
@@ -73,11 +76,14 @@ class ArtistController extends AbstractController
      *
      * @Route("/{id}", name="artist_show", requirements={"id": "[1-9]\d*"}, methods={"GET"})
      */
-    public function show(Artist $artist): Response
+    public function show(Artist $artist, ArtworkRepository $artworkRepository): Response
     {
         return $this->render(
             'artist/show.html.twig',
-            ['artist' => $artist]
+            [
+                'artist' => $artist,
+                'artwork' => $artworkRepository->findBy(['id' => $artist->getId()])
+            ]
         );
     }
 
@@ -105,13 +111,12 @@ class ArtistController extends AbstractController
                 $artist->setPhotoFilename($photoFilename);
             }
             $this->artistService->save($artist);
-
             $this->addFlash(
                 'success',
                 $this->translator->trans('message.created_successfully')
             );
 
-            return $this->redirectToRoute('artist_index');
+            return $this->redirectToRoute('artist_show', ['id' => $artist->getId()]);
         }
 
         return $this->render(
@@ -153,7 +158,7 @@ class ArtistController extends AbstractController
                 $this->translator->trans('message.edited_successfully')
             );
 
-            return $this->redirectToRoute('artist_index');
+            return $this->redirectToRoute('artist_show', ['id' => $artist->getId()]);
         }
 
         return $this->render(

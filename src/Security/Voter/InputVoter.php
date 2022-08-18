@@ -78,38 +78,24 @@ class InputVoter extends Voter
         }
 
         switch ($attribute) {
-            case self::EDIT:
-                return $this->canEdit($subject, $user);
             case self::DELETE:
-                return $this->canDelete($subject, $user);
+            case self::EDIT:
+                return $this->isOwnerOrAdmin($subject, $user);
         }
 
         return false;
     }
 
     /**
-     * Checks if user can edit input.
+     * Checks if user is Owner or Admin.
      *
-     * @param Input $input Input entity
-     * @param User  $user  User
-     *
-     * @return bool Result
-     */
-    private function canEdit(Input $input, User $user): bool
-    {
-        return $input->getAuthor() === $user;
-    }
-
-    /**
-     * Checks if user can delete input.
-     *
-     * @param Input $input Input entity
-     * @param User  $user  User
+     * @param $subject Object
+     * @param User $user User
      *
      * @return bool Result
      */
-    private function canDelete(Input $input, User $user): bool
+    private function isOwnerOrAdmin(object $subject, User $user): bool
     {
-        return $input->getAuthor() === $user;
+        return $subject->getId() === $user->getId() || in_array('ROLE_ADMIN', $user->getRoles());
     }
 }

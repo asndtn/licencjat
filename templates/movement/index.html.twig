@@ -5,13 +5,17 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.record_list_movement'|trans }}</h1>
+    {% if is_granted("ROLE_ADMIN") %}
+        <div class="row">
+            <h1 id="h1-adm">{{ 'title.record_list_movement'|trans }}</h1>
+            <div class="col-1">
+                <a role="button" id="create-btn-adm" class="btn btn-secondary" href="{{ url('movement_create') }}" title="{{ 'action.create'|trans }}">{{ 'action.create'|trans }}</a>
+            </div>
+        </div>
+    {% else %}
+        <h1>{{ 'title.record_list_movement'|trans }}</h1>
+    {% endif %}
     {%  if pagination is defined and pagination.items|length %}
-
-{#            <a class="btn btn-primary btn-lg" role="button" href="{{ url('movement_create') }}" title="{{ 'action.create'|trans }}">#}
-{#                {{ 'action.create'|trans }}#}
-{#            </a>#}
-
         <table class="table table-striped">
             <thead>
             <tr>

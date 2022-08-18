@@ -6,6 +6,8 @@
 namespace App\Entity;
 
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -80,6 +82,23 @@ class Artist
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private string $photoFilename;
+
+    /**
+     * Artwork.
+     *
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="App\Entity\Artwork", mappedBy="artist")
+     */
+    private $artwork;
+
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->artwork = new ArrayCollection();
+    }
 
     /**
      * Getter for Id.
@@ -189,5 +208,37 @@ class Artist
     public function setPhotoFilename(?string $photoFilename): void
     {
         $this->photoFilename = $photoFilename;
+    }
+
+    /**
+     * Getter for Artwork.
+     *
+     * @return Collection<int, Artwork> Artwork collection.
+     */
+    public function getArtwork(): Collection
+    {
+        return $this->artwork;
+    }
+
+    /**
+     * Add artwork.
+     *
+     * @param Artwork $artwork Artwork entity
+     */
+    public function addArtwork(Artwork $artwork): void
+    {
+        if (!$this->artwork->contains($artwork)) {
+            $this->artwork[] = $artwork;
+        }
+    }
+
+    /**
+     * Remove artwork.
+     *
+     * @param Artwork $artwork Artwork entity
+     */
+    public function removeArtwork(Artwork $artwork): void
+    {
+        $this->artwork->removeElement($artwork);
     }
 }

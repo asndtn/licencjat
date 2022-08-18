@@ -51,7 +51,7 @@ class RegistrationFormType extends AbstractType
                 'email',
                 EmailType::class,
                 [
-                    'label' => 'label.email',
+                    'label' => 'label.email_req',
                     'required' => 'true',
                     'attr' => ['max_length' => 180],
                 ]
@@ -63,8 +63,8 @@ class RegistrationFormType extends AbstractType
                 'type' => PasswordType::class,
                 'attr' => ['max_length' => 255],
                 'help' => $this->translator->trans('help.password'),
-                'first_options' => ['label' => 'label.password'],
-                'second_options' => ['label' => 'label.repeatedPassword'],
+                'first_options' => ['label' => 'label.password_req'],
+                'second_options' => ['label' => 'label.repeatedPassword_req'],
                 'invalid_message' => $this->translator->trans('message.password_match'),
                 ]
             );
